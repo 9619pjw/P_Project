@@ -1,6 +1,6 @@
-# Next.js & NextUI Template
-
-This is a template for creating applications using Next.js 13 (app directory) and NextUI (v2).
+# P-실무 프로젝트
+크라우드 펀딩 SNS 서비스입니다.
+Creating applications using Next.js 13 (app directory) and NextUI (v2).
 
 ## Technologies Used
 
@@ -36,5 +36,4 @@ npm run dev
 ```
 
 ## License
-
 Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
