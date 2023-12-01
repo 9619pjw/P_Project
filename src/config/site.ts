@@ -17,8 +17,8 @@ export const siteConfig = {
       href: "/gifticon",
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: "Post",
+      href: "/post",
     },
     {
       label: "About",

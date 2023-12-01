@@ -1,0 +1,384 @@
+/* 메인 페이지 */
+
+.fadeIn {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+.fadeIn2 {
+  animation: fadeIn ease 1s 1s both;
+  -webkit-animation: fadeIn ease 1s 1s both;
+  -moz-animation: fadeIn ease 1s 1s both;
+  -o-animation: fadeIn ease 1s 1s both;
+  -ms-animation: fadeIn ease 1s 1s both;
+}
+
+.fadeIn3 {
+  animation: fadeIn ease 1s 2s both;
+  -webkit-animation: fadeIn ease 1s 2s both;
+  -moz-animation: fadeIn ease 1s 2s both;
+  -o-animation: fadeIn ease 1s 2s both;
+  -ms-animation: fadeIn ease 1s 2s both;
+}
+
+.fadeIn4 {
+  animation: fadeIn ease 1s 3s both;
+  -webkit-animation: fadeIn ease 1s 3s both;
+  -moz-animation: fadeIn ease 1s 3s both;
+  -o-animation: fadeIn ease 1s 3s both;
+  -ms-animation: fadeIn ease 1s 3s both;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 게시판 */
+.boardContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.loginButton{
+  border: 1px solid #ccc;
+  background-color: grey;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.signupButton{
+  border: 1px solid #ccc;
+  background-color: grey;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.loginForm {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px gray;
+}
+
+.loginForm h2 {
+  text-align: center;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formFields input {
+  margin: 5px 0;
+}
+
+.goBackButton {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px;
+  color: white;
+  background-color: #3c3c3c;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.signupForm {
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px gray;
+}
+
+.signupForm h2 {
+  text-align: center;
+}
+
+.searchBox {
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+  margin-left: 10px;
+}
+
+.searchButton {
+  border: 1px solid #ccc;
+  background-color: grey;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.addButton {
+  background-color: grey;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.addButton:hover {
+  background-color: #3c3c3c;
+}
+
+.modifybutton {
+  background-color: rgb(28, 37, 44);
+  color : white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+.deletebutton {
+  background-color: #e40c0c;
+  color : white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.likebutton{
+  background-color : green;
+  color : white;
+  padding : 10px;
+  border-radius : 10px;
+}
+
+.backbutton {
+  background-color: #cccccc;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* 공지글 목록 */
+.noticeList {
+  width: 90%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.noticeItem {
+  list-style-type: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.noticeItem:last-child {
+  border-bottom: none;
+}
+
+/* 인기글 목록 */
+.popularList {
+  width : 90%;
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.popularPostItem {
+  display : flex;
+  justify-content : space-between;
+}
+
+/* 게시글 목록 */
+.postTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.postTable th,
+.postTable td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+}
+
+.postTable th {
+  background-color: black;
+  color: white;
+}
+
+/* 페이지네이션 */
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pageButton {
+  margin: 0 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pageButton:hover {
+  background-color: #5c5c5c;
+}
+
+
+
+/* 기프티콘 등록 */
+
+
+.modal-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.modal-form input {
+  margin-top: .5rem;
+  border: 1px solid #ddd;
+  padding: .5rem;
+  width: 100%;
+}
+
+.modal-form button {
+  margin-top: 1rem;
+}
+
+
+.formStyle{
+  display: 'flex';
+  flex-direction: 'column';
+  gap: '10px';
+}
+
+/* 포인트 테이블 */
+
+.pointTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pointTable th,
+.pointTable td {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+}
+
+.pointTable th {
+  background-color: grey;
+  color: black;
+}
+
+.pointTable tr:nth-child(even) {
+  background-color : #f2f2f2;
+}
+
+/* 경기장 목록 테이블 */
+
+
+.stadiumListTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stadiumListTable th,
+.stadiumListTable td {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+  word-break: break-all;
+}
+
+.stadiumListTable th {
+  background-color: grey;
+  color: black;
+}
+
+.stadiumListTable tr:nth-child(even) {
+  background-color : #f2f2f2;
+}
+
+/* 기프티콘 목록  */
+
+.giftListTable {
+  width: 100%;
+  border-collapse: collapse;
+  word-break: break-all;
+}
+
+.giftListTable th,
+.giftListTable td {
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  padding: 8px;
+}
+
+.giftListTable th {
+  background-color: grey;
+  color: black;
+}
+
+.giftListTable tr:nth-child(even) {
+  background-color : #f2f2f2;
+}
