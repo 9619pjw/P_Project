@@ -1,6 +1,5 @@
 import * as React from "react";
 import { IconSvgProps } from "@/types";
-import Image from "next/image";
 
 export const Logo: React.FC<IconSvgProps & React.ImgHTMLAttributes<HTMLImageElement>> = ({
 	size = 36,
@@ -8,7 +7,7 @@ export const Logo: React.FC<IconSvgProps & React.ImgHTMLAttributes<HTMLImageElem
 	height,
 	...props
 }) => (
-	<Image
+	<img
 		src="/Logo.png"
 		height={100}
 		width={200}
