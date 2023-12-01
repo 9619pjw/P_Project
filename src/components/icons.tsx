@@ -1,22 +1,30 @@
+"use client";
 import * as React from "react";
 import { IconSvgProps } from "@/types";
+import { useRouter } from "next/navigation";
+import { ImgHTMLAttributes } from 'react';
 
-export const Logo: React.FC<IconSvgProps & React.ImgHTMLAttributes<HTMLImageElement>> = ({
-	size = 36,
-	width,
-	height,
-	...props
-}) => (
-	<img
-		src="/Logo.png"
-		height={100}
-		width={200}
-		alt="Logo-image"
-		{...props}
-	/>
-		
+export const Logo: React.FC<ImgHTMLAttributes<HTMLImageElement>> = () => {
+	const router = useRouter();
 	
-);
+	return (
+		<img
+			src="/Logo.png"
+			height={100}
+			width={200}
+			alt="Logo-image"
+			onClick={() => router.push('/')}
+			
+		/>	
+	);
+	// <img
+	// 	src="/Logo.png"
+	// 	height={100}
+	// 	width={200}
+	// 	alt="Logo-image"
+	// 	{...props}
+	// />
+};
 
 export const DiscordIcon: React.FC<IconSvgProps> = ({
 	size = 24,
