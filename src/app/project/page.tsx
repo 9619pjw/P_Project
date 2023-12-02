@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import { Link } from "@nextui-org/link";
 
-export default function HomePage() {
+export default function ProjectPage() {
     return (
         <>
             <Head>
