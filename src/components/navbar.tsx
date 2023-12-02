@@ -1,3 +1,5 @@
+"use client";
+
 import {
 	Navbar as NextUINavbar,
 	NavbarContent,
@@ -17,6 +19,7 @@ import { link as linkStyles } from "@nextui-org/theme";
 import { siteConfig } from "@/config/site";
 import NextLink from "next/link";
 import clsx from "clsx";
+import Image from 'next/image';
 
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
@@ -30,26 +33,39 @@ import {
 import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
-	const searchInput = (
-		<Input
-			aria-label="Search"
-			classNames={{
-				inputWrapper: "bg-default-100",
-				input: "text-sm",
-			}}
-			endContent={
-				<Kbd className="hidden lg:inline-block" keys={["command"]}>
-					K
-				</Kbd>
-			}
-			labelPlacement="outside"
-			placeholder="Search..."
-			startContent={
-				<SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-			}
-			type="search"
+	// const searchInput = (
+	// 	<Input
+	// 		aria-label="Search"
+	// 		classNames={{
+	// 			inputWrapper: "bg-default-100",
+	// 			input: "text-sm",
+	// 		}}
+	// 		endContent={
+	// 			<Kbd className="hidden lg:inline-block" keys={["command"]}>
+	// 				K
+	// 			</Kbd>
+	// 		}
+	// 		labelPlacement="outside"
+	// 		placeholder="Search..."
+	// 		startContent={
+	// 			<SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
+	// 		}
+	// 		type="search"
+	// 	/>
+	// );
+
+	const loginImage = (
+		<button> 
+		{/* // onClick={() => router.push('/login')} */}
+		
+		<Image
+			src="/login.png"
+			alt="Login"
+			width={128}
+			height={128}
 		/>
-	);
+	</button>
+    );
 
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky">
@@ -92,9 +108,11 @@ export const Navbar = () => {
 					<Link isExternal href={siteConfig.links.github} aria-label="Github">
 						<GithubIcon className="text-default-500" />
 					</Link> */}
-					<ThemeSwitch />
+					{/* 다크테마 삭제 예정 */}
+					{/* <ThemeSwitch /> */}
 				</NavbarItem>
-				<NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+				{/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
+				<NavbarItem className="hidden lg:flex">{loginImage}</NavbarItem>
 				<NavbarItem className="hidden md:flex">
 					{/* <Button isExternal
 						as={Link}
@@ -116,7 +134,7 @@ export const Navbar = () => {
 				<NavbarMenuToggle />
 			</NavbarContent> */}
 
-			<NavbarMenu>
+			{/* <NavbarMenu>
 				{searchInput}
 				<div className="mx-4 mt-2 flex flex-col gap-2">
 					{siteConfig.navMenuItems.map((item, index) => (
@@ -137,7 +155,7 @@ export const Navbar = () => {
 						</NavbarMenuItem>
 					))}
 				</div>
-			</NavbarMenu>
+			</NavbarMenu> */}
 		</NextUINavbar>
 	);
 };
