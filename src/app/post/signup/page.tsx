@@ -69,7 +69,8 @@ export default function SignUp() {
   
     return (
       <div>
-        <div className={styles.signupForm}>
+        <div className="p-5 bg-gray-200 rounded-md shadow-md">
+        {/* <div className={styles.signupForm}> */}
         <h2> 게시판 회원가입 </h2>
         <form onSubmit={handleSubmit} className={styles.formFields}>
           게시판 닉네임 : <input

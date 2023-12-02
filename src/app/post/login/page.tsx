@@ -67,7 +67,8 @@ export default function Login() {
 
   return (
     <div>
-      <div className={styles.loginForm}>
+      <div className="p-5 bg-gray-200 rounded-md shadow-md">
+      {/* <div className={styles.loginForm}> */}
       <h2>게시판 로그인</h2>
       <form onSubmit={handleSubmit} className={styles.formFields}>
         게시판 닉네임 {" "}

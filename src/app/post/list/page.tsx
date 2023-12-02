@@ -143,42 +143,59 @@ export default function PostList() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col justify-around mb-5">
       <br />
+      <div>
       {isLoggedIn ? (
-        <button onClick={handleLogout} className={styles.loginButton} style={{ marginRight: "10px" }}>
-          logout
+        //  <button onClick={handleLogout} className={styles.loginButton} style={{ marginRight: "10px" }}>
+        <button onClick={handleLogout} className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">  
+          Logout
         </button>
       ) : (
         <>
           <Link href="/post/login">
-            <button className={styles.loginButton} style={{ marginRight: "10px" }}>Login</button>
+            {/* <button className={styles.loginButton} style={{ marginRight: "10px" }}> */}
+            <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">
+              Login
+            </button>
           </Link>
+          &nbsp;&nbsp;
           <Link href="/post/signup">
-            <button className={styles.signupButton}>Signup</button>
+          <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">
+            {/* <button className={styles.signupButton}> */}
+              Signup
+            </button>
           </Link>
         </>
       )}
       <br />
       <br />
-      <div className={styles.boardContainer}>
+      {/* <div className={styles.boardContainer}> */}
+      <div className="flex justify-between">
         <Link href="/post/create">
-          <button className={styles.addButton}>게시글 등록하기</button>
+          {/* <button className={styles.addButton}> */}
+          <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">
+            게시글 등록하기
+          </button>
         </Link>
         <div>
           <input
-            className={styles.searchBox}
+            // className={styles.searchBox}
+            className="border border-gray-300 p-2 w-48 ml-2"
             type="text"
             placeholder="검색어를 입력하세요"
             value={keyword}
             onChange={handleKeywordChange}
           />
-          <button className={styles.searchButton} onClick={handleSearch} style={{ marginLeft: "10px" }}>
-            search
+          {/* <button className={styles.searchButton} onClick={handleSearch} style={{ marginLeft: "10px" }}> */}
+          <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer ml-2" onClick={handleSearch}>
+            Search
           </button>
         </div>
+        </div>
       </div>
-      <ul className={styles.noticeList}>
+      {/* <ul className={styles.noticeList}> */}
+      <ul className="w-9/10 bg-white p-5 rounded-md">
         <Link
           href="/post/notices"
           style={{ color: "black", textDecoration: "none", fontSize: "Large" }}
@@ -200,9 +217,11 @@ export default function PostList() {
       </ul>
 
       <h3>인기 게시물</h3>
-      <div className={styles.popularList}>
+      <div className="w-9/10 border border-black p-2 my-2 rounded">
+      {/* <div className={styles.popularList}> */}
         {popularPosts.map((post) => (
-          <div key={post.id} className={styles.popularPostItem}>
+          <div key ={post.id} className="flex justify-between">
+           {/* <div key={post.id} className={styles.popularPostItem}> */}
             <style jsx>{`a{ color : black; text-decoration:none; flex-grow: 1;}`}</style>
             <a href={`/post/detail/${post.id}`} className={styles.popularPostLink}>{post.subject}</a>
             <span>추천 수: {post.voter.length}</span>
@@ -212,7 +231,8 @@ export default function PostList() {
       </div>
 
       <h3>일반 게시물</h3>
-      <table className={styles.postTable}>
+      <table className="w-full border-collapse mt-5">
+      {/* <table className={styles.postTable}> */}
         <thead>
           <tr>
             <th>제목</th>
@@ -241,14 +261,16 @@ export default function PostList() {
         </tbody>
       </table>
       
-      <div className={styles.paginationContainer}>
+      <div className="flex justify-center mt-5">
+      {/* <div className={styles.paginationContainer}> */}
         <button
           onClick={() => handlePageChange(page - 1)}
           disabled={page === 0}
         >이전
         </button>
         {Array.from({ length: totalPages }, (_, i) => (
-          <button key={i} onClick={() => handlePageChange(i)} className={styles.pageButton}>
+          <button key={i} onClick={() => handlePageChange(i)} className="mx-1 px-5 py-2 border-none rounded bg-black text-white cursor-pointer transition-colors duration-300 hover:bg-gray-500">
+          {/* <button key={i} onClick={() => handlePageChange(i)} className={styles.pageButton}> */}
             {i + 1}
           </button>
         ))}
