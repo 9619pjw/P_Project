@@ -21,14 +21,14 @@ import NextLink from "next/link";
 import clsx from "clsx";
 import Image from 'next/image';
 
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-	TwitterIcon,
-	GithubIcon,
-	DiscordIcon,
-	HeartFilledIcon,
-	SearchIcon,
-} from "@/components/icons";
+// import { ThemeSwitch } from "@/components/theme-switch";
+// import {
+// 	TwitterIcon,
+// 	GithubIcon,
+// 	DiscordIcon,
+// 	HeartFilledIcon,
+// 	SearchIcon,
+// } from "@/components/icons";
 
 import { Logo } from "@/components/icons";
 

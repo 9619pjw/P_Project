@@ -8,22 +8,31 @@ export const siteConfig = {
 			label: "Home",
 			href: "/",
 		},
-    {
-      label: "Project",
-      href: "/project",
-    },
-    {
-      label: "Gifticon",
-      href: "/gifticon",
-    },
-    {
-      label: "Post",
-      href: "/post",
-    },
-    {
-      label: "About",
-      href: "/about",
-    }
+		{
+			label: "Project",
+			href: "/project",
+		},
+		{
+			label: "Gifticon",
+			href: "/gifticon",
+		},
+		{
+			label: "NewsPeed",
+			href: "/newspeed",
+		},
+		{
+			label: "TimeLine",
+			href: "/timeline",
+		},
+		{
+			label: "Post",
+			href: "/post",
+		},
+		{
+			label: "About",
+			href: "/about",
+		},
+
 	],
 	navMenuItems: [
 		{
