@@ -156,7 +156,6 @@ export default function PostDetail(props: ReadProps) {
     }
   };
 
-  // TODO : 댓글 수정 <= 모달 창 방식
 
   const handleEditContentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEditContent(event.target.value);
@@ -275,60 +274,57 @@ export default function PostDetail(props: ReadProps) {
   if (!post) return <div>Loading...</div>;
 
   return (
-    <div>
-      <h3 style={{ marginBottom: "1px" }}>{post.subject}</h3>
+    <div className="bg-gray-50 container mx-auto p-6">
+      <h3 className="text-2xl font-bold mb-2">{post.subject}</h3>
       {loggedInUsername === post.author!.username && (
         <span style={{ display: "flex", justifyContent: "flex-end" }}>
           <button
             onClick={handleModifyPost}
-            className={styles.modifybutton}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             style={{ marginRight: "10px" }}
           >
             수정
           </button>
-          <button onClick={handleDeletePost} className={styles.deletebutton}>
+          <button onClick={handleDeletePost}
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             삭제
           </button>
         </span>
       )}
-      <div style={{ textAlign: "right" }}>
-        <span style={{ fontSize: "0.8em" }}>
+      <div style={{ textAlign: "right" , marginBottom: "1em"}}>
+        <span style={{ fontSize: "1em" }}>
           작성자 : {post.author!.username} &nbsp;&nbsp;&nbsp;&nbsp;
         </span>
-        <span style={{ fontSize: "0.8em" }}>
+        <span style={{ fontSize: "1em" }}>
           작성일자: {new Date(post.createDate!).toLocaleString()}{" "}
           &nbsp;&nbsp;&nbsp;&nbsp;
         </span>
         {post.modifyDate && (
-          <span style={{ fontSize: "0.8em" }}>
+          <span style={{ fontSize: "1em" }}>
             마지막 수정일자 : {new Date(post.modifyDate!).toLocaleString()}{" "}
             &nbsp;&nbsp;&nbsp;&nbsp;
           </span>
         )}
       </div>
-      <hr />
-      <div>
-        <p>{post.content}</p>
-        <br />
-        <br />
-        <br />
-        <div style={{ textAlign: "center" }}>
-          <button onClick={handleVote} className={styles.likebutton}>
+      <hr className="mb-4" />
+      <div className="mb-4">
+        <p className="text-gray-700 mb-10">{post.content}</p>
+        <div className="text-center">
+          <button onClick={handleVote}  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
             추천 {post.voter?.length}
           </button>
         </div>
       </div>
-      <hr />
+      <hr className="mb-4" />
       <h4> 댓글 ({post.commentList?.length})</h4>
       {post.commentList?.map((comment) => (
         <div key={comment.id}>
-          <p>{comment.content}</p>
-          <button onClick={() => handleCommentVote(comment.id)} className={styles.likebutton} style={{ marginRight: "10px" }}>👍</button>
+          <p className="text-gray-700 mb-4">{comment.content}</p>
+          <button onClick={() => handleCommentVote(comment.id)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"style={{ marginRight: "10px" }}>👍</button>
           {loggedInUsername === comment.author!.username && (
           <>
-              {/* TODO : 댓글 수정 버튼 추가 */}
-              <button onClick={() => handleOpenModal(comment.id)} className={styles.addButton} style={{marginRight: "10px"}}>수정</button>
-              <button onClick={() => handleCommentDelete(comment.id)} className={styles.deletebutton}>삭제</button>
+              <button onClick={() => handleOpenModal(comment.id)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style={{marginRight: "10px"}}>수정</button>
+              <button onClick={() => handleCommentDelete(comment.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">삭제</button>
           </>
           )}
           <div style={{ textAlign: "right" }}>
@@ -354,32 +350,21 @@ export default function PostDetail(props: ReadProps) {
       ))}
       <form
         onSubmit={handleCommentSubmit}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-end",
-        }}
+        className="flex flex-col items-end mt-4"
       >
         <input
           type="text"
           value={comment}
           onChange={handleCommentChange}
           placeholder="댓글을 작성하세요."
-          style={{ width: "100%", height: "100px", borderRadius: "10px" }}
+          className="w-full h-24 rounded shadow"
         />
         <br/>
-        <div
-          style={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <button onClick={handleGoBack} className={styles.backbutton}>
+        <div className="flex justify-between w-full items-center mt-4">
+          <button onClick={handleGoBack}  className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded">
             게시글 목록
           </button>
-          <button type="submit" className={styles.addButton}>
+          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             댓글 등록
           </button>
         </div>
@@ -403,7 +388,7 @@ export default function PostDetail(props: ReadProps) {
             <input type="text" value={editContent} onChange={handleEditContentChange}  style={{ width: "100%", height: "100px", borderRadius: "10px" }} />
           </form>
           <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <button type="submit"  onClick={handleCommentUpdate}  className ={styles.addButton} style={{marginRight: "10px"}}>수정 완료</button>
+          <button type="submit"  onClick={handleCommentUpdate} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" style={{marginRight: "10px"}}>수정 완료</button>
           <button onClick={handleCloseModal}  className={styles.deletebutton}>닫기</button>
           </div>
         </div>

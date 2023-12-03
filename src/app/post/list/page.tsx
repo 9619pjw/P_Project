@@ -36,13 +36,13 @@ export default function PostList() {
     );
     const data = await response.json();
 
-    const fetchedNotices: Post[] = data.data.notices.map((notice: any) => ({
-      id: notice.id,
-      subject: notice.subject,
-      isNotice: notice.isNotice,
-      author: notice.author.username,
-      createDate: new Date(notice.createDate).toLocaleString(),
-    }));
+    // const fetchedNotices: Post[] = data.data.notices.map((notice: any) => ({
+    //   id: notice.id,
+    //   subject: notice.subject,
+    //   isNotice: notice.isNotice,
+    //   author: notice.author.username,
+    //   createDate: new Date(notice.createDate).toLocaleString(),
+    // }));
 
     const fetchedPosts: Post[] = data.data.paging.content.map((post: any) => ({
       id: post.id,
@@ -52,7 +52,7 @@ export default function PostList() {
       createDate: new Date(post.createDate).toLocaleString(),
     }));
 
-    setNotices(fetchedNotices);
+    // setNotices(fetchedNotices);
     setPosts(fetchedPosts);
     setTotalPages(data.data.paging.totalPages);
   };
@@ -174,28 +174,29 @@ export default function PostList() {
       <div className="flex justify-between">
         <Link href="/post/create">
           {/* <button className={styles.addButton}> */}
-          <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">
+          <button className="bg-black text-white border border-gray-300 px-2 py-1 rounded-md cursor-pointer h-10">
             게시글 등록하기
           </button>
         </Link>
         <div>
           <input
             // className={styles.searchBox}
-            className="border border-gray-300 p-2 w-48 ml-2"
+            className="border border-gray-300 p-2 w-48 ml-2 rounded h-10"
             type="text"
             placeholder="검색어를 입력하세요"
             value={keyword}
             onChange={handleKeywordChange}
           />
           {/* <button className={styles.searchButton} onClick={handleSearch} style={{ marginLeft: "10px" }}> */}
-          <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer ml-2" onClick={handleSearch}>
+          <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer ml-2 h-10" onClick={handleSearch}>
             Search
           </button>
         </div>
         </div>
       </div>
       {/* <ul className={styles.noticeList}> */}
-      <ul className="w-9/10 bg-white p-5 rounded-md">
+      <br />
+      <ul className="w-9/10 bg-gray-100 p-5 rounded-md">
         <Link
           href="/post/notices"
           style={{ color: "black", textDecoration: "none", fontSize: "Large" }}
@@ -216,11 +217,11 @@ export default function PostList() {
         ))}
       </ul>
 
-      <h3>인기 게시물</h3>
-      <div className="w-9/10 border border-black p-2 my-2 rounded">
+      <h3 className="text-xl my-3">인기 게시물</h3>
+      <div className="w-full bg-gray-200 p-5 my-2 rounded-md">
       {/* <div className={styles.popularList}> */}
         {popularPosts.map((post) => (
-          <div key ={post.id} className="flex justify-between">
+          <div key ={post.id} className="flex justify-between mb-2">
            {/* <div key={post.id} className={styles.popularPostItem}> */}
             <style jsx>{`a{ color : black; text-decoration:none; flex-grow: 1;}`}</style>
             <a href={`/post/detail/${post.id}`} className={styles.popularPostLink}>{post.subject}</a>
@@ -230,56 +231,59 @@ export default function PostList() {
         ))}
       </div>
 
-      <h3>일반 게시물</h3>
-      <table className="w-full border-collapse mt-5">
-      {/* <table className={styles.postTable}> */}
-        <thead>
-          <tr>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일자</th>
-          </tr>
-        </thead>
-        <tbody>
-          {posts.map((post) => (
-            <tr key={post.id}>
-              <td>
-                <h5>
-                  <style jsx>{`
-                    a {
-                      color: inherit;
-                      text-decoration: none;
-                    }
-                  `}</style>
-                  <a href={`/post/detail/${post.id}`}>{post.subject}</a>
-                </h5>
-              </td>
-              <td>{post.author}</td>
-              <td>{post.createDate}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      
-      <div className="flex justify-center mt-5">
-      {/* <div className={styles.paginationContainer}> */}
-        <button
-          onClick={() => handlePageChange(page - 1)}
-          disabled={page === 0}
-        >이전
-        </button>
+      <h3 className="text-xl my-3">일반 게시물</h3>
+      <table className="w-full border-collapse mt-5 divide-y divide-gray-200">
+  <thead>
+    <tr>
+      <th className="w-1/2 p-2">제목</th>
+      <th className="w-1/4 p-2">작성자</th>
+      <th className="w-1/4 p-2">작성일자</th>
+    </tr>
+  </thead>
+  <tbody>
+    {posts.map((post) => (
+      <tr key={post.id} className="border-b border-gray-200">
+        <td className="p-2">
+          <style jsx>{`a { color: inherit; text-decoration: none; }`}</style>
+          <a href={`/post/detail/${post.id}`}>{post.subject}</a>
+        </td>
+        <td className="p-2">{post.author}</td>
+        <td className="p-2">{post.createDate}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+  <div className="flex justify-center mt-5">
+    <nav aria-label="Page navigation">
+      <ul className="flex list-none">
+        <li className="mx-1">
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            disabled={page === 0}
+            className="px-3 py-2 bg-gray-300 rounded"
+          >
+            이전
+          </button>
+        </li>
         {Array.from({ length: totalPages }, (_, i) => (
-          <button key={i} onClick={() => handlePageChange(i)} className="mx-1 px-5 py-2 border-none rounded bg-black text-white cursor-pointer transition-colors duration-300 hover:bg-gray-500">
-          {/* <button key={i} onClick={() => handlePageChange(i)} className={styles.pageButton}> */}
+        <li key={i} className="mx-1">
+          <button
+            onClick={() => handlePageChange(i)}
+            className={`px-3 py-2 ${page === i ? 'bg-gray-700 text-white' : 'bg-gray-300'} rounded cursor-pointer transition-colors duration-300 hover:bg-gray-500`}
+          >
             {i + 1}
           </button>
-        ))}
-        <button
-          onClick={() => handlePageChange(page + 1)}
-          disabled={page === totalPages - 1}
-        >다음
+        </li>
+      ))}
+        <li className="mx-1">
+        <button onClick={() => handlePageChange(page + 1)}
+          disabled={page === totalPages - 1} className="px-3 py-2 bg-gray-300 rounded">
+          다음
         </button>
-      </div>
-    </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
   );
 }

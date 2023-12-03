@@ -71,51 +71,45 @@ export default function ModifyPost(props: ReadProps) {
   };
 
   return (
-    <form onSubmit={(e: any) => handleSubmit(e)}>
-      <h4>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="제목을 입력하세요."
-          style={{
-            width: "100%",
-            height: "30px",
-            fontSize: "16px",
-            padding: "5px",
-            borderRadius: "10px",
-          }}
-        />
-      </h4>
-      {/* <input
-        type="checkbox"
-        checked={isNotice}
-        onChange={(e) => setIsNotice(e.target.checked)}
-      />{" "}
-      공지글
-      <br /> */}
-      <br />
-      <textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="내용을 입력하세요."
-        style={{
-          width: "100%",
-          height: "200px",
-          fontSize: "16px",
-          padding: "5px",
-          borderRadius: "10px",
-        }}
-      />
-      <br />
-      <button type="submit" className={styles.addButton} style={{ marginRight: "10px" }}>게시글 수정</button>
-      <button
-        type="button"
-        onClick={() => router.push(`/post/detail/${props.params.id}`)}
-        className={styles.backbutton}
-      >
-        수정 취소
-      </button>
-    </form>
+    <div className="bg-gray-50 container mx-auto px-4 py-8">
+    <div className="max-w-2xl mx-auto">
+      <h1 className="text-3xl font-bold mb-4">게시글 수정</h1>
+      <form onSubmit={(e: any) => handleSubmit(e)}>
+        <div className="mb-4">
+          <label htmlFor="title" className="block text-lg mb-2">제목</label>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className="input-field w-full px-4 py-2 border rounded"
+            placeholder="제목을 입력하세요."
+            required
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="content" className="block text-lg mb-2">내용</label>
+          <textarea
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className="input-field w-full px-4 py-2 border rounded"
+            placeholder="내용을 입력하세요."
+            required
+          />
+        </div>
+        <div className="flex justify-between items-center">
+          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">게시글 수정</button>
+          <button
+            type="button"
+            onClick={() => router.push(`/post/detail/${props.params.id}`)}
+            className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"
+          >
+            수정 취소
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
   );
 }
