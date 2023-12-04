@@ -32,7 +32,7 @@ export const Navbar = () => {
 	</button>
     );
 	const url: string =
-    "https://funsns.shop/user-service/oauth2/authorization/naver";
+    "https://funsns.shop:8000/user-service/login/oauth2/code/naver";
 
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky">
