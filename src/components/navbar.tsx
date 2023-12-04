@@ -29,6 +29,23 @@ export const Navbar = () => {
 		setIsLogin(false);
     	}
 	}, []);
+	useEffect(() => {
+		const checkLoginStatus = () => {
+		  const token = window.localStorage.getItem('accessToken');
+		  setIsLogin(!!token);
+		};
+	
+		// 로그인 상태를 처음 확인합니다.
+		checkLoginStatus();
+	
+		// login 이벤트를 감지하여 로그인 상태를 다시 확인합니다.
+		window.addEventListener('login', checkLoginStatus);
+	
+		// 컴포넌트가 언마운트될 때 이벤트 리스너를 제거합니다.
+		return () => {
+		  window.removeEventListener('login', checkLoginStatus);
+		};
+	  }, []);
 
 
 	const loginImage = <LoginButton />;
