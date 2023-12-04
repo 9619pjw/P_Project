@@ -87,37 +87,6 @@ export default function PostNotice() {
         </button>
       </div>
     </div>
-    // <div>
-    //   <br/>
-    //   <h3>공지사항</h3>
-    //   <table className={styles.postTable}>
-    //     <thead>
-    //       <tr>
-    //         <th>제목</th>
-    //         <th>작성자</th>
-    //         <th>작성일자</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {notices.map((notice) => (
-    //         <tr key={notice.id}>
-    //           <td>
-    //             <h5>
-    //               <style jsx>{`a { color: inherit; text-decoration: none;}`}</style>
-    //               <a href={`/post/detail/${notice.id}`}>{notice.subject}</a>
-    //             </h5>
-    //           </td>
-    //         <td>{notice.author}</td>
-    //         <td>{notice.createDate}</td>
-    //         <hr />
-    //       </tr>
-    //     ))}
-    //     </tbody>
-    //   </table>
-    //   <button onClick={handleGoBack} className={styles.backbutton}>
-    //         뒤로가기
-    //   </button>
-    // </div>
   );
 }
 
