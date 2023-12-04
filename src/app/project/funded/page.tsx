@@ -11,7 +11,7 @@ export default function FundedProjectPage() {
             <div className="bg-gray-100 container mx-auto px-4 py-8">
                 <header className="text-center mb-8">
                     <h1 className="text-4xl font-bold mb-2">Welcome to our Crowd Funding Platform!</h1>
-                    <p className="text-lg">내가 후원한 프로젝트 모음</p>
+                    <p className="text-lg">후원 진행중인 프로젝트 모음</p>
                 </header>
 
                 <div className="flex justify-center space-x-4 mb-8">
