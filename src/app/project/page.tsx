@@ -26,7 +26,9 @@ export default function ProjectPage() {
                     <Link href="/project/myproject">
                         <a className="px-4 py-2 bg-gray-300 text-black rounded mr-2">My projects</a>
                     </Link>
-                    <button className="px-4 py-2 bg-gray-300 rounded">Funded projects</button>
+                    <Link href="/project/funded">
+                        <a className="px-4 py-2 bg-gray-300 text-black rounded">Funded projects</a>
+                    </Link>
                     <br />
                     <br />
                     <Link href="/project/list">
