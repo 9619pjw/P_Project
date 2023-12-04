@@ -1,11 +1,7 @@
 "use client";
 
-import {
-	Navbar as NextUINavbar,
-	NavbarContent,
-	NavbarBrand,
-	NavbarItem,
-} from "@nextui-org/navbar";
+import { useEffect, useState } from 'react';
+import { Navbar as NextUINavbar, NavbarContent, NavbarBrand, NavbarItem } from "@nextui-org/navbar";
 
 import { link as linkStyles } from "@nextui-org/theme";
 
@@ -15,24 +11,31 @@ import clsx from "clsx";
 import Image from 'next/image';
 import Link from "next/link";
 
+import LogoutButton from './LogoutButton';
+import LoginButton from './LoginButton';
 
 import { Logo } from "@/components/icons";
 
 export const Navbar = () => {
-	const loginImage = (
-	<button> 
-		{/* // onClick={() => router.push('/login')} */}
-		
-		<Image
-			src="/login.png"
-			alt="Login"
-			width={128}
-			height={128}
-		/>
-	</button>
-    );
-	const url: string =
-    "https://funsns.shop:8000/user-service/oauth2/authorization/naver";
+	
+	const [isLogin, setIsLogin] = useState(false);
+	useEffect(() => {
+    	const localStorage: Storage = window.localStorage;
+    	const token = localStorage.getItem("accessToken");
+    	const expiredTime = localStorage.getItem("expiredTime");
+    	if (token && expiredTime) {
+			setIsLogin(true);
+    	} else {
+		setIsLogin(false);
+    	}
+	}, []);
+
+
+	const loginImage = <LoginButton />;
+	const logoutImage = <LogoutButton />;
+
+
+	const url: string = "https://funsns.shop:8000/user-service/oauth2/authorization/naver";
 
 	return (
 		<NextUINavbar maxWidth="xl" position="sticky">
@@ -43,7 +46,8 @@ export const Navbar = () => {
 						<p className="font-bold text-inherit"></p>
 					</NextLink>
 				</NavbarBrand>
-				<ul className="hidden lg:flex gap-4 justify-start ml-2">
+				{isLogin &&(
+					<ul className="hidden lg:flex gap-4 justify-start ml-2">
 					{siteConfig.navItems.map((item) => (
 						<NavbarItem key={item.href}>
 							<NextLink
@@ -59,6 +63,7 @@ export const Navbar = () => {
 						</NavbarItem>
 					))}
 				</ul>
+				)}	
 			</NavbarContent>
 
 			<NavbarContent
@@ -66,29 +71,17 @@ export const Navbar = () => {
 				justify="end"
 			>
 				<NavbarItem className="hidden sm:flex gap-2">
-					{/* <Link isExternal href={siteConfig.links.twitter} aria-label="Twitter">
-						<TwitterIcon className="text-default-500" />
-					</Link>
-					<Link isExternal href={siteConfig.links.discord} aria-label="Discord">
-						<DiscordIcon className="text-default-500" />
-					</Link>
-					<Link isExternal href={siteConfig.links.github} aria-label="Github">
-						<GithubIcon className="text-default-500" />
-					</Link> */}
-					{/* 다크테마 삭제 예정 */}
-					{/* <ThemeSwitch /> */}
 				</NavbarItem>
 				<NavbarItem className="hidden lg:flex">
-					<Link href ={url}>
+					{/* <Link href ={url}>
 						{loginImage}
-					</Link>
+					</Link> */}
+					{isLogin ? logoutImage : loginImage}
 				</NavbarItem>
 				<NavbarItem className="hidden md:flex">
 
 				</NavbarItem>
 			</NavbarContent>
-
-			
 		</NextUINavbar>
 	);
 };
