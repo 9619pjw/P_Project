@@ -26,14 +26,10 @@ export default function FundedProjectPage() {
                     <Link href="/project/myproject">
                         <a className="px-4 py-2 bg-gray-300 text-black rounded mr-2">My projects</a>
                     </Link>
-                    <Link href="/project">
+                    <Link href="/project/list">
                         <a className="px-4 py-2 bg-gray-300 text-black rounded">Project List</a>
                     </Link>
                     <br />
-                    <br />
-                    <Link href="/project/list">
-                        <a className="px-4 py-2 bg-black text-white rounded">All projects</a>
-                    </Link>
                 </div>
 
                 <section>

@@ -23,17 +23,13 @@ export default function MyProjectPage() {
                     <Link href="/project/create">
                         <a className="px-4 py-2 bg-green-500 text-white rounded mr-2">Create a Project</a>
                     </Link>
-                    <Link href="/project/">
+                    <Link href="/project/list">
                         <a className="px-4 py-2 bg-gray-300 text-black rounded mr-2">Project List</a>
                     </Link>
                     <Link href="/project/funded">
                         <a className="px-4 py-2 bg-gray-300 text-black rounded">Funded projects</a>
                     </Link>
                     <br />
-                    <br />
-                    <Link href="/project/list">
-                        <a className="px-4 py-2 bg-black text-white rounded">All projects</a>
-                    </Link>
                 </div>
 
                 <section>

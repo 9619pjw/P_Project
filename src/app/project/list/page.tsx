@@ -30,10 +30,6 @@ export default function ProjectPage() {
                         <a className="px-4 py-2 bg-gray-300 text-black rounded">Funded projects</a>
                     </Link>
                     <br />
-                    <br />
-                    <Link href="/project/list">
-                        <a className="px-4 py-2 bg-black text-white rounded">All projects</a>
-                    </Link>
                 </div>
 
                 <section>
