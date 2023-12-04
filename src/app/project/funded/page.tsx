@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import { Link } from "@nextui-org/link";
 
-export default function ProjectPage() {
+export default function FundedProjectPage() {
     return (
         <>
             <Head>
@@ -11,7 +11,7 @@ export default function ProjectPage() {
             <div className="bg-gray-100 container mx-auto px-4 py-8">
                 <header className="text-center mb-8">
                     <h1 className="text-4xl font-bold mb-2">Welcome to our Crowd Funding Platform!</h1>
-                    <p className="text-lg">Help fund amazing projects and make a difference.</p>
+                    <p className="text-lg">내가 후원한 프로젝트 모음</p>
                 </header>
 
                 <div className="flex justify-center space-x-4 mb-8">
@@ -26,7 +26,9 @@ export default function ProjectPage() {
                     <Link href="/project/myproject">
                         <a className="px-4 py-2 bg-gray-300 text-black rounded mr-2">My projects</a>
                     </Link>
-                    <button className="px-4 py-2 bg-gray-300 rounded">Funded projects</button>
+                    <Link href="/project">
+                        <a className="px-4 py-2 bg-gray-300 text-black rounded">Project List</a>
+                    </Link>
                     <br />
                     <br />
                     <Link href="/project/list">
