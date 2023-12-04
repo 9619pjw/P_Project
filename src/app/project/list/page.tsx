@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import { Link } from "@nextui-org/link";
 
-export default function ProjectListPage() {
+export default function ProjectPage() {
     return (
         <>
             <Head>
@@ -23,8 +23,12 @@ export default function ProjectListPage() {
                     <Link href="/project/create">
                         <a className="px-4 py-2 bg-green-500 text-white rounded mr-2">Create a Project</a>
                     </Link>
-                    <button className="px-4 py-2 bg-gray-300 rounded mr-2">My projects</button>
-                    <button className="px-4 py-2 bg-gray-300 rounded">Funded projects</button>
+                    <Link href="/project/myproject">
+                        <a className="px-4 py-2 bg-gray-300 text-black rounded mr-2">My projects</a>
+                    </Link>
+                    <Link href="/project/funded">
+                        <a className="px-4 py-2 bg-gray-300 text-black rounded">Funded projects</a>
+                    </Link>
                     <br />
                     <br />
                     <Link href="/project/list">
