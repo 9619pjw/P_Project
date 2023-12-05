@@ -35,6 +35,7 @@ export default function Login() {
 
 
     try {
+      console.log('Sending data:', data);
       const response = await fetch("https://withsports.site/user/login", {
         method: "POST",
         headers: {
@@ -68,7 +69,6 @@ export default function Login() {
   return (
     <div>
       <div className="p-5 bg-gray-200 rounded-md shadow-md">
-      {/* <div className={styles.loginForm}> */}
       <h2>게시판 로그인</h2>
       <form onSubmit={handleSubmit} className={styles.formFields}>
         게시판 닉네임 {" "}
