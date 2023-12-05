@@ -46,7 +46,12 @@ export default function FundedProjectPage() {
                                 <p className="text-gray-600 mb-4">스포츠 매칭 서비스</p>
                                 <p className="text-sm mb-2">기간: 3개월</p>
                                 <p className="text-sm mb-4">달성 목표액: 500 Ether</p>
+                                <div className="progress-bar mt-2 h-4 bg-gray-300 rounded overflow-hidden">
+                                    <div className="progress-bar-inner h-full bg-blue-500 transition-all duration-500" style={{ width: '50%' }}></div>
+                                </div>
+                                <br />
                                 <button onClick={()=>{location.href="/project/detail/1"}} className="w-full bg-blue-500 text-white py-2 rounded">Donate</button>
+                                
                             </div>
                         </div>
                         {/* End of project block */}
