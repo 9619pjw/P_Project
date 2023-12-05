@@ -33,11 +33,12 @@ export default function ExportUserInfoProps(props: ExportUserInfoProps) {
         formData.append("image", image);
     }
 
-    let res = await fetch(url, {
+    const res = await fetch(url, {
         method: "PUT",
         headers: {
-            'Credentials': "include",
-            'Authorization': `Bearer ${token}`,
+            Credentials: "include",
+            ContentType: "multipart/form-data;",
+            Authorization: `Bearer ${token}`,
         },
         body: formData,
         }).then((res) => {
