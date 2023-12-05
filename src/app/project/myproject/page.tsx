@@ -8,30 +8,26 @@ export default function MyProjectPage() {
             <Head>
                 <title>Crowd Funding Platform</title>
             </Head>
-            <div className="bg-gray-100 container mx-auto px-4 py-8">
+            <div className="bg-gray-100 container mx-auto px-4 py-8 flex">
+                {/* 사이드 바 */}
+                <aside className="w-64 h-screen bg-transparent mr-4">
+                    <div className="bg-gray-200 p-4 mb-8 rounded-lg shadow-lg">
+                        <Link href="/project/create">
+                            <button className="px-4 py-2 bg-green-500 text-white rounded-full mb-2 block hover:bg-green-600 transition">Create a Project</button>
+                        </Link>
+                        <Link href="/project/list">
+                            <button className="px-4 py-2 bg-gray-500 text-white rounded-full mb-2 block hover:bg-gray-600 transition">Project List</button>
+                        </Link>
+                        <Link href="/project/funded">
+                            <button className="px-4 py-2 bg-gray-500 text-white rounded-full block hover:bg-gray-600 transition">Funded projects</button>
+                        </Link>
+                    </div>
+            </aside>
+            <main className="flex-grow">
                 <header className="text-center mb-8">
                     <h1 className="text-4xl font-bold mb-2">Welcome to our Crowd Funding Platform!</h1>
-                    <p className="text-lg">내 프로젝트 모음 페이지.</p>
+                    <p className="text-lg">내 프로젝트 모음</p>
                 </header>
-
-                <div className="flex justify-center space-x-4 mb-8">
-                    <input type="text" placeholder="Search for projects" className="px-4 py-2 border rounded" />
-                    <button className="px-4 py-2 bg-blue-500 text-white rounded">Search</button>
-                </div>
-
-                <div className="text-center mb-8">
-                    <Link href="/project/create">
-                        <a className="px-4 py-2 bg-green-500 text-white rounded mr-2">Create a Project</a>
-                    </Link>
-                    <Link href="/project/list">
-                        <a className="px-4 py-2 bg-gray-300 text-black rounded mr-2">Project List</a>
-                    </Link>
-                    <Link href="/project/funded">
-                        <a className="px-4 py-2 bg-gray-300 text-black rounded">Funded projects</a>
-                    </Link>
-                    <br />
-                </div>
-
                 <section>
                     <h2 className="text-2xl font-semibold mb-4">Projects List</h2>
                     <p className="mb-6 text-gray-600">Discover innovative projects that need your support.</p>
@@ -61,6 +57,7 @@ export default function MyProjectPage() {
                         </ul>
                     </nav>
                 </footer>
+            </main>
             </div>
         </>
     );
