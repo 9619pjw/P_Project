@@ -32,39 +32,6 @@ export default function SignUp() {
             <div className="token" style={{ display: "flex", justifyContent: "center" }}>
                 <ParsingQuery />
             </div>
-            <br />
-            <h1>이미 가입한 회원인 경우</h1>
-                <button onClick={() => { location.href = "/" }} 
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    메인 화면으로
-                </button>
-            <div>
-            </div>
-            <br />
-            <div className="inputUserInfo" style={{ display: "flex", flexDirection: "column" }}>
-                <h1>새로 가입한 회원인 경우</h1>
-                <div className="mb-4">
-                    <label htmlFor="nickname" className="block text-lg mb-2">닉네임</label>
-                    <textarea id="nickname" className="input-field px-4 py-2 border rounded" placeholder="닉네임을 입력하세요" onChange={handleNameChange} required></textarea>
-                </div>
-                <CheckNickButton nickname={nickname} setValidName={setValidName} />
-                <br />
-                <br />
-                <div className="area">
-                    <SelectArea area={area} onAreaChange={handleAreaChange} />
-                </div>
-            </div>
-            <br />
-            <div
-                className="exportUserBtn"
-                style={{ display: "flex", justifyContent: "center" }}
-            >
-            <ExportUserInfoButton
-                nickname={nickname}
-                validName={validName}
-                area={area}
-            />
-            </div>
         </div>
     );
 }

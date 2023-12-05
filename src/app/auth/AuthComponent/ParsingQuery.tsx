@@ -22,16 +22,17 @@ export default function ParsingQuery() {
             localStorage.setItem("expiredTime", expiredTime);
             localStorage.setItem("userId", userId);
         }
-    }, []);
 
         // 최초 로그인의 경우 회원정보 입력해야함.
-
-        useEffect(() => {
-            if (isFirstLogin !== 'true') {
-                window.location.href = "/";
-            }
-        }, [isFirstLogin]);
-
+        if (isFirstLogin === 'true') {
+            // 브라우저에서 쿼리파라미터 안 보이게 한다.
+            router.replace('/auth/signup', undefined);
+            router.refresh();
+        } else {
+            window.location.href = "/";
+        }
+        
+    }, []);
 
     return (
     <div className="tokenInfo">
