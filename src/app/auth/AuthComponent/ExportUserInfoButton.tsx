@@ -27,7 +27,7 @@ export default function ExportUserInfoProps(props: ExportUserInfoProps) {
 
      // FormData 객체 생성
     const formData = new FormData();
-    formData.append("updateProfile", JSON.stringify({ nickname: nickname, introduction: introduction}));
+    formData.append("updateProfile", new Blob([JSON.stringify({ nickname: nickname, introduction: introduction })], {type: "application/json"}));
     if (image) {
         formData.append("image", image);
     }
