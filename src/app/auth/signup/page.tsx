@@ -1,9 +1,7 @@
 "use client";
 
-import ParsingQuery from "@/app/auth/AuthComponent/ParsingQuery";
 import CheckNickButton from "../AuthComponent/CheckNickButton";
 import ExportUserInfoButton from "../AuthComponent/ExportUserInfoButton";
-import SelectArea from "../AuthComponent/SelectArea";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -20,36 +18,44 @@ export default function SignUpPage() {
     // 닉네임 중복 상태관리
     const [validName, setValidName] = useState(false);
 
-    // 지역 입력 상태관리 <= 삭제 예정
-    const [area, setArea] = useState("");
-    const handleAreaChange = (event: string) => {
-        setArea(event);
+    // 이미지 파일 상태관리
+    const [image, setImage] = useState(null);
+    const handleImageChange = (event: any) => {
+        setImage(event.target.files[0]);
     };
+
+    // 소개 입력 상태관리
+    const [introduction, setIntroduction] = useState("");
+    const handleIntroChange = (event: any) => {
+        setIntroduction(event.target.value);
+    };
+
+
+
 
     return(
         <div>
-            <h1>FUNS! CrowdFunding Service</h1>
+            <h1>Funs! CrowdFunding Service</h1>
             <br />
-            <h1>이미 가입한 회원인 경우</h1>
-                <button onClick={() => { location.href = "/" }} 
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    메인 화면으로
-                </button>
-            <div>
-            </div>
             <br />
             <div className="inputUserInfo" style={{ display: "flex", flexDirection: "column" }}>
-                <h1>새로 가입한 회원인 경우</h1>
+                <h1>Funs 회원정보 입력</h1>
+                <div className="mb-4">
+                    <label htmlFor="image" className="block text-lg mb-2">이미지</label>
+                    <input id="image" type="file" onChange={handleImageChange}></input>
+                </div>
+                <br />
                 <div className="mb-4">
                     <label htmlFor="nickname" className="block text-lg mb-2">닉네임</label>
                     <textarea id="nickname" className="input-field px-4 py-2 border rounded" placeholder="닉네임을 입력하세요" onChange={handleNameChange} required></textarea>
                 </div>
                 <CheckNickButton nickname={nickname} setValidName={setValidName} />
                 <br />
-                <br />
-                <div className="area">
-                    <SelectArea area={area} onAreaChange={handleAreaChange} />
+                <div className="mb-4">
+                    <label htmlFor="introduction" className="block text-lg mb-2">자기소개</label>
+                    <textarea id="introduction" className="input-field px-4 py-2 border rounded" placeholder="간단한 자기소개를 입력하세요" onChange={handleIntroChange}></textarea>
                 </div>
+                <br />
             </div>
             <br />
             <div
@@ -57,9 +63,10 @@ export default function SignUpPage() {
                 style={{ display: "flex", justifyContent: "center" }}
             >
             <ExportUserInfoButton
+                image={image}
                 nickname={nickname}
                 validName={validName}
-                area={area}
+                introduction={introduction}
             />
             </div>
         </div>
