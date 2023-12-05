@@ -22,8 +22,7 @@ export default function ExportUserInfoProps(props: ExportUserInfoProps) {
     const token = localStorage.getItem("accessToken");
     console.log(token);
     console.log(JSON.stringify(`Bearer ${token}`));
-    console.log(JSON.stringify({ nickname}));
-    console.log(JSON.stringify({ nickname: nickname }));
+    console.log(JSON.stringify({ nickname, introduction }));
     const userId = localStorage.getItem("userId");
 
      // FormData 객체 생성
@@ -37,7 +36,6 @@ export default function ExportUserInfoProps(props: ExportUserInfoProps) {
         method: "PUT",
         headers: {
             Credentials: "include",
-            ContentType: "multipart/form-data;",
             Authorization: `Bearer ${token}`,
         },
         body: formData,
