@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import ProfileInfo from "./profileComponent/ProfileInfo";
 import ProfileMenu from "./profileComponent/ProfileMenu";
-import RankingInfo from "./profileComponent/RankingInfo";
+// import RankingInfo from "./profileComponent/RankingInfo";
 
 type PageParams = {
   id: number;
