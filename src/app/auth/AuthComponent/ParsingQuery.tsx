@@ -10,6 +10,8 @@ export default function ParsingQuery() {
     const accessToken: any | null = params.get("accessToken");
     const expiredTime: any | null = params.get("expiredTime");
     const userId: any | null = params.get("userId");
+    const isFirstLogin : any | null = params.get("isFirstLogin");
+
 
     useEffect(() => {
         const localStorage: Storage = window.localStorage;
@@ -25,12 +27,12 @@ export default function ParsingQuery() {
         router.replace('/auth', undefined);
         router.refresh();
 
-        // 데이터를 저장한 후 "/"로 리다이렉트합니다.
-        // 여기서 새로고침해야 재렌더링되며 로그인 상태가 반영됩니다.
-        // window.location.href = "/";
-
-        // 이거 쓰면 새로고침이 아니라서 로그인 상태로 안 바뀜
-        // router.push('/');
+        // 최초 로그인의 경우 회원정보 입력해야함.
+        if (isFirstLogin === 'true') {
+            window.location.href = "/auth";
+        } else {
+            window.location.href = "/";
+        }
         }, []);
 
     return (

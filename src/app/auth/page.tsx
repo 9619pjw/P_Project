@@ -20,7 +20,7 @@ export default function SignUp() {
     // 닉네임 중복 상태관리
     const [validName, setValidName] = useState(false);
 
-    // 지역 입력 상태관리
+    // 지역 입력 상태관리 <= 삭제 예정
     const [area, setArea] = useState("");
     const handleAreaChange = (event: string) => {
         setArea(event);
@@ -34,7 +34,10 @@ export default function SignUp() {
             </div>
             <br />
             <h1>이미 가입한 회원인 경우</h1>
-                <button onClick={() => { location.href = "/" }} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">메인 화면으로</button>
+                <button onClick={() => { location.href = "/" }} 
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    메인 화면으로
+                </button>
             <div>
             </div>
             <br />
