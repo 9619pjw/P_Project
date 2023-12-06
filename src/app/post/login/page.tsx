@@ -69,7 +69,7 @@ export default function PostLogin() {
   return (
     <div>
       <div className="p-5 bg-gray-200 rounded-md shadow-md">
-      <h2>게시판 로그인</h2>
+      <h2> Q&A 게시판 로그인</h2>
       <form onSubmit={handleSubmit} className={styles.formFields}>
         게시판 닉네임 {" "}
         <input

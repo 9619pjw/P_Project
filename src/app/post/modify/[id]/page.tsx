@@ -62,10 +62,10 @@ export default function ModifyPost(props: ReadProps) {
       const responseData = await response.json();
   
       if (responseData.code === '0') {
-        alert("게시글이 성공적으로 수정되었습니다.");
+        alert("질문글이 성공적으로 수정되었습니다.");
         window.location.href = `/post/detail/${props.params.id}`;
       } else {
-        alert("게시글 수정에 실패하였습니다.");
+        alert("질문글 수정에 실패하였습니다.");
       }
     }
   };
@@ -73,7 +73,7 @@ export default function ModifyPost(props: ReadProps) {
   return (
     <div className="bg-gray-50 container mx-auto px-4 py-8">
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">게시글 수정</h1>
+      <h1 className="text-3xl font-bold mb-4">질문글 수정</h1>
       <form onSubmit={(e: any) => handleSubmit(e)}>
         <div className="mb-4">
           <label htmlFor="title" className="block text-lg mb-2">제목</label>
@@ -99,7 +99,7 @@ export default function ModifyPost(props: ReadProps) {
           />
         </div>
         <div className="flex justify-between items-center">
-          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">게시글 수정</button>
+          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">질문글 수정</button>
           <button
             type="button"
             onClick={() => router.push(`/post/detail/${props.params.id}`)}

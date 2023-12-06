@@ -25,7 +25,7 @@ export const siteConfig = {
 			href: "/timeline",
 		},
 		{
-			label: "Post",
+			label: "Q&A",
 			href: "/post",
 		},
 		{

@@ -10,7 +10,6 @@ type User = {
     email : string;     // 이메일 입력
 }
 
-
 export default function PostSignUp() {
     const [username, setUsername] = useState("");
     const [password1, setPassword1] = useState("");
@@ -71,7 +70,7 @@ export default function PostSignUp() {
       <div>
         <div className="p-5 bg-gray-200 rounded-md shadow-md">
         {/* <div className={styles.signupForm}> */}
-        <h2> 게시판 회원가입 </h2>
+        <h2> Q&A 게시판 회원가입 </h2>
         <form onSubmit={handleSubmit} className={styles.formFields}>
           게시판 닉네임 : <input
             type="text"
@@ -98,7 +97,7 @@ export default function PostSignUp() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="email"
           />
-          <button type="submit" className={styles.addButton}>Submit</button>
+          <button type="submit" className={styles.addButton}>가입 신청</button>
           <button type="button" onClick={handleGoBack} className={styles.goBackButton}>뒤로가기</button>
         </form>
         </div>

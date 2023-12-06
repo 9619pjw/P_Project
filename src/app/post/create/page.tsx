@@ -52,10 +52,10 @@ export default function CreatePost() {
       const responseData = await response.json();
 
       if (responseData.code === '0') {
-        alert("게시글이 성공적으로 등록되었습니다.");
+        alert("질문글이 성공적으로 등록되었습니다.");
         router.push("/post/list");
       } else {
-        alert("게시글 등록에 실패하였습니다.");
+        alert("질문글 등록에 실패하였습니다.");
       }
     } catch (error) {
       console.error(error);
@@ -72,7 +72,7 @@ export default function CreatePost() {
   return (
     <div className="bg-gray-50 container mx-auto px-4 py-8">
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">게시글 작성</h1>
+      <h1 className="text-3xl font-bold mb-4">질문글 작성</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="title" className="block text-lg mb-2">제목</label>

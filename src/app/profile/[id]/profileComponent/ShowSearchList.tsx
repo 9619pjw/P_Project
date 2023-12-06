@@ -29,7 +29,7 @@ export default function ShowSearchList(searchNameResult: SearchNameProps) {
         <tr>
           <td>사진 </td>
           <td>이름</td>
-          <td>지역</td>
+          <td>자기소개</td>
         </tr>
         {searchNameResult.searchNameResult.data.map((user) => (
           <div key={user.id}>
@@ -55,6 +55,9 @@ export default function ShowSearchList(searchNameResult: SearchNameProps) {
               </td>
               <td>
                 <h3 style={{ margin: "0 10px" }}>{user.nickname}</h3>
+              </td>
+              <td>
+                <h3 style={{ margin: "0 10px" }}>{user.introduction}</h3>
               </td>
             </tr>
           </div>

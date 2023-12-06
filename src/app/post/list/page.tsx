@@ -36,14 +36,6 @@ export default function PostList() {
     );
     const data = await response.json();
 
-    // const fetchedNotices: Post[] = data.data.notices.map((notice: any) => ({
-    //   id: notice.id,
-    //   subject: notice.subject,
-    //   isNotice: notice.isNotice,
-    //   author: notice.author.username,
-    //   createDate: new Date(notice.createDate).toLocaleString(),
-    // }));
-
     const fetchedPosts: Post[] = data.data.paging.content.map((post: any) => ({
       id: post.id,
       subject: post.subject,
@@ -175,7 +167,7 @@ export default function PostList() {
         <Link href="/post/create">
           {/* <button className={styles.addButton}> */}
           <button className="bg-black text-white border border-gray-300 px-2 py-1 rounded-md cursor-pointer h-10">
-            게시글 등록하기
+            질문글 등록하기
           </button>
         </Link>
         <div>
@@ -217,7 +209,7 @@ export default function PostList() {
         ))}
       </ul>
 
-      <h3 className="text-xl my-3">인기 게시물</h3>
+      <h3 className="text-xl my-3">자주 묻는 Q&A</h3>
       <div className="w-full bg-gray-200 p-5 my-2 rounded-md">
       {/* <div className={styles.popularList}> */}
         {popularPosts.map((post) => (
@@ -231,7 +223,7 @@ export default function PostList() {
         ))}
       </div>
 
-      <h3 className="text-xl my-3">일반 게시물</h3>
+      <h3 className="text-xl my-3">Q&A 게시판</h3>
       <table className="w-full border-collapse mt-5 divide-y divide-gray-200">
   <thead>
     <tr>

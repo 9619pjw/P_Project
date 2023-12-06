@@ -85,11 +85,11 @@ export default function PostDetail(props: ReadProps) {
       })
         .then((response) => {
           if (response.ok) {
-            alert("게시글이 성공적으로 삭제되었습니다.");
+            alert("질문글이 성공적으로 삭제되었습니다.");
             // 삭제 후 게시글 목록 페이지로 이동
             window.location.href = "/post/list";
           } else {
-            throw new Error("게시글 삭제 실패");
+            throw new Error("질문글 삭제 실패");
           }
         })
         .catch((error) => console.error("Error:", error));
@@ -362,7 +362,7 @@ export default function PostDetail(props: ReadProps) {
         <br/>
         <div className="flex justify-between w-full items-center mt-4">
           <button onClick={handleGoBack}  className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded">
-            게시글 목록
+            질문글 목록
           </button>
           <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             댓글 등록
