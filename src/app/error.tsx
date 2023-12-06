@@ -1,19 +1,19 @@
 'use client' 
- 
+
 import { useEffect } from 'react'
- 
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error
-  reset: () => void
-}) {
+
+type Props = {
+  error : Error
+  reset : () => void
+}
+
+
+export default function Error({ error , reset }: Props) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error)
+    console.error(error.message)
   }, [error])
- 
+
   return (
     <div>
       <h2>Something went wrong!</h2>
