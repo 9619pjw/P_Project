@@ -12,14 +12,7 @@ type UserJSON = {
   userId: number;
   nickname: string;
   introduction: string | null;
-  area: string;
   imageUrl: string | null;
-  tier?: string;
-  rating?: number;
-  win: number;
-  lose: number;
-  draw: number;
-  winRate: number | undefined | null;
 };
 export default function ProfilePage({ params }: { params: PageParams }) {
   // 팀 정보를 불러왔는지 여부
@@ -29,14 +22,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
     userId: 0,
     nickname: "위스",
     introduction: "반갑습니다",
-    area: "서울",
     imageUrl: "/default-profile.png",
-    tier: "1",
-    rating: 1000,
-    win: 5,
-    lose: 5,
-    draw: 0,
-    winRate: 50,
   };
   const [data, setData] = useState<UserJSON>(userJSON);
 
@@ -51,7 +37,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
     // const getUserInfoURL: string = `https://withsports.shop:8000/user-service/user/profile`;
 
     // 요청 URL - PathVariable: userId
-    const getUserInfoURL: string = `https://withsports.shop:8000/user-service/user/other/profile/${userId}`;
+    const getUserInfoURL: string = `https://funsns.shop:8000/user-service/user/other/profile/${userId}`;
 
     const response = await fetch(getUserInfoURL, {
       method: "GET",
@@ -113,7 +99,6 @@ export default function ProfilePage({ params }: { params: PageParams }) {
         <div>
           <ProfileInfo userJSON={data} />
           <ProfileMenu pageId={params.id} userJSON={data} />
-          {/* <RankingInfo userJSON={data} /> */}
         </div>
       )}
     </div>

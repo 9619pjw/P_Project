@@ -3,7 +3,6 @@ import Image from "next/image";
 type SearchNameUser = {
   id: number;
   nickname: string;
-  area: string;
   introduction: string | null;
   profileImage: string | null;
 };
@@ -56,9 +55,6 @@ export default function ShowSearchList(searchNameResult: SearchNameProps) {
               </td>
               <td>
                 <h3 style={{ margin: "0 10px" }}>{user.nickname}</h3>
-              </td>
-              <td>
-                <p style={{ margin: "0 10px" }}>{user.area}</p>
               </td>
             </tr>
           </div>

@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import ModalCustom from "@/components/ModalCustom";
 import CheckNickButton from "@/app/auth/AuthComponent/CheckNickButton";
-import SelectArea from "@/app/auth/AuthComponent/SelectArea";
 import InsertProfileImage from "./InsertProfileImage";
 import ShowSearchList from "./ShowSearchList";
 import IsYours from "./IsYours";
@@ -15,14 +14,7 @@ type UserJSON = {
   userId: number;
   nickname: string;
   introduction: string | null;
-  area: string;
   imageUrl: string | null;
-  tier?: string;
-  rating?: number;
-  win: number;
-  lose: number;
-  draw: number;
-  winRate: number | undefined | null;
 };
 
 type ProfileProps = {
@@ -64,11 +56,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
     setShow(true);
   };
 
-  // 지역 입력 상태관리
-  const [area, setArea] = useState("");
-  const handleAreaChange = (event: string) => {
-    setArea(event);
-  };
 
   // 프로필 수정 제출
   async function postEditProfile() {
@@ -84,7 +71,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
     let EditProfileRequest = {
       nickname: typeNickname,
       introduction: userData.introduction,
-      area: area,
     };
 
     // FormEditData에 데이터 추가
@@ -114,7 +100,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
           setShow(false);
           setNickname("");
           setValidName(false);
-          setArea("");
           location.reload();
         } else {
           alert("프로필 수정에 실패하였습니다.");
@@ -136,7 +121,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
   type SearchNameUser = {
     id: number;
     nickname: string;
-    area: string;
     introduction: string | null;
     profileImage: string | null;
   };
@@ -150,7 +134,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
       {
         id: 0,
         nickname: "",
-        area: "",
         introduction: "",
         profileImage: "",
       },
@@ -264,7 +247,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
                   nickname={typeNickname}
                   setValidName={setValidName}
                 />
-                <SelectArea area={area} onAreaChange={handleAreaChange} />
                 {validName ? (
                   <Button
                     variant="outlined"

@@ -2,14 +2,7 @@ type UserJSON = {
   userId: number;
   nickname: string;
   introduction: string | null;
-  area: string;
   imageUrl: string | null | undefined;
-  tier?: string;
-  rating?: number;
-  win: number;
-  lose: number;
-  draw: number;
-  winRate: number | undefined | null;
 };
 
 type ProfileProps = {
@@ -47,9 +40,6 @@ export default function Profile({ userJSON }: ProfileProps) {
           }}
         >
           <h1>{userData.nickname}</h1>
-        </div>
-        <div className="teamInfo">
-          <h3>{userData.area}</h3>
         </div>
         <div
           className="userIntro"

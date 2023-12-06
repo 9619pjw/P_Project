@@ -30,9 +30,6 @@ export default function SignUpPage() {
         setIntroduction(event.target.value);
     };
 
-
-
-
     return(
         <div>
             <h1>Funs! CrowdFunding Service</h1>
