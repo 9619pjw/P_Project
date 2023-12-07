@@ -37,7 +37,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
     // const getUserInfoURL: string = `https://withsports.shop:8000/user-service/user/profile`;
 
     // 요청 URL - PathVariable: userId
-    const getUserInfoURL: string = `https://funsns.shop:8000/user-service/user/other/profile/${userId}`;
+    const getUserInfoURL: string = `https://funsns.shop:8000/user-service/user/profile/${userId}`;
 
     const response = await fetch(getUserInfoURL, {
       method: "GET",

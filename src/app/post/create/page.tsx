@@ -86,6 +86,15 @@ export default function CreatePost() {
             required
           />
         </div>
+        {/* <input
+        type="checkbox"
+        checked={isNotice}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setIsNotice(e.target.checked)
+        }
+      />{" "}
+      공지글
+      <br /> */}
         <div className="mb-4">
           <label htmlFor="content" className="block text-lg mb-2">내용</label>
           <textarea
