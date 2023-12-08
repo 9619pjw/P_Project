@@ -98,7 +98,7 @@ export default function PointPage() {
   const router = useRouter();
 
   const handleGoBack = () => {
-    window.location.href = "/gift";
+    window.location.href = "/gifticon";
   };
 
   return (
