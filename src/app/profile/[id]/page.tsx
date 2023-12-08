@@ -56,7 +56,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
         } else {
           console.log("사용자 정보를 불러오는데 실패했습니다.");
         }
-        return data.data;
+        return data;
       })
       .catch((error) => {
         console.log(error);
