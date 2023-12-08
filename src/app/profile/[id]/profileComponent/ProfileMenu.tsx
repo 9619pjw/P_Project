@@ -115,8 +115,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
       });
   }
 
-  
-
   // 사용자 닉네임 검색
   // 사용자 닉네임 검색결과 저장
   type SearchNameUser = {
@@ -209,10 +207,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
         className="profile-3menu"
         style={{ flexDirection: "column", marginTop: "15px" }}
       >
-        {/* 본인, 타인 프로필 테스트 버튼
-        <Button variant="outlined">
-          {isYourProfile ? "내 프로필" : "다른 프로필"}
-        </Button> */}
         <IsYours
           pageId={pageId}
           isYou={isYourProfile}

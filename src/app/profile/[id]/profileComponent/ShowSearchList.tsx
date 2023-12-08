@@ -15,7 +15,7 @@ type SearchNameProps = {
   searchNameResult: SearchNameList;
 };
 
-export default function ShowSearchList(searchNameResult : SearchNameProps) {
+export default function ShowSearchList({ searchNameResult }: SearchNameProps ) {
   return (
     <div>
       <h1>검색결과</h1>
@@ -31,7 +31,7 @@ export default function ShowSearchList(searchNameResult : SearchNameProps) {
           <td>이름</td>
           <td>자기소개</td>
         </tr>
-        {searchNameResult.searchNameResult.data.map((user) => (
+        {searchNameResult.data.map((user) => (
           <div key={user.id}>
             <tr
               style={{
