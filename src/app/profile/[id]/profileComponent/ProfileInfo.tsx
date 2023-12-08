@@ -1,8 +1,9 @@
 type UserJSON = {
   userId: number;
+  name : string;
   nickname: string;
-  introduction: string | null;
   imageUrl: string | null | undefined;
+  introduction: string | null;
 };
 
 type ProfileProps = {
