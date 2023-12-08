@@ -32,7 +32,7 @@ export default function ShowSearchList(searchNameResult: SearchNameProps) {
           <td>자기소개</td>
         </tr>
         {searchNameResult.searchNameResult.data.map((user) => (
-          <div key={user.id}>
+          <div key={user.userId}>
             <tr
               style={{
                 display: "flex",
@@ -45,7 +45,7 @@ export default function ShowSearchList(searchNameResult: SearchNameProps) {
               <div
                   style={{ margin: "0 10px" }}
                   onClick={() => {
-                    window.location.href = `/profile/${user.id}`;
+                    window.location.href = `/profile/${user.userId}`;
                   }}
                 >
                 <Image
