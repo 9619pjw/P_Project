@@ -15,7 +15,7 @@ type UserJSON = {
   name : string;
   nickname: string;
   introduction: string | null;
-  imageUrl: string | null | undefined;
+  profileImage: string | null | undefined;
 };
 
 type ProfileProps = {

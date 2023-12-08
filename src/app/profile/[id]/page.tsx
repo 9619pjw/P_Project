@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import ProfileInfo from "./profileComponent/ProfileInfo";
 import ProfileMenu from "./profileComponent/ProfileMenu";
-// import RankingInfo from "./profileComponent/RankingInfo";
 
 type PageParams = {
   id: number;
@@ -13,7 +12,7 @@ type UserJSON = {
   name : string;
   nickname: string;
   introduction: string | null;
-  imageUrl: string | null | undefined;
+  profileImage: string | null | undefined;
 };
 
 export default function ProfilePage({ params }: { params: PageParams }) {
@@ -25,7 +24,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
     name:".",
     nickname: "위스",
     introduction: "반갑습니다",
-    imageUrl: "/default-profile.png",
+    profileImage: "/default-profile.png",
   };
   const [data, setData] = useState<UserJSON>(userJSON);
 
@@ -36,9 +35,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
     const token = localStorage.getItem("accessToken");
     let userId = params.id;
 
-    // 요청 URL - PathVariable 없는 본인 프로필 조회
-    // const getUserInfoURL: string = `https://withsports.shop:8000/user-service/user/profile`;
-
+  
     // 요청 URL - PathVariable: userId
     const getUserInfoURL: string = `https://funsns.shop:8000/user-service/user/${userId}`;
 
@@ -59,7 +56,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
         } else {
           console.log("사용자 정보를 불러오는데 실패했습니다.");
         }
-        return data;
+        return data.data;
       })
       .catch((error) => {
         console.log(error);

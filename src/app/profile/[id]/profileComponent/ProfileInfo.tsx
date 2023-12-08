@@ -2,7 +2,7 @@ type UserJSON = {
   userId: number;
   name : string;
   nickname: string;
-  imageUrl: string | null | undefined;
+  profileImage: string | null | undefined;
   introduction: string | null;
 };
 
@@ -25,7 +25,7 @@ export default function Profile({ userJSON }: ProfileProps) {
         style={{ display: "flex", justifyContent: "center" }}
       >
         <img
-          src={userData.imageUrl ? userData.imageUrl : "/default-profile.png"}
+          src={userData.profileImage ? userData.profileImage : "/default-profile.png"}
           alt="profile"
           width={200}
           height={200}
