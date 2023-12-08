@@ -15,7 +15,7 @@ type SearchNameProps = {
   searchNameResult: SearchNameList;
 };
 
-export default function ShowSearchList( { searchNameResult } : SearchNameProps) {
+export default function ShowSearchList(searchNameResult : SearchNameProps) {
   return (
     <div>
       <h1>검색결과</h1>
