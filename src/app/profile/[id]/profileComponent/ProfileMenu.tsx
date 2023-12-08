@@ -118,7 +118,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
   // 사용자 닉네임 검색
   // 사용자 닉네임 검색결과 저장
   type SearchNameUser = {
-    id: number;
+    userId: number;
     nickname: string;
     introduction: string | null;
     profileImage: string | null;
@@ -131,7 +131,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
   const [searchNameResult, setSearchNameResult] = useState<SearchNameList>({
     data: [
       {
-        id: 0,
+        userId: 0,
         nickname: "",
         introduction: "",
         profileImage: "",
