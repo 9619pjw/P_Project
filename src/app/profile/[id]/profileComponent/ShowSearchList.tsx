@@ -4,7 +4,7 @@ type SearchNameUser = {
   id: number;
   nickname: string;
   introduction: string | null;
-  profileImage: string | null;
+  profileImage: string | null | undefined;
 };
 
 type SearchNameList = {
@@ -42,14 +42,14 @@ export default function ShowSearchList(searchNameResult: SearchNameProps) {
               }}
             >
               <td>
-              <div // 추가된 부분
+              <div
                   style={{ margin: "0 10px" }}
                   onClick={() => {
                     window.location.href = `/profile/${user.id}`;
                   }}
                 >
                 <Image
-                  src={user.profileImage || "/default-profile.png"}
+                  src={user.profileImage ? user.profileImage : "/default-profile.png"}
                   alt="profileImage"
                   width={40}
                   height={40}
