@@ -42,16 +42,19 @@ export default function ShowSearchList(searchNameResult: SearchNameProps) {
               }}
             >
               <td>
+              <div // 추가된 부분
+                  style={{ margin: "0 10px" }}
+                  onClick={() => {
+                    window.location.href = `/profile/${user.id}`;
+                  }}
+                >
                 <Image
                   src={user.profileImage || "/default-profile.png"}
                   alt="profileImage"
                   width={40}
                   height={40}
-                  style={{ margin: "0 10px" }}
-                  onClick={() => {
-                    window.location.href = `/user/profile/${user.id}`;
-                  }}
                 />
+                </div>
               </td>
               <td>
                 <h3 style={{ margin: "0 10px" }}>{user.nickname}</h3>
