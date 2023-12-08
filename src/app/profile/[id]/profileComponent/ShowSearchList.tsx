@@ -45,6 +45,7 @@ export default function ShowSearchList({ searchNameResult }: SearchNameProps ) {
               <div
                   style={{ margin: "0 10px" }}
                   onClick={() => {
+                    console.log(user.id);
                     window.location.href = `https://funs.vercel.app/profile/${user.id}`;
                   }}
                 >
