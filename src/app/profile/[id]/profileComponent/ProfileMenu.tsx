@@ -162,6 +162,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
     })
       .then((res) => res.json())
       .then((data: SearchNameList) => {
+        console.log(data);
         if (data.data !== null) {
           setSearchNameResult(data);
           console.log("search data: ");
