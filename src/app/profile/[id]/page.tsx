@@ -10,16 +10,19 @@ type PageParams = {
 
 type UserJSON = {
   userId: number;
+  name : string;
   nickname: string;
   introduction: string | null;
-  imageUrl: string | null;
+  imageUrl: string | null | undefined;
 };
+
 export default function ProfilePage({ params }: { params: PageParams }) {
   // 팀 정보를 불러왔는지 여부
   const [showUserInfo, setShowUserInfo] = useState(false);
 
   let userJSON: UserJSON = {
     userId: 0,
+    name:".",
     nickname: "위스",
     introduction: "반갑습니다",
     imageUrl: "/default-profile.png",

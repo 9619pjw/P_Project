@@ -12,9 +12,10 @@ import IsYours from "./IsYours";
 
 type UserJSON = {
   userId: number;
+  name : string;
   nickname: string;
   introduction: string | null;
-  imageUrl: string | null;
+  imageUrl: string | null | undefined;
 };
 
 type ProfileProps = {
