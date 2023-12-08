@@ -149,7 +149,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
     console.log("nickname: " + nickname);
 
     // 사용자 닉네임 검색 API
-    const searchNameURL = `https://withsports.shop:8000/user-service/user/nickname/${nickname}`;
+    const searchNameURL = `https://funsns.shop:8000/user-service/user/nickname/${nickname}`;
 
     // 액세스 토큰 가져오기
     const localStorage: Storage = window.localStorage;
@@ -209,10 +209,10 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
         className="profile-3menu"
         style={{ flexDirection: "column", marginTop: "15px" }}
       >
-        {/* 본인, 타인 프로필 테스트 버튼 */}
+        {/* 본인, 타인 프로필 테스트 버튼
         <Button variant="outlined">
           {isYourProfile ? "내 프로필" : "다른 프로필"}
-        </Button>
+        </Button> */}
         <IsYours
           pageId={pageId}
           isYou={isYourProfile}
