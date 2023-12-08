@@ -39,7 +39,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
   };
 
   // 프로필 이미지 상태관리
-  const [profileImage, setProfileImage] = useState(userData.imageUrl);
+  const [profileImage, setProfileImage] = useState<string | null>("");
   const [profileImageFile, setProfileImageFile] = useState<File | undefined>();
 
   // 닉네임 입력 상태관리
