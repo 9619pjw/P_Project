@@ -19,7 +19,7 @@ export default function Profile({ userJSON }: ProfileProps) {
   let userData = userJSON;
 
   return (
-    <div className="flex flex-col items-center mt-5">
+    <div className="bg-gray-100 container mx-auto px-4 py-8 flex flex-col items-center">
       <div className="flex justify-center">
         <img
           className="rounded-full border-2 border-blue-500"
