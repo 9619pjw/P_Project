@@ -106,14 +106,5 @@ export default function ProfilePage({ params }: { params: PageParams }) {
       </div>
     )}
   </div>
-    // <div>
-    //   {!showUserInfo && <div>유저 정보를 불러오는 중입니다...</div>}
-    //   {showUserInfo && (
-    //     <div>
-    //       <ProfileInfo userJSON={data} />
-    //       <ProfileMenu pageId={params.id} userJSON={data} />
-    //     </div>
-    //   )}
-    // </div>
   );
 }
