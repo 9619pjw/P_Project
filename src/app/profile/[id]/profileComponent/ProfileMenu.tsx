@@ -53,9 +53,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
     setShow(true);
   };
 
-  
-
-
   // 프로필 수정 제출
   async function postEditProfile() {
     const editProfileURL = `https://funsns.shop:8000/user-service/user/update/profile`;
@@ -112,6 +109,36 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
         throw new Error("서버 요청 실패!");
       });
   }
+
+  // 팔로우 요청 함수
+  async function handleFollowRequest() {
+    const followURL = `https://funsns.shop:8000/follow-service/follow/${userData.userId}`;
+  
+    // 액세스 토큰 가져오기
+    const localStorage: Storage = window.localStorage;
+    const token = localStorage.getItem("accessToken");
+  
+    // 팔로우 요청 보내기
+    fetch(followURL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          alert("팔로우 신청이 완료되었습니다.");
+          // 페이지 새로고침 또는 사용자 상태 업데이트 로직을 여기에 추가하세요.
+        } else {
+          alert("팔로우 신청에 실패하였습니다.");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        throw new Error("서버 요청 실패!");
+      });
+  }
+  
 
   // 사용자 닉네임 검색결과 저장
   type SearchNameUser = {
@@ -220,7 +247,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
       </div>
     ) : (
       <div className="mt-2">
-          <button onClick={editProfile} className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
+          <button onClick={handleFollowRequest} className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
             팔로우 신청
           </button>
       </div>
