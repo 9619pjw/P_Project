@@ -47,6 +47,13 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
   // 닉네임 중복 상태관리
   const [validName, setValidName] = useState(false);
 
+  // introduction 상태관리
+  const [introduction, setIntroduction] = useState(userData.introduction || "");
+
+  const handleIntroductionChange = (event: any) => {
+    setIntroduction(event.target.value);
+  };
+
   // 프로필 수정 모달
   const [show, setShow] = useState(false);
   const editProfile = () => {
@@ -227,6 +234,12 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
           <CheckNickButton
             nickname={typeNickname}
             setValidName={setValidName}
+          />
+          <textarea
+            placeholder="자기소개"
+            className="border-2 border-gray-300 rounded-md p-2 mt-4"
+            value={introduction}
+            onChange={handleIntroductionChange}
           />
           {validName ? (
             <button
