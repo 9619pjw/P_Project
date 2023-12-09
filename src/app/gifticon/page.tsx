@@ -272,30 +272,4 @@ export default function GifticonPage({ params }: { params: PageParams }) {
       </div>
     </>
   );
-    // <div>
-    //   <h4> {userInfo?.nickname} 님의 포인트 </h4>
-    //   <div
-    //     style={{
-    //       flex: "1",
-    //       display: "flex",
-    //       flexDirection: "column",
-    //       alignItems: "center",
-    //       justifyContent: "flex-start",
-    //       paddingTop: "20px",
-    //     }}
-    //   >
-    //     {userInfo ? (
-    //       <div>
-    //         <p>포인트 잔액: {userInfo.balance}</p>
-    //         <button className={styles.backbutton}>
-    //           <Link href="/point" style={{ color: "black", textDecoration: "none"}}>
-    //             <a>포인트 내역</a>
-    //           </Link>
-    //         </button>
-    //       </div>
-    //     ) : (
-    //       <p>Loading...</p>
-    //     )}
-    //   </div>
-    // </div>
 }
