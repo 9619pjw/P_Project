@@ -146,52 +146,5 @@ export default function PointPage() {
       )}
     </div>
   </>
-    // <div>
-    //   <div
-    //     style={{
-    //       flex: "1",
-    //       display: "flex",
-    //       flexDirection: "column",
-    //       alignItems: "center",
-    //       justifyContent: "flex-start",
-    //     }}
-    //   />
-    //   {userInfo ? (
-    //     <div>
-    //       <p>{userInfo?.nickname} 님의 포인트 잔액: {userInfo.balance}</p>
-    //     </div>
-    //   ) : (
-    //     <p>Loading...</p>
-    //   )}
-    //   <button onClick={handleGoBack} className={styles.backbutton}>
-    //         뒤로가기
-    //   </button>
-    //   <h4>포인트 내역</h4>
-    //   {/* 포인트 내역 목록 출력하기 */}
-    //   {pointHistory.length > 0 ? (
-    //     <table className={styles.pointTable}>
-    //       <thead>
-    //         <tr>
-    //           <th>거래 시간</th>
-    //           <th>거래 금액</th>
-    //           <th>거래 내역</th>
-    //           <th>거래 후 잔액</th>
-    //         </tr>
-    //       </thead>
-    //       <tbody>
-    //         {pointHistory.map((history, index) => (
-    //           <tr key={index}>
-    //             <td>{new Date(history.createdAt!).toLocaleString()}{" "}</td>
-    //             <td>{history.amount}</td>
-    //             <td>{history.description}</td>
-    //             <td>{history.balanceAtThatTime}</td>
-    //           </tr>
-    //         ))}
-    //       </tbody>
-    //     </table>
-    //   ) : (
-    //     <p>포인트 사용 내역이 없습니다.</p>
-    //   )}
-    // </div>
   );
 }

@@ -177,172 +177,163 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
   }
 
   return (
-    <div className="flex flex-col items-center">
-    <div className="flex items-center space-x-4">
-      <input
-        id="outlined-basic"
-        placeholder="사용자 닉네임 검색"
-        className="border-2 border-gray-300 rounded-md p-2"
-        value={checkName}
-        onChange={typeName}
-      />
-      <img
-        onClick={searchNameFetch}
-        src="/search.png"
-        alt="search"
-        width={40}
-        height={40}
-        className="ml-2 cursor-pointer"
-      />
-      <ModalCustom
-        show={showSearchNameModal}
-        setShow={setShowSearchNameModal}
-      >
-        <div>
-          <ShowSearchList searchNameResult={searchNameResult} />
-        </div>
-      </ModalCustom>
-    </div>
-
-    <div className="flex flex-col items-center mt-4">
-      <IsYours
-        pageId={pageId}
-        isYou={isYourProfile}
-        setIsYou={setIsYourProfile}
-      />
-      {isYourProfile ? (
-        <div className="mt-2">
-          <button onClick={editProfile} className="border-2 border-gray-300 rounded-md p-2 flex items-center space-x-2">
-            <img src="/edit-icon.png" alt="edit-icon" width={20} height={20} />
-            <span>프로필 수정</span>
-          </button>
-          <ModalCustom show={show} setShow={setShow}>
-            <h2 className="mb-8">프로필 수정</h2>
-            <InsertProfileImage
-              profileImage={profileImage}
-              setProfileImage={setProfileImage}
-              profileImageFile={profileImageFile}
-              setProfileImageFile={setProfileImageFile}
-            />
-            <input
-              placeholder="닉네임"
-              className="border-2 border-gray-300 rounded-md p-2 mt-4"
-              value={typeNickname}
-              onChange={handleNameChange}
-            />
-            <CheckNickButton
-              nickname={typeNickname}
-              setValidName={setValidName}
-            />
-            {validName ? (
-              <button
-                onClick={postEditProfile}
-                className="border-2 border-gray-300 rounded-md p-2 mt-4"
-              >
-                프로필 수정 제출
-              </button>
-            ) : (
-              <button
-                className="border-2 border-gray-300 rounded-md p-2 mt-4"
-                disabled
-              >
-                프로필 수정 제출
-              </button>
-            )}
-          </ModalCustom>
-        </div>
-      ) : (
-        <div></div>
-      )}
-    </div>
+    <div className="bg-gray-100 container mx-auto px-4 py-8 flex flex-col items-center">
+  <div className="text-center mb-8">
+    <h1 className="text-4xl font-bold mb-2">프로필 수정</h1>
   </div>
-    // <div className="profile-menu">
-    //   <div className="profile-menu-search">
-    //     <TextField
-    //       id="outlined-basic"
-    //       label="사용자 닉네임 검색"
-    //       variant="outlined"
-    //       value={checkName}
-    //       onChange={typeName}
-    //     />
-    //     <Image
-    //       onClick={searchNameFetch}
-    //       src="/search.png"
-    //       alt="search"
-    //       width={40}
-    //       height={40}
-    //       style={{ margin: "10px 0 0 10px" }}
-    //     />
-    //     <ModalCustom
-    //       show={showSearchNameModal}
-    //       setShow={setShowSearchNameModal}
-    //     >
-    //       <div>
-    //         <ShowSearchList searchNameResult={searchNameResult} />
-    //       </div>
-    //     </ModalCustom>
-    //   </div>
+  <div className="flex items-center space-x-4 mb-8">
+    <input
+      id="outlined-basic"
+      placeholder="사용자 닉네임 검색"
+      className="border-2 border-gray-300 rounded-md p-2"
+      value={checkName}
+      onChange={typeName}
+    />
+    <img
+      onClick={searchNameFetch}
+      src="/search.png"
+      alt="search"
+      width={40}
+      height={40}
+      className="ml-2 cursor-pointer"
+    />
+    <ModalCustom
+      show={showSearchNameModal}
+      setShow={setShowSearchNameModal}
+    >
+      <div>
+        <ShowSearchList searchNameResult={searchNameResult} />
+      </div>
+    </ModalCustom>
+  </div>
+  <div className="flex flex-col items-center mt-4">
+    <IsYours
+      pageId={pageId}
+      isYou={isYourProfile}
+      setIsYou={setIsYourProfile}
+    />
+    {isYourProfile ? (
+      <div className="mt-2">
+        <button onClick={editProfile} className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
+          프로필 수정
+        </button>
+        <ModalCustom show={show} setShow={setShow}>
+          <h2 className="mb-8">프로필 수정</h2>
+          <InsertProfileImage
+            profileImage={profileImage}
+            setProfileImage={setProfileImage}
+            profileImageFile={profileImageFile}
+            setProfileImageFile={setProfileImageFile}
+          />
+          <input
+            placeholder="닉네임"
+            className="border-2 border-gray-300 rounded-md p-2 mt-4"
+            value={typeNickname}
+            onChange={handleNameChange}
+          />
+          <CheckNickButton
+            nickname={typeNickname}
+            setValidName={setValidName}
+          />
+          {validName ? (
+            <button
+              onClick={postEditProfile}
+              className="border-2 border-gray-300 rounded-md p-2 mt-4"
+            >
+              프로필 수정 제출
+            </button>
+          ) : (
+            <button
+              className="border-2 border-gray-300 rounded-md p-2 mt-4"
+              disabled
+            >
+              프로필 수정 제출
+            </button>
+          )}
+        </ModalCustom>
+      </div>
+    ) : (
+      <div></div>
+    )}
+  </div>
+</div>
+  //   <div className="flex flex-col items-center">
+  //   <div className="flex items-center space-x-4">
+  //     <input
+  //       id="outlined-basic"
+  //       placeholder="사용자 닉네임 검색"
+  //       className="border-2 border-gray-300 rounded-md p-2"
+  //       value={checkName}
+  //       onChange={typeName}
+  //     />
+  //     <img
+  //       onClick={searchNameFetch}
+  //       src="/search.png"
+  //       alt="search"
+  //       width={40}
+  //       height={40}
+  //       className="ml-2 cursor-pointer"
+  //     />
+  //     <ModalCustom
+  //       show={showSearchNameModal}
+  //       setShow={setShowSearchNameModal}
+  //     >
+  //       <div>
+  //         <ShowSearchList searchNameResult={searchNameResult} />
+  //       </div>
+  //     </ModalCustom>
+  //   </div>
 
-    //   <div
-    //     className="profile-3menu"
-    //     style={{ flexDirection: "column", marginTop: "15px" }}
-    //   >
-    //     <IsYours
-    //       pageId={pageId}
-    //       isYou={isYourProfile}
-    //       setIsYou={setIsYourProfile}
-    //     />
-    //     {isYourProfile ? (
-    //       <div className="your-profile">
-    //         {/* 프로필 수정 버튼*/}
-    //         <div className="profile-edit" style={{ marginTop: "5px" }}>
-    //           <Button
-    //             variant="outlined"
-    //             startIcon={<EditIcon />}
-    //             onClick={editProfile}
-    //           >
-    //             프로필 수정
-    //           </Button>
-    //           {/* 프로필 수정 모달 */}
-    //           <ModalCustom show={show} setShow={setShow}>
-    //             <h2 style={{ marginBottom: "30px" }}>프로필 수정</h2>
-    //             <InsertProfileImage
-    //               profileImage={profileImage}
-    //               setProfileImage={setProfileImage}
-    //               profileImageFile={profileImageFile}
-    //               setProfileImageFile={setProfileImageFile}
-    //             />
-    //             <TextField
-    //               label="닉네임"
-    //               variant="outlined"
-    //               value={typeNickname}
-    //               onChange={handleNameChange}
-    //             />
-    //             <CheckNickButton
-    //               nickname={typeNickname}
-    //               setValidName={setValidName}
-    //             />
-    //             {validName ? (
-    //               <Button
-    //                 variant="outlined"
-    //                 onClick={postEditProfile}
-    //                 style={{ marginTop: 10 }}
-    //               >
-    //                 프로필 수정 제출
-    //               </Button>
-    //             ) : (
-    //               <Button variant="outlined" style={{ marginTop: 10 }} disabled>
-    //                 프로필 수정 제출
-    //               </Button>
-    //             )}
-    //           </ModalCustom>
-    //         </div>
-    //       </div>
-    //     ) : (
-    //       <div className="another-profile">
-    //       </div>
-    //     )}
-    //   </div>
-    // </div>
+  //   <div className="flex flex-col items-center mt-4">
+  //     <IsYours
+  //       pageId={pageId}
+  //       isYou={isYourProfile}
+  //       setIsYou={setIsYourProfile}
+  //     />
+  //     {isYourProfile ? (
+  //       <div className="mt-2">
+  //         <button onClick={editProfile} className="border-2 border-gray-300 rounded-md p-2 flex items-center space-x-2">
+  //           <span>프로필 수정</span>
+  //         </button>
+  //         <ModalCustom show={show} setShow={setShow}>
+  //           <h2 className="mb-8">프로필 수정</h2>
+  //           <InsertProfileImage
+  //             profileImage={profileImage}
+  //             setProfileImage={setProfileImage}
+  //             profileImageFile={profileImageFile}
+  //             setProfileImageFile={setProfileImageFile}
+  //           />
+  //           <input
+  //             placeholder="닉네임"
+  //             className="border-2 border-gray-300 rounded-md p-2 mt-4"
+  //             value={typeNickname}
+  //             onChange={handleNameChange}
+  //           />
+  //           <CheckNickButton
+  //             nickname={typeNickname}
+  //             setValidName={setValidName}
+  //           />
+  //           {validName ? (
+  //             <button
+  //               onClick={postEditProfile}
+  //               className="border-2 border-gray-300 rounded-md p-2 mt-4"
+  //             >
+  //               프로필 수정 제출
+  //             </button>
+  //           ) : (
+  //             <button
+  //               className="border-2 border-gray-300 rounded-md p-2 mt-4"
+  //               disabled
+  //             >
+  //               프로필 수정 제출
+  //             </button>
+  //           )}
+  //         </ModalCustom>
+  //       </div>
+  //     ) : (
+  //       <div></div>
+  //     )}
+  //   </div>
+  // </div>
   );
 }
