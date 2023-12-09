@@ -73,7 +73,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
 
     let EditProfileRequest = {
       nickname: typeNickname,
-      introduction: userData.introduction,
+      introduction: introduction,
     };
 
     // FormEditData에 데이터 추가
@@ -241,6 +241,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
             value={introduction}
             onChange={handleIntroductionChange}
           />
+          <br />
           {validName ? (
             <button
               onClick={postEditProfile}
