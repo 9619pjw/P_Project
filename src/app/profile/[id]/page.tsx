@@ -13,6 +13,8 @@ type UserJSON = {
   nickname: string;
   introduction: string | null;
   profileImage: string | null | undefined;
+  followerCount : number;
+  followingCount : number;
 };
 
 export default function ProfilePage({ params }: { params: PageParams }) {
@@ -25,6 +27,8 @@ export default function ProfilePage({ params }: { params: PageParams }) {
     nickname: "위스",
     introduction: "반갑습니다",
     profileImage: "/default-profile.png",
+    followerCount : 0,
+    followingCount : 0,
   };
   const [data, setData] = useState<UserJSON>(userJSON);
 
