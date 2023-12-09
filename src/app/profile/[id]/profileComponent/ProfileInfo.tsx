@@ -4,6 +4,8 @@ type UserJSON = {
   nickname: string;
   profileImage: string | null | undefined;
   introduction: string | null;
+  followerCount : number;
+  followingCount : number;
 };
 
 type ProfileProps = {
@@ -51,6 +53,26 @@ export default function Profile({ userJSON }: ProfileProps) {
           }}
         >
           {userData.introduction}
+        </div>
+        <div
+          className="userfollower"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: 20,
+          }}
+        >
+          {userData.followerCount}
+        </div>
+        <div
+          className="userfollowing"
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: 20,
+          }}
+        >
+          {userData.followingCount}
         </div>
       </div>
     </div>

@@ -60,7 +60,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
 
   // 프로필 수정 제출
   async function postEditProfile() {
-    const editProfileURL = `https://funsns.shop:8000/user-service/user/profile`;
+    const editProfileURL = `https://funsns.shop:8000/user-service/user/update/profile`;
 
     // 액세스 토큰 가져오기
     const localStorage: Storage = window.localStorage;
