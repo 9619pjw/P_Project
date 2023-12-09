@@ -66,6 +66,13 @@ export default function SignUpPage() {
                 introduction={introduction}
             />
             </div>
+            <Image
+                src="/funding.png"
+                alt="auth-page-image"
+                width={800}
+                height={800}
+                style={{ marginLeft: "50px" }}
+            />
         </div>
     );
 }
