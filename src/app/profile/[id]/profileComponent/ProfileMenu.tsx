@@ -53,6 +53,8 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
     setShow(true);
   };
 
+  
+
 
   // 프로필 수정 제출
   async function postEditProfile() {
@@ -111,7 +113,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
       });
   }
 
-  // 사용자 닉네임 검색
   // 사용자 닉네임 검색결과 저장
   type SearchNameUser = {
     userId: number;
@@ -218,7 +219,11 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
         </ModalCustom>
       </div>
     ) : (
-      <div></div>
+      <div className="mt-2">
+          <button onClick={editProfile} className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
+            팔로우 신청
+          </button>
+      </div>
     )}
   <div className="flex items-center space-x-4 mb-8">
     <input
