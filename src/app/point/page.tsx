@@ -102,52 +102,95 @@ export default function PointPage() {
   };
 
   return (
-    <div>
-      <div
-        style={{
-          flex: "1",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "flex-start",
-        }}
-      />
+    <>
+    <Head>
+      <title>User Point History</title>
+    </Head>
+    <div className="bg-gray-100 container mx-auto px-4 py-8 flex flex-col items-center">
       {userInfo ? (
-        <div>
-          <p>{userInfo?.nickname} 님의 포인트 잔액: {userInfo.balance}</p>
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold mb-2">{userInfo?.nickname} 님의 포인트 잔액: {userInfo.balance}</h1>
         </div>
       ) : (
         <p>Loading...</p>
       )}
-      <button onClick={handleGoBack} className={styles.backbutton}>
-            뒤로가기
+      <button onClick={handleGoBack} className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
+        뒤로가기
       </button>
-      <h4>포인트 내역</h4>
+      <h4 className="text-2xl font-semibold mb-4">포인트 내역</h4>
       {/* 포인트 내역 목록 출력하기 */}
       {pointHistory.length > 0 ? (
-        <table className={styles.pointTable}>
+        <table className="w-full border-collapse">
           <thead>
             <tr>
-              <th>거래 시간</th>
-              <th>거래 금액</th>
-              <th>거래 내역</th>
-              <th>거래 후 잔액</th>
+              <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">거래 시간</th>
+              <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">거래 금액</th>
+              <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">거래 내역</th>
+              <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">거래 후 잔액</th>
             </tr>
           </thead>
           <tbody>
             {pointHistory.map((history, index) => (
-              <tr key={index}>
-                <td>{new Date(history.createdAt!).toLocaleString()}{" "}</td>
-                <td>{history.amount}</td>
-                <td>{history.description}</td>
-                <td>{history.balanceAtThatTime}</td>
+              <tr key={index} className={index % 2 === 0 ? 'bg-gray-200' : ''}>
+                <td className="border-b border-gray-300 text-center px-2 py-1">{new Date(history.createdAt!).toLocaleString()}{" "}</td>
+                <td className="border-b border-gray-300 text-center px-2 py-1">{history.amount}</td>
+                <td className="border-b border-gray-300 text-center px-2 py-1">{history.description}</td>
+                <td className="border-b border-gray-300 text-center px-2 py-1">{history.balanceAtThatTime}</td>
               </tr>
             ))}
           </tbody>
         </table>
       ) : (
-        <p>포인트 사용 내역이 없습니다.</p>
+        <p className="mb-6 text-gray-600">포인트 사용 내역이 없습니다.</p>
       )}
     </div>
+  </>
+    // <div>
+    //   <div
+    //     style={{
+    //       flex: "1",
+    //       display: "flex",
+    //       flexDirection: "column",
+    //       alignItems: "center",
+    //       justifyContent: "flex-start",
+    //     }}
+    //   />
+    //   {userInfo ? (
+    //     <div>
+    //       <p>{userInfo?.nickname} 님의 포인트 잔액: {userInfo.balance}</p>
+    //     </div>
+    //   ) : (
+    //     <p>Loading...</p>
+    //   )}
+    //   <button onClick={handleGoBack} className={styles.backbutton}>
+    //         뒤로가기
+    //   </button>
+    //   <h4>포인트 내역</h4>
+    //   {/* 포인트 내역 목록 출력하기 */}
+    //   {pointHistory.length > 0 ? (
+    //     <table className={styles.pointTable}>
+    //       <thead>
+    //         <tr>
+    //           <th>거래 시간</th>
+    //           <th>거래 금액</th>
+    //           <th>거래 내역</th>
+    //           <th>거래 후 잔액</th>
+    //         </tr>
+    //       </thead>
+    //       <tbody>
+    //         {pointHistory.map((history, index) => (
+    //           <tr key={index}>
+    //             <td>{new Date(history.createdAt!).toLocaleString()}{" "}</td>
+    //             <td>{history.amount}</td>
+    //             <td>{history.description}</td>
+    //             <td>{history.balanceAtThatTime}</td>
+    //           </tr>
+    //         ))}
+    //       </tbody>
+    //     </table>
+    //   ) : (
+    //     <p>포인트 사용 내역이 없습니다.</p>
+    //   )}
+    // </div>
   );
 }
