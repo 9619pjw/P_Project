@@ -9,15 +9,6 @@ type ModalProps = {
 };
 
 export default function ModalCustom({ children, show, setShow }: ModalProps) {
-  // 부모 클래스에 추가할 것
-  // 프로필 수정 모달
-  // const [show, setShow] = useState(false);
-  // const editProfile = () => {
-  //   setShow(true);
-  // }
-
-  // 컴포넌트 추가
-  // <ModalCustom show={show} setShow={setShow}></ModalCustom>
 
   return (
     <Modal
@@ -26,18 +17,9 @@ export default function ModalCustom({ children, show, setShow }: ModalProps) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <div
-        className="edit-profile"
-        style={{
-          backgroundColor: "white",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "150px",
-        }}
-      >
-        <Box style={{ margin: "30px" }}>{children}</Box>
-      </div>
+    <div className="edit-profile bg-white flex justify-center items-center m-24">
+        <Box className="m-6">{children}</Box>
+    </div>
     </Modal>
   );
 }
