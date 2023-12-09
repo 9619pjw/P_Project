@@ -124,7 +124,6 @@ export default function Notification() {
             onClick={() => setShowNotification(true)}
           />
         </div>
-        <p>알림</p>
       </Badge>
       <ModalCustom show={showNotification} setShow={setShowNotification}>
         <h1>알림</h1>
