@@ -290,7 +290,7 @@ async function handleUnFollowRequest() {
       </div>
     ) : (
       <div className="mt-2">
-          <button onClick={handleFollowRequest} className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
+          <button onClick={userJSON.availableFollow ? handleFollowRequest : handleUnFollowRequest} className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
             {userJSON.availableFollow ? "팔로우 신청" : "언팔로우"}
           </button>
       </div>
