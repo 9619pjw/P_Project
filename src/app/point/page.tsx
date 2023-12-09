@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "../Home.module.css";
 import Image from "next/image";
+import Head from 'next/head';
 
 // 사용자 포인트 정보
 type UserInfo = {
