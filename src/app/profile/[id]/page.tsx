@@ -13,6 +13,7 @@ type UserJSON = {
   nickname: string;
   introduction: string | null;
   profileImage: string | null | undefined;
+  availableFollow : boolean;
   followerCount : number;
   followingCount : number;
 };
@@ -24,9 +25,10 @@ export default function ProfilePage({ params }: { params: PageParams }) {
   let userJSON: UserJSON = {
     userId: 0,
     name:".",
-    nickname: "위스",
-    introduction: "반갑습니다",
+    nickname: "default",
+    introduction: "",
     profileImage: "/default-profile.png",
+    availableFollow : true,
     followerCount : 0,
     followingCount : 0,
   };

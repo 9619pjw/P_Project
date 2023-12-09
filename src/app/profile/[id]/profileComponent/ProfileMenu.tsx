@@ -12,6 +12,7 @@ type UserJSON = {
   nickname: string;
   introduction: string | null;
   profileImage: string | null | undefined;
+  availableFollow : boolean;
 };
 
 type ProfileProps = {
@@ -135,7 +136,6 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
       .then((res) => {
         if (res.status === 200) {
           alert("팔로우 신청이 완료되었습니다.");
-          // 페이지 새로고침 또는 사용자 상태 업데이트 로직을 여기에 추가하세요.
         } else {
           alert("팔로우 신청에 실패하였습니다.");
         }
@@ -145,6 +145,35 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
         throw new Error("서버 요청 실패!");
       });
   }
+  // 언팔로우 요청 함수
+async function handleUnFollowRequest() {
+  const unFollowURL = `https://funsns.shop:8000/follow-service/unfollow/${userData.userId}`;
+
+  // 액세스 토큰 가져오기
+  const localStorage: Storage = window.localStorage;
+  const token = localStorage.getItem("accessToken");
+
+  // 언팔로우 요청 보내기
+  fetch(unFollowURL, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((res) => {
+      if (res.status === 200) {
+        alert("언팔로우가 완료되었습니다.");
+        // 팔로워, 팔로잉 카운트 감소
+      } else {
+        alert("언팔로우에 실패하였습니다.");
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      throw new Error("서버 요청 실패!");
+    });
+}
+
   
 
   // 사용자 닉네임 검색결과 저장
@@ -262,7 +291,7 @@ export default function ProfileMenu({ pageId, userJSON }: ProfileProps) {
     ) : (
       <div className="mt-2">
           <button onClick={handleFollowRequest} className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
-            팔로우 신청
+            {userJSON.availableFollow ? "팔로우 신청" : "언팔로우"}
           </button>
       </div>
     )}

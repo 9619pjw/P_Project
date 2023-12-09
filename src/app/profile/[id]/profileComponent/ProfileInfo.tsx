@@ -4,6 +4,7 @@ type UserJSON = {
   nickname: string;
   profileImage: string | null | undefined;
   introduction: string | null;
+  availableFollow : boolean;
   followerCount : number;
   followingCount : number;
 };
