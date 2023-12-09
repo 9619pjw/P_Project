@@ -32,14 +32,15 @@ export default function SignUpPage() {
 
     return(
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <h1>Funs! CrowdFunding Service</h1>
+        <h1 className="text-4xl font-bold mb-2">Funs! CrowdFunding Service</h1>
         <br />
         <br />
         <div className="inputUserInfo" style={{ display: "flex", justifyContent: "space-around", alignItems: "start" }}>
             <div style={{ display: "flex", flexDirection: "column"}}>
-                <h1>Funs 회원정보 입력</h1>
+                <h4 className="text-2xl font-semibold mb-4">회원정보 입력</h4>
+                <br />
                 <div className="mb-4">
-                    <label htmlFor="image" className="block text-lg mb-2">이미지</label>
+                    <label htmlFor="image" className="block text-lg mb-2"> 프로필 이미지</label>
                     <input id="image" type="file" onChange={handleImageChange}></input>
                 </div>
                 <br />
