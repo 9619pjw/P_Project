@@ -5,7 +5,7 @@ import { useRouter} from "next/navigation";
 import styles from "../Home.module.css";
 import Image from "next/image";
 import Link from 'next/link';
-
+import Head from 'next/head';
 
 type UserJSON = {
 	userId: number;
@@ -248,24 +248,21 @@ export default function GifticonPage({ params }: { params: PageParams }) {
 //  };
 
   return (
-    <div>
-      <h4> {userInfo?.nickname} 님의 포인트 </h4>
-      <div
-        style={{
-          flex: "1",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "flex-start",
-          paddingTop: "20px",
-        }}
-      >
+    <>
+      <Head>
+        <title>User Point Page</title>
+      </Head>
+      <div className="bg-gray-100 container mx-auto px-4 py-8 flex flex-col items-center">
+        <header className="text-center mb-8">
+          <h1 className="text-4xl font-bold mb-2">{userInfo?.nickname} 님의 포인트</h1>
+        </header>
+
         {userInfo ? (
-          <div>
-            <p>포인트 잔액: {userInfo.balance}</p>
-            <button className={styles.backbutton}>
-              <Link href="/point" style={{ color: "black", textDecoration: "none"}}>
-                <a>포인트 내역</a>
+          <div className="text-center">
+            <p className="mb-6 text-gray-600">포인트 잔액: {userInfo.balance}</p>
+            <button className="px-4 py-2 bg-blue-500 text-white rounded">
+              <Link href="/point">
+                <a className="text-white no-underline">포인트 내역</a>
               </Link>
             </button>
           </div>
@@ -273,6 +270,32 @@ export default function GifticonPage({ params }: { params: PageParams }) {
           <p>Loading...</p>
         )}
       </div>
-    </div>
+    </>
   );
+    // <div>
+    //   <h4> {userInfo?.nickname} 님의 포인트 </h4>
+    //   <div
+    //     style={{
+    //       flex: "1",
+    //       display: "flex",
+    //       flexDirection: "column",
+    //       alignItems: "center",
+    //       justifyContent: "flex-start",
+    //       paddingTop: "20px",
+    //     }}
+    //   >
+    //     {userInfo ? (
+    //       <div>
+    //         <p>포인트 잔액: {userInfo.balance}</p>
+    //         <button className={styles.backbutton}>
+    //           <Link href="/point" style={{ color: "black", textDecoration: "none"}}>
+    //             <a>포인트 내역</a>
+    //           </Link>
+    //         </button>
+    //       </div>
+    //     ) : (
+    //       <p>Loading...</p>
+    //     )}
+    //   </div>
+    // </div>
 }
