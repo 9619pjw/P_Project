@@ -11,6 +11,7 @@ import clsx from "clsx";
 import Image from 'next/image';
 import Link from "next/link";
 
+import Notification from './Notification';
 import LogoutButton from './LogoutButton';
 import LoginButton from './LoginButton';
 
@@ -94,6 +95,7 @@ export const Navbar = () => {
 					{/* <Link href ={url}>
 						{loginImage}
 					</Link> */}
+					<Notification />
 					{isLogin ? logoutImage : loginImage}
 				</NavbarItem>
 				<NavbarItem className="hidden md:flex">
