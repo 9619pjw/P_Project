@@ -31,11 +31,12 @@ export default function SignUpPage() {
     };
 
     return(
-        <div>
-            <h1>Funs! CrowdFunding Service</h1>
-            <br />
-            <br />
-            <div className="inputUserInfo" style={{ display: "flex", flexDirection: "column" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <h1>Funs! CrowdFunding Service</h1>
+        <br />
+        <br />
+        <div className="inputUserInfo" style={{ display: "flex", justifyContent: "space-around", alignItems: "start" }}>
+            <div style={{ display: "flex", flexDirection: "column"}}>
                 <h1>Funs 회원정보 입력</h1>
                 <div className="mb-4">
                     <label htmlFor="image" className="block text-lg mb-2">이미지</label>
@@ -54,18 +55,6 @@ export default function SignUpPage() {
                 </div>
                 <br />
             </div>
-            <br />
-            <div
-                className="exportUserBtn"
-                style={{ display: "flex", justifyContent: "center" }}
-            >
-            <ExportUserInfoButton
-                image={image}
-                nickname={nickname}
-                validName={validName}
-                introduction={introduction}
-            />
-            </div>
             <Image
                 src="/funding.png"
                 alt="auth-page-image"
@@ -74,5 +63,17 @@ export default function SignUpPage() {
                 style={{ marginLeft: "50px" }}
             />
         </div>
-    );
+        <div
+            className="exportUserBtn"
+            style={{ display: "flex", justifyContent: "center" }}
+        >
+            <ExportUserInfoButton
+                image={image}
+                nickname={nickname}
+                validName={validName}
+                introduction={introduction}
+            />
+        </div>
+    </div>
+);
 }
