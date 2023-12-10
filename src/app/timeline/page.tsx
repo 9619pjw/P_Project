@@ -39,7 +39,7 @@ export default function TimelinePage(){
 
 
     return (
-        <div className="bg-gray-50 container mx-auto p-6">
+        <div className="bg-gray-50 flex justify-center p-6">
         <div className="bg-white shadow-md rounded-lg overflow-hidden">
             <div className="p-6">
                 <div className="flex items-center mb-4">
