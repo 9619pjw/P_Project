@@ -1,5 +1,5 @@
 import { useInView } from "react-intersection-observer";
-import { useInfiniteQuery } from '@tanstack/react-query'
+// import { useInfiniteQuery } from '@tanstack/react-query'
 
 import React from 'react';
 
