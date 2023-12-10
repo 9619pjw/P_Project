@@ -39,25 +39,32 @@ export default function TimelinePage(){
 
 
     return (
-    <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-6">Timeline Page</h1>
-        <div id="post-list">
-            <div className="bg-white shadow rounded-lg mb-6 p-4">
-                <div className="flex items-center justify-between mb-4">
-                    <div>
-                        <h2 className="font-semibold">작성자</h2>
-                        <p className="text-sm text-gray-600">2023-12-12</p>
+        <div className="bg-gray-50 container mx-auto p-6">
+        <div className="bg-white shadow-md rounded-lg overflow-hidden">
+            <div className="p-6">
+                <div className="flex items-center mb-4">
+                    <div className="mr-2">
+                        <img src="https://unsplash.it/32/32" alt="User Avatar" className="rounded-full" />
                     </div>
-                    <div className="w-16 h-16 bg-gray-300 rounded">사진이 들어감</div>
+                    <div>
+                        <p className="text-sm font-semibold">작성자 : </p>
+                        <p className="text-xs text-gray-500">작성일 : 2023/12/03</p>
+                    </div>
                 </div>
-                <p className="mb-4">컨텐츠 내용이 들어갈 곳</p>
-                <div className="flex items-center justify-start">
-                    <button className="text-blue-600 hover:text-blue-800 mr-4">Like</button>
-                    <button className="text-blue-600 hover:text-blue-800">Comment</button>
+                <div className="mb-4">
+                    <img src="https://unsplash.it/600/300" alt="Project Image" className="w-auto h-auto rounded-lg" />
+                </div>
+                <div className="mb-4">
+                    <p className="text-gray-700">콘텐츠 들어갈 부분</p>
+                </div>
+                <div className="mb-4">
+                    <div>
+                        <button className="text-blue-600 hover:text-blue-800">Like</button>
+                        <br />
+                        <button className="text-blue-600 hover:text-blue-800">Comment</button>
+                    </div>
                 </div>
             </div>
-        {/* Repeat the post block to simulate multiple posts */}
-        {/* ... */}
         </div>
     </div>
     );
