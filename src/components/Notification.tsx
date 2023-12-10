@@ -145,7 +145,9 @@ export default function Notification() {
             <td className="border-b border-gray-300 text-center px-2 py-1">{notification.title}</td>
             <td className="border-b border-gray-300 text-center px-2 py-1">{notification.message}</td>
             <td className="border-b border-gray-300 text-center px-2 py-1">{notification.createdAt}</td>
-            <td className="border-b border-gray-300 text-center px-2 py-1"><ReadNotification notificationId={notification.id} /></td>
+            <td className="border-b border-gray-300 text-center px-2 py-1  flex items-center justify-center">
+              <ReadNotification notificationId={notification.id} />
+            </td>
           </tr>
         ))}
       </tbody>
