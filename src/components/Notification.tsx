@@ -145,7 +145,7 @@ export default function Notification() {
             <td className="border-b border-gray-300 text-center px-2 py-1">{notification.title}</td>
             <td className="border-b border-gray-300 text-center px-2 py-1">{notification.message}</td>
             <td className="border-b border-gray-300 text-center px-2 py-1">{notification.createdAt}</td>
-            <td className="border-b border-gray-300 text-center px-2 py-1  flex items-center justify-center">
+            <td className="border-b border-gray-300 text-center px-2 py-1 flex items-center justify-center">
               <ReadNotification notificationId={notification.id} />
             </td>
           </tr>
@@ -153,31 +153,6 @@ export default function Notification() {
       </tbody>
     </table>
   </ModalCustom>
-      {/* <ModalCustom show={showNotification} setShow={setShowNotification}>
-        <h1>알림</h1>
-        <table>
-          <thead>
-            <tr>
-              <th style={{width: '50px'}}>번호</th>
-              <th style={{width: '200px'}}>제목</th>
-              <th style={{width: '300px'}}>메시지</th>
-              <th style={{width: '200px'}}>날짜</th>
-              <th style={{width: '100px'}}>읽음</th>
-            </tr>
-          </thead>
-          <tbody>
-            {notificationList.map((notification) => (
-              <tr key={notification.id}>
-                <td style={{width: '50px', height: '50px'}}>{notification.id}</td>
-                <td style={{width: '200px', height: '50px'}}>{notification.title}</td>
-                <td style={{width: '300px', height: '50px'}}>{notification.message}</td>
-                <td style={{width: '200px', height: '50px'}}>{notification.createdAt}</td>
-                <td style={{width: '100px', height: '50px'}}><ReadNotification notificationId={notification.id} /></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </ModalCustom> */}
     </>
   );
 }
