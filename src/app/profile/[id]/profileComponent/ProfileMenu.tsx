@@ -155,7 +155,7 @@ async function handleUnFollowRequest() {
 
   // 언팔로우 요청 보내기
   fetch(unFollowURL, {
-    method: "POST",
+    method: "DELETE",
     headers: {
       Authorization: `Bearer ${token}`,
     },

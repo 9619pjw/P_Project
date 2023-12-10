@@ -14,11 +14,12 @@ type NotificationResponse = {
 };
 
 type Notification = {
-  id: number;
-  title: string; //제목
-  message: string; //메시지
-  readYn: boolean; //읽음 여부
-  createdAt: string; //생성 날짜
+  id: number;      // 알림 아이디
+  userId : number; // 사용자 아이디
+  message: string; // 알림 메시지
+  title: string;   // 알림 제목
+  readYn: boolean; // 읽음 여부
+  createdAt: string; // 생성 날짜
 };
 
 type NotificationCountResponse = {
@@ -79,7 +80,7 @@ export default function Notification() {
     const token = localStorage.getItem("accessToken");
 
     // 알림 가져오기 API
-    const countNotificationURL = `https://funsns.shop:8000/notification-service/notification/count`;
+    const countNotificationURL = `https://funsns.shop:8000/notification-service/notification/counts`;
 
     const response = await fetch(countNotificationURL, {
       method: "GET",
