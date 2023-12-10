@@ -40,6 +40,7 @@ export default function ReadNotification({
         if (data.code === "SUCCESS") {
           console.log("읽음 요청 성공");
           setIsRead(true);
+          window.location.reload();
         } else {
           console.log("읽음 요청 실패");
         }

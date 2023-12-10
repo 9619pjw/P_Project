@@ -131,21 +131,21 @@ export default function Notification() {
         <table>
           <thead>
             <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>메시지</th>
-              <th>날짜</th>
-              <th>읽음</th>
+              <th style={{width: '50px'}}>번호</th>
+              <th style={{width: '200px'}}>제목</th>
+              <th style={{width: '300px'}}>메시지</th>
+              <th style={{width: '200px'}}>날짜</th>
+              <th style={{width: '100px'}}>읽음</th>
             </tr>
           </thead>
           <tbody>
             {notificationList.map((notification) => (
               <tr key={notification.id}>
-                <td>{notification.id}</td>
-                <td>{notification.title}</td>
-                <td>{notification.message}</td>
-                <td>{notification.createdAt}</td>
-                <td><ReadNotification notificationId={notification.id} /></td>
+                <td style={{height: '50px'}}>{notification.id}</td>
+                <td style={{height: '50px'}}>{notification.title}</td>
+                <td style={{height: '50px'}}>{notification.message}</td>
+                <td style={{height: '50px'}}>{notification.createdAt}</td>
+                <td style={{height: '50px'}}><ReadNotification notificationId={notification.id} /></td>
               </tr>
             ))}
           </tbody>
