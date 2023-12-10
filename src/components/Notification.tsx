@@ -141,11 +141,11 @@ export default function Notification() {
           <tbody>
             {notificationList.map((notification) => (
               <tr key={notification.id}>
-                <td style={{height: '50px'}}>{notification.id}</td>
-                <td style={{height: '50px'}}>{notification.title}</td>
-                <td style={{height: '50px'}}>{notification.message}</td>
-                <td style={{height: '50px'}}>{notification.createdAt}</td>
-                <td style={{height: '50px'}}><ReadNotification notificationId={notification.id} /></td>
+                <td style={{width: '50px', height: '50px'}}>{notification.id}</td>
+                <td style={{width: '200px', height: '50px'}}>{notification.title}</td>
+                <td style={{width: '300px', height: '50px'}}>{notification.message}</td>
+                <td style={{width: '200px', height: '50px'}}>{notification.createdAt}</td>
+                <td style={{width: '100px', height: '50px'}}><ReadNotification notificationId={notification.id} /></td>
               </tr>
             ))}
           </tbody>
