@@ -1,4 +1,7 @@
 
+
+import { useInView } from "react-intersection-observer"
+
 export default function NewspeedPage(){
 
     return (
