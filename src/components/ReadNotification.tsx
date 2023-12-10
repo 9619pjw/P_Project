@@ -50,11 +50,11 @@ export default function ReadNotification({
   return (
     <>
       {isRead ? (
-        <button className="px-4 py-2 bg-blue-500 text-white rounded mb-8" disabled>
+        <button className="px-4 py-2 bg-transparent text-black rounded" disabled>
           읽음
         </button>
       ) : (
-        <button className="px-4 py-2 bg-blue-500 text-white rounded mb-8" onClick={read}>
+        <button className="px-4 py-2 bg-blue-500 text-white rounded" onClick={read}>
           읽음
         </button>
       )}
