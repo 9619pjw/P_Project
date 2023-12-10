@@ -59,9 +59,10 @@ export default function TimelinePage(){
                 </div>
                 <div className="mb-4">
                     <div>
-                        <button className="text-blue-600 hover:text-blue-800">Like</button>
+                        <button className="px-4 py-2 bg-blue-500 text-white rounded ">Like</button>
                         <br />
-                        <button className="text-blue-600 hover:text-blue-800">Comment</button>
+                        <br/ > 
+                        <button className="px-4 py-2 bg-blue-500 text-white rounded">Comment</button>
                     </div>
                 </div>
             </div>
