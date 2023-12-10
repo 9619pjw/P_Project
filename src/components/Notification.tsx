@@ -127,6 +127,31 @@ export default function Notification() {
         </div>
       </Badge>
       <ModalCustom show={showNotification} setShow={setShowNotification}>
+    <h1 className="text-4xl font-bold mb-2">알림</h1>
+    <table className="w-full border-collapse">
+      <thead>
+        <tr>
+          <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">번호</th>
+          <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">제목</th>
+          <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">메시지</th>
+          <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">날짜</th>
+          <th className="border-b border-gray-300 text-center px-2 py-1 bg-gray-500 text-black">읽음</th>
+        </tr>
+      </thead>
+      <tbody>
+        {notificationList.map((notification, index) => (
+          <tr key={notification.id} className={index % 2 === 0 ? 'bg-gray-200' : ''}>
+            <td className="border-b border-gray-300 text-center px-2 py-1">{notification.id}</td>
+            <td className="border-b border-gray-300 text-center px-2 py-1">{notification.title}</td>
+            <td className="border-b border-gray-300 text-center px-2 py-1">{notification.message}</td>
+            <td className="border-b border-gray-300 text-center px-2 py-1">{notification.createdAt}</td>
+            <td className="border-b border-gray-300 text-center px-2 py-1"><ReadNotification notificationId={notification.notificationId} /></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </ModalCustom>
+      {/* <ModalCustom show={showNotification} setShow={setShowNotification}>
         <h1>알림</h1>
         <table>
           <thead>
@@ -150,7 +175,7 @@ export default function Notification() {
             ))}
           </tbody>
         </table>
-      </ModalCustom>
+      </ModalCustom> */}
     </>
   );
 }
