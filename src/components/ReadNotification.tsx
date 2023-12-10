@@ -30,7 +30,7 @@ export default function ReadNotification({
       method: "PUT",
       headers: {
         Credentials: "include",
-        ContentType: "application/json",
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(bodyContent),
