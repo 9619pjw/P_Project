@@ -1,14 +1,12 @@
-
-
-
 import { useInView } from "react-intersection-observer";
+import { useInfiniteQuery } from '@tanstack/react-query'
+
 import React from 'react';
 
 export default function TimelinePage(){
 
     const fetchMorePosts = () => {
-        // Mock fetch function to simulate loading new content
-        // ...
+        // Mock fetch function to simulate loading new content ...
     };
     // React.useEffect(() => {
     //     let observer;
