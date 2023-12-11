@@ -95,22 +95,18 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                                 </div>
                             <div>
                             <p className="text-sm font-semibold">{newsfeed.nickname}</p>
-                            <p className="text-xs text-gray-500">게일 : {newsfeed.createdDate}</p>
+                            <p className="text-xs text-gray-500">게시일 : {newsfeed.createdDate}</p>
                         </div>
                     </div>
-                <div className="mb-4">
+                <div className="mb-4 flex justify-center">
                     <img src={newsfeed.feedImgURL} alt="Project Image" className="w-auto h-auto rounded-lg" />
                 </div>
                 <div className="mb-4">
                     <p className="text-gray-700">{newsfeed.content}</p>
                 </div>
-                <div className="mb-4">
-                    <div>
-                        <button className="px-4 py-2 bg-blue-500 text-white rounded">Like</button>
-                        <br />
-                        <br />
-                        <button className="px-4 py-2 bg-blue-500 text-white rounded">Comment</button>
-                    </div>
+                <div className="mb-4 flex space-x-2">
+                    <button className="px-4 py-2 bg-blue-500 text-white rounded">Like</button>
+                    <button className="px-4 py-2 bg-blue-500 text-white rounded">Comment</button>
                 </div>
             </div>
         </div>
