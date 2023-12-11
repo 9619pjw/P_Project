@@ -97,7 +97,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
             console.error("Error:", error);
         }
     };
-    
+
     useEffect(() => {
         const localStorage: Storage = window.localStorage;
         const token = localStorage.getItem("accessToken");
@@ -143,7 +143,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
 
         const userIdFromLS = Number(localStorage.getItem("userId"));
         setFeed(prevState => ({ ...prevState, userId: userIdFromLS }));
-    }, []);
+    }, [params.id]);
 
     return (
         <div className={styles.container}>
