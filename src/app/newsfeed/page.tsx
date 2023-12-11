@@ -22,9 +22,11 @@ type Newsfeed = {
 export default function NewsfeedPage(){
 
     const [token, setToken] = useState<string | null>(null);
+    const [loadData, setLoadData] = useState(false);
 
     useEffect(() => {
-        setToken(window.localStorage.getItem("accessToken"));
+        setToken(localStorage.getItem("accessToken"));
+        setLoadData(true);
     }, []);
 
     const fetchNewsfeeds = async ({ pageParam = 0 }) => {
@@ -46,7 +48,7 @@ export default function NewsfeedPage(){
         isFetching,
     } = useInfiniteQuery('newsfeeds', fetchNewsfeeds, {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
-        enabled: !!token,  // token이 있는 경우에만 쿼리 실행
+        enabled: !!token && loadData,  // token이 있는 경우에만 쿼리 실행
     });
 
     const { ref, inView } = useInView({
@@ -67,8 +69,8 @@ export default function NewsfeedPage(){
                 </button>
             </Link>
             {data?.pages.flatMap((group, i) => (
-        <React.Fragment key={i}>
-            {group.newsfeeds.map((newsfeed : Newsfeed) => (
+            <React.Fragment key={i}>
+                {group.newsfeeds.map((newsfeed : Newsfeed) => (
                 <div key={newsfeed.feedId} className="bg-gray-50 flex justify-center p-6">
                     <div className="bg-white shadow-md rounded-lg overflow-hidden">
                         <div className="p-6">
@@ -102,6 +104,6 @@ export default function NewsfeedPage(){
     </React.Fragment>
     ))}
     <div ref={ref} />
-    </div>
-    );
+</div>
+);
 }
