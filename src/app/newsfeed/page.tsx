@@ -87,7 +87,7 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
             <React.Fragment key={i}>
                 {group.newsfeeds.map((newsfeed : Newsfeed) => (
                 <div key={newsfeed.feedId} className="bg-gray-50 flex justify-center p-6">
-                    <div className="bg-white shadow-md rounded-lg w-128">
+                    <div className="bg-white shadow-md rounded-lg w-full max-w-lg">
                         <div className="p-6">
                             <div className="flex items-center mb-4">
                                 <div className="mr-2">
@@ -98,12 +98,12 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                             <p className="text-xs text-gray-500">게시일 : {newsfeed.createdDate}</p>
                         </div>
                     </div>
-                    <div className="mb-4 flex justify-center">
+                    <div className="mb-4">
                         <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
-                        <div className="w-full overflow-auto">
+                    </div>
+                    <div className="mb-4 text-center">
                             <p className="text-gray-900 font-bold">{newsfeed.title}</p>
                             <p className="text-gray-700">{newsfeed.content}</p>
-                        </div>
                     </div>
                     <div className="mb-4 flex space-x-2">
                         <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
