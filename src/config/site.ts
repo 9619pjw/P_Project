@@ -17,8 +17,8 @@ export const siteConfig = {
 			href: "/gifticon",
 		},
 		{
-			label: "NewsPeed",
-			href: "/newspeed",
+			label: "Newsfeed",
+			href: "/newsfeed",
 		},
 		{
 			label: "TimeLine",

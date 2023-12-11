@@ -154,7 +154,6 @@ export default function PostList() {
           &nbsp;&nbsp;
           <Link href="/post/signup">
           <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">
-            {/* <button className={styles.signupButton}> */}
               Signup
             </button>
           </Link>
@@ -162,17 +161,14 @@ export default function PostList() {
       )}
       <br />
       <br />
-      {/* <div className={styles.boardContainer}> */}
       <div className="flex justify-between">
         <Link href="/post/create">
-          {/* <button className={styles.addButton}> */}
           <button className="bg-black text-white border border-gray-300 px-2 py-1 rounded-md cursor-pointer h-10">
             질문글 등록하기
           </button>
         </Link>
         <div>
           <input
-            // className={styles.searchBox}
             className="border border-gray-300 p-2 w-48 ml-2 rounded h-10"
             type="text"
             placeholder="검색어를 입력하세요"
