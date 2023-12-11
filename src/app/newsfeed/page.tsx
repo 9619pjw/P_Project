@@ -1,6 +1,6 @@
 "use client";
 
-import { useInfiniteQuery } from 'react-query';
+import { QueryClient, QueryClientProvider, useInfiniteQuery, QueryFunctionContext } from 'react-query';
 import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
@@ -19,17 +19,22 @@ type Newsfeed = {
     createdDate: string;
 };
 
-export default function NewsfeedPage(){
+type NewsfeedComponentProps = {
+    loadData: boolean;
+    fetchNewsfeeds: (context: QueryFunctionContext) => Promise<{ newsfeeds: Newsfeed[]; nextCursor: number }>;
+    token: string | null;
+};
 
+export default function NewsfeedPage(){
     const [token, setToken] = useState<string | null>(null);
     const [loadData, setLoadData] = useState(false);
 
     useEffect(() => {
         setToken(localStorage.getItem("accessToken"));
-        setLoadData(true);
+        setLoadData(true); 
     }, []);
 
-    const fetchNewsfeeds = async ({ pageParam = 0 }) => {
+    const fetchNewsfeeds = async ({ pageParam = 0 }: QueryFunctionContext) => {
         const response = await fetch(`https://funsns.shop:8000/feed-service/feed/newsfeed?cursor=${pageParam}&size=5`, {
         headers: {
             "Credentials": "include",
@@ -37,9 +42,19 @@ export default function NewsfeedPage(){
         },
     });
     const data = await response.json();
-
+    
     return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
     };
+
+    const queryClient = new QueryClient();
+    return (
+        <QueryClientProvider client={queryClient}>
+            <NewsfeedComponent loadData={loadData} fetchNewsfeeds={fetchNewsfeeds} token={token}/>
+        </QueryClientProvider>
+    );
+}
+
+function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponentProps) {
 
     const {
         data,
@@ -48,7 +63,7 @@ export default function NewsfeedPage(){
         isFetching,
     } = useInfiniteQuery('newsfeeds', fetchNewsfeeds, {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
-        enabled: !!token && loadData,  // token이 있는 경우에만 쿼리 실행
+        enabled: !!token && loadData, 
     });
 
     const { ref, inView } = useInView({
