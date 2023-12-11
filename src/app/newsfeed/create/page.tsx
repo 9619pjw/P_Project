@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import styles from "../../Home.module.css";
+import Head from 'next/head';
 
 type UserJSON = {
     userId: number;
@@ -182,6 +182,10 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     }, []);
 
     return (
+        <>
+            <Head>
+                <title>Create NewsFeed</title>
+            </Head>
         <div className="bg-gray-50 container mx-auto p-6">
         <form onSubmit={handleSubmit} className="space-y-4">
             <input type="hidden" name="userId" value={feed.userId} />
@@ -202,29 +206,6 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
             <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 작성</button>
         </form>
     </div>
-        // <div className={styles.container}>
-        //     <form onSubmit={handleSubmit}>
-        //         <input type="hidden" name="userId" value={feed.userId} />
-        //         <label>
-        //             제목:
-        //             <input type="text" name="title" value={feed.title} onChange={handleChange} />
-        //         </label>
-        //         <br />
-        //         <br />
-        //         <label>
-        //             내용: <textarea name="content" value={feed.content} onChange={handleChange} />
-        //         </label>
-        //         <br />
-        //         <br />
-        //         <label>
-        //             이미지:
-        //             <input type="file" name="image" onChange={handleImageChange} />
-        //         </label>
-        //         <br />
-        //         {previewImage && <img src={previewImage} alt="Preview" />}
-        //         <br />
-        //         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 작성</button>
-        //     </form>
-        // </div>
+    </>
     );
 }
