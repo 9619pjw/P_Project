@@ -70,13 +70,39 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
             return;
         }
 
-        const formData = new FormData();
-        formData.append("user-id", String(feed.userId));
-        formData.append("content", JSON.stringify({ title: feed.title, content: feed.content }));
-        formData.append("image", feed.image);
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken"); 
+
+        // formData.append("user-id", String(feed.userId));
+        // formData.append("content", JSON.stringify({ title: feed.title, content: feed.content }));
+        // formData.append("image", feed.image);
 
         try {
-            const token = localStorage.getItem("accessToken"); 
+            const formData = new FormData();
+
+            let CreateFeedRequest = {
+                userId: feed.userId,
+                image: feed.image,
+                title: feed.title,
+                content: feed.content,
+            };
+
+            formData.append(
+                "content",
+                new Blob([JSON.stringify(CreateFeedRequest)], {
+                    type: "application/json",
+                })
+            );
+
+            if (feed.image) {
+                formData.append("image", feed.image);
+            }
+            // 데이터 확인
+            console.log(formData);
+            Array.from(formData.entries()).forEach(([key, value]) => {
+                console.log(key, value);
+            });
+
             const response = await fetch("https://funsns.shop:8000/feed-service/feed", {
                 method: "POST",
                 headers: {
