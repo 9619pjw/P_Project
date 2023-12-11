@@ -87,7 +87,7 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
             <React.Fragment key={i}>
                 {group.newsfeeds.map((newsfeed : Newsfeed) => (
                 <div key={newsfeed.feedId} className="bg-gray-50 flex justify-center p-6">
-                    <div className="bg-white shadow-md rounded-lg overflow-hidden">
+                    <div className="bg-white shadow-md rounded-lg w-128">
                         <div className="p-6">
                             <div className="flex items-center mb-4">
                                 <div className="mr-2">
@@ -99,12 +99,10 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                         </div>
                     </div>
                     <div className="mb-4 flex justify-center">
-                        <div className="w-128">
-                            <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
-                            <div className="w-full overflow-auto text-center">
-                                <p className="text-gray-900 font-bold">{newsfeed.title}</p>
-                                <p className="text-gray-700">{newsfeed.content}</p>
-                            </div>
+                        <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
+                        <div className="w-full overflow-auto text-center">
+                            <p className="text-gray-900 font-bold">{newsfeed.title}</p>
+                            <p className="text-gray-700">{newsfeed.content}</p>
                         </div>
                     </div>
                     <div className="mb-4 flex space-x-2">
