@@ -99,11 +99,13 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                         </div>
                     </div>
                 <div className="mb-4 flex justify-center">
-                    <img src={newsfeed.feedImgURL} alt="Project Image" className="w-auto h-auto rounded-lg" />
-                </div>
-                <div className="mb-4 w-64 h-64 overflow-auto text-center">
-                    <p className="text-gray-900 font-bold">{newsfeed.title}</p>
-                    <p className="text-gray-700">{newsfeed.content}</p>
+                    <div className="w-128">
+                        <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-auto rounded-lg" />
+                        <div className="overflow-auto text-center">
+                            <p className="text-gray-900 font-bold">{newsfeed.title}</p>
+                            <p className="text-gray-700">{newsfeed.content}</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="mb-4 flex space-x-2">
                     <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
