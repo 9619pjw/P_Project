@@ -76,8 +76,14 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
         formData.append("image", feed.image);
 
         try {
+            const token = localStorage.getItem("accessToken"); 
             const response = await fetch("https://funsns.shop:8000/feed-service/feed", {
                 method: "POST",
+                headers: {
+                    "Credentials": "include",
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
                 body: formData
             });
 
