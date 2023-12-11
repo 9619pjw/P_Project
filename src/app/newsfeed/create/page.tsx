@@ -43,6 +43,10 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     const [data, setData] = useState<UserJSON>(userJSON);
     // TODO: GET - id에 맞는 사용자 정보 가져오기
     
+    const localStorage: Storage = window.localStorage;
+    const token = localStorage.getItem("accessToken");
+    let userId = params.id;
+
     async function getUserInfo() {
     // 로컬스토리지 토큰 가져오기
         const localStorage: Storage = window.localStorage;
@@ -104,17 +108,19 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     setShowUserInfo(true);
     }, []);
 
-    const localStorage: Storage = window.localStorage;
-    const token = localStorage.getItem("accessToken");
-    let userId = params.id;
-
 
     const [feed, setFeed] = useState<FeedInfo>({
-        userId: userId,
-        image: "",
+        userId: 0,
+        image: null,
         title: "",
         content: ""
     });
+    useEffect(() => {
+        const localStorage: Storage = window.localStorage;
+        const userId = Number(localStorage.getItem("userId"));
+        
+        setFeed(prevState => ({ ...prevState, userId: userId }));
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFeed({ ...feed, [e.target.name]: e.target.value });
@@ -133,7 +139,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!feed.userId || !feed.title || !feed.content || !feed.image) {
+        if (!feed.title || !feed.content || !feed.image) {
             alert("모든 항목을 입력해주세요.");
             return;
         }
