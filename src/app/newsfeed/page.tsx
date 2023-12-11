@@ -1,8 +1,8 @@
 "use client";
 
-import { useInfiniteQuery } from 'react-query';
+import { useInfiniteQuery, useQueryClient } from 'react-query';
 import { useInView } from 'react-intersection-observer';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 
 type Newsfeed = {
@@ -21,22 +21,24 @@ type Newsfeed = {
 
 export default function NewsfeedPage(){
 
-    const localStorage: Storage = window.localStorage;
-    const token = localStorage.getItem("accessToken"); 
+    const [token, setToken] = useState<string | null>(null);
+
+    useEffect(() => {
+        setToken(window.localStorage.getItem("accessToken"));
+    }, []);
 
     const fetchNewsfeeds = async ({ pageParam = 0 }) => {
         const response = await fetch(`https://funsns.shop:8000/feed-service/feed/newsfeed?cursor=${pageParam}&size=5`, {
-            headers: {
-                "Credentials": "include",
-                "Authorization": `Bearer ${token}`,
-            },
-        });
-        const data = await response.json();
-    
-        // 다음 cursor를 반환합니다. 이 값은 useInfiniteQuery의 getNextPageParam에서 사용
-        return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
+        headers: {
+            "Credentials": "include",
+            "Authorization": `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
+
+    return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
     };
-    
+
     const {
         data,
         fetchNextPage,
@@ -44,12 +46,13 @@ export default function NewsfeedPage(){
         isFetching,
     } = useInfiniteQuery('newsfeeds', fetchNewsfeeds, {
         getNextPageParam: (lastPage) => lastPage.nextCursor,
+        enabled: !!token,  // token이 있는 경우에만 쿼리 실행
     });
-    
+
     const { ref, inView } = useInView({
         threshold: 1,
     });
-    
+
     useEffect(() => {
         if (inView && hasNextPage && !isFetching) {
             fetchNextPage();
