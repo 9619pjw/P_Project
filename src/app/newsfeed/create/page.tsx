@@ -22,7 +22,7 @@ type PageParams = {
 
 type FeedInfo = {
     userId : number;
-    image: string | null;
+    image: string | File | null;
     title: string;
     content: string;
 };
@@ -54,18 +54,21 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
+            const file = e.target.files[0];
+            setFeed({ ...feed, image: file });
+    
             const reader = new FileReader();
             reader.onloadend = () => {
-                setFeed({ ...feed, image: reader.result as string });
+                setFeed(prevFeed => ({ ...prevFeed, image: reader.result as string }));
             };
-            reader.readAsDataURL(e.target.files[0]);
+            reader.readAsDataURL(file);
         }
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!feed.title || !feed.content || !feed.image) {
+        if (!feed.title || !feed.content) {
             alert("모든 항목을 입력해주세요.");
             return;
         }
@@ -82,7 +85,6 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
 
             let CreateFeedRequest = {
                 userId: feed.userId,
-                image: feed.image,
                 title: feed.title,
                 content: feed.content,
             };
@@ -107,7 +109,6 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
                 method: "POST",
                 headers: {
                     "Credentials": "include",
-                    "Content-Type": "multipart/form-data",
                     "Authorization": `Bearer ${token}`,
                 },
                 body: formData
