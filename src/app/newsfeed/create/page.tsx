@@ -78,10 +78,6 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
         const localStorage: Storage = window.localStorage;
         const token = localStorage.getItem("accessToken"); 
 
-        // formData.append("user-id", String(feed.userId));
-        // formData.append("content", JSON.stringify({ title: feed.title, content: feed.content }));
-        // formData.append("image", feed.image);
-
         try {
             const formData = new FormData();
 
