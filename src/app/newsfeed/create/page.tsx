@@ -29,6 +29,7 @@ type FeedInfo = {
 
 export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     const [showUserInfo, setShowUserInfo] = useState(false);
+    const [previewImage, setPreviewImage] = useState<string | null>(null);
     const [feed, setFeed] = useState<FeedInfo>({
         userId: 0,
         image: null,
@@ -59,7 +60,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     
             const reader = new FileReader();
             reader.onloadend = () => {
-                setFeed(prevFeed => ({ ...prevFeed, image: reader.result as string }));
+                setPreviewImage(reader.result as string);
             };
             reader.readAsDataURL(file);
         }
@@ -198,7 +199,8 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
                     <input type="file" name="image" onChange={handleImageChange} />
                 </label>
                 <br />
-                {feed.image && <img src={feed.image} alt="Preview" />}
+                {previewImage && <img src={previewImage} alt="Preview" />}
+                {/* {feed.image && <img src={feed.image} alt="Preview" />} */}
                 <br />
                 <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 작성</button>
             </form>
