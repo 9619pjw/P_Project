@@ -28,6 +28,7 @@ type FeedInfo = {
 };
 
 export default function NewsfeedCreatePage({ params }: { params: PageParams }){
+    const router = useRouter();
     const [showUserInfo, setShowUserInfo] = useState(false);
     const [previewImage, setPreviewImage] = useState<string | null>(null);
     const [feed, setFeed] = useState<FeedInfo>({
@@ -124,6 +125,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
             if (data.code === "SUCCESS") {
                 alert(data.message);
                 setFeed({ userId: feed.userId, image: "", title: "", content: "" });
+                router.push('/newsfeed');
             } else {
                 alert("피드 작성에 실패하였습니다.");
             }
