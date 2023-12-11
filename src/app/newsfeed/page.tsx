@@ -101,7 +101,7 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                 <div className="mb-4 flex justify-center">
                     <div className="w-128 h-128 overflow-auto">
                         <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-auto rounded-lg" />
-                        <div className="overflow-auto text-center">
+                        <div className="text-center">
                             <p className="text-gray-900 font-bold">{newsfeed.title}</p>
                             <p className="text-gray-700">{newsfeed.content}</p>
                         </div>
