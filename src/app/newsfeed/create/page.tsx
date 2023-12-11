@@ -101,7 +101,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     useEffect(() => {
         const localStorage: Storage = window.localStorage;
         const token = localStorage.getItem("accessToken");
-        let userId = params.id;
+        let userId = localStorage.getItem("userId");
 
         async function getUserInfo() {
             const getUserInfoURL: string = `https://funsns.shop:8000/user-service/user/${userId}`;
@@ -143,7 +143,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
 
         const userIdFromLS = Number(localStorage.getItem("userId"));
         setFeed(prevState => ({ ...prevState, userId: userIdFromLS }));
-    }, [params.id]);
+    }, []);
 
     return (
         <div className={styles.container}>
