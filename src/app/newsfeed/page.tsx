@@ -1,6 +1,6 @@
 "use client";
 
-import { useInfiniteQuery, useQueryClient } from 'react-query';
+import { useInfiniteQuery } from 'react-query';
 import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
