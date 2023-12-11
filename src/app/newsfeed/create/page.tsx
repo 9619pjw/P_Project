@@ -182,30 +182,49 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     }, []);
 
     return (
-        <div className={styles.container}>
-            <form onSubmit={handleSubmit}>
-                <input type="hidden" name="userId" value={feed.userId} />
-                <label>
-                    제목:
-                    <input type="text" name="title" value={feed.title} onChange={handleChange} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    내용: <textarea name="content" value={feed.content} onChange={handleChange} />
-                </label>
-                <br />
-                <br />
-                <label>
-                    이미지:
-                    <input type="file" name="image" onChange={handleImageChange} />
-                </label>
-                <br />
-                {previewImage && <img src={previewImage} alt="Preview" />}
-                {/* {feed.image && <img src={feed.image} alt="Preview" />} */}
-                <br />
-                <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 작성</button>
-            </form>
-        </div>
+        <div className="bg-gray-50 container mx-auto p-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
+            <input type="hidden" name="userId" value={feed.userId} />
+            <label className="block">
+                <span className="text-gray-700">제목:</span>
+                <input type="text" name="title" value={feed.title} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
+            </label>
+            <label className="block">
+                <span className="text-gray-700">내용:</span>
+                <textarea name="content" value={feed.content} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"/>
+            </label>
+            <label className="block">
+                <span className="text-gray-700">이미지:</span>
+                <input type="file" name="image" onChange={handleImageChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"/>
+            </label>
+            {previewImage && <img src={previewImage} alt="Preview" className="mt-4"/>}
+            {/* {feed.image && <img src={feed.image} alt="Preview" />} */}
+            <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 작성</button>
+        </form>
+    </div>
+        // <div className={styles.container}>
+        //     <form onSubmit={handleSubmit}>
+        //         <input type="hidden" name="userId" value={feed.userId} />
+        //         <label>
+        //             제목:
+        //             <input type="text" name="title" value={feed.title} onChange={handleChange} />
+        //         </label>
+        //         <br />
+        //         <br />
+        //         <label>
+        //             내용: <textarea name="content" value={feed.content} onChange={handleChange} />
+        //         </label>
+        //         <br />
+        //         <br />
+        //         <label>
+        //             이미지:
+        //             <input type="file" name="image" onChange={handleImageChange} />
+        //         </label>
+        //         <br />
+        //         {previewImage && <img src={previewImage} alt="Preview" />}
+        //         <br />
+        //         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 작성</button>
+        //     </form>
+        // </div>
     );
 }
