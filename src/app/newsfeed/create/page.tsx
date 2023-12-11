@@ -21,12 +21,11 @@ type PageParams = {
 };
 
 type FeedInfo = {
-    userId : number; // 작성자 id
-    image: string | null; // 이미지 추가
-    title: string; // 피드 제목
-    content: string; // 피드 내용
+    userId : number;
+    image: string | null;
+    title: string;
+    content: string;
 };
-
 
 export default function NewsfeedCreatePage({ params }: { params: PageParams }){
     const [showUserInfo, setShowUserInfo] = useState(false);
@@ -98,7 +97,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
             console.error("Error:", error);
         }
     };
-
+    
     useEffect(() => {
         const localStorage: Storage = window.localStorage;
         const token = localStorage.getItem("accessToken");
@@ -114,32 +113,21 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`,
                 },
-            })
-            .then((res) => res.json())
-            .then((data) => {
+            });
+
+            if(response.ok) {
+                const responseBody = await response.json();
                 console.log("data:");
-                console.log(data);
-                if (data.code === "SUCCESS") {
+                console.log(responseBody);
+                if (responseBody.code === "SUCCESS") {
                     console.log("사용자 정보를 불러오는데 성공했습니다.");
+                    return responseBody.data;
                 } else {
                     console.log("사용자 정보를 불러오는데 실패했습니다.");
                 }
-                return data;
-            })
-            .catch((error) => {
-                console.log(error);
-                throw new Error("서버 요청 실패!");
-            });
-
-            let body: UserJSON;
-            if (response) {
-                body = await response.data;
-                console.log("body:");
-                console.log(body);
-                return body;
             } else {
-                console.log("응답이 없습니다.");
-                return null;
+                console.log("서버 요청 실패!");
+                throw new Error("서버 요청 실패!");
             }
         }
 
