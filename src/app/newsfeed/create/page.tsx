@@ -81,7 +81,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
                 method: "POST",
                 headers: {
                     "Credentials": "include",
-                    "Content-Type": "application/json",
+                    "Content-Type": "multipart/form-data",
                     "Authorization": `Bearer ${token}`,
                 },
                 body: formData
