@@ -86,9 +86,7 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                         <div className="p-6">
                             <div className="flex items-center mb-4">
                                 <div className="mr-2">
-                                    <Link href={`/newsfeed/detail/${newsfeed.feedId}`}>
-                                        <img src={newsfeed.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />
-                                    </Link>
+                                    <img src={newsfeed.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />            
                                 </div>
                             <div>
                             <p className="text-sm font-semibold">{newsfeed.nickname}</p>
@@ -96,7 +94,9 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                         </div>
                     </div>
                     <div className="mb-4">
-                        <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
+                        <Link href={`/newsfeed/detail/${newsfeed.feedId}`}>
+                            <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
+                        </Link>
                     </div>
                     <div className="mb-4">
                             <p className="text-gray-900 font-bold">{newsfeed.title}</p>
