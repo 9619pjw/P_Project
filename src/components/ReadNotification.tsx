@@ -1,16 +1,17 @@
 "use client";
 import React from "react";
-import { Button } from "@mui/material";
 
 type ReadNotificationProps = {
   notificationId: number;
+  readYn: boolean;
 };
 
 export default function ReadNotification({
   notificationId,
+  readYn,
 }: ReadNotificationProps) {
   // 읽은 여부 상태
-  const [isRead, setIsRead] = React.useState(false);
+  const [isRead, setIsRead] = React.useState(readYn);
 
   // 읽음 요청 fetch
   async function read() {
