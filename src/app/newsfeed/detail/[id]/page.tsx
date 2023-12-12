@@ -20,11 +20,22 @@ type Newsfeed = {
     createdDate: string;
 };
 
-type NewsfeedComponentProps = {
-    loadData: boolean;
-    fetchNewsfeeds: (context: QueryFunctionContext) => Promise<{ newsfeeds: Newsfeed[]; nextCursor: number }>;
-    token: string | null;
-};
+type NewsfeedInfo = {
+    feedId: number;
+    userId: number;
+    nickname: string;
+    title: string;
+    content: string;
+    profileImgURL: string;
+    feedImgURL: string;
+    likeCount: number;
+    commentCount: number;
+    isLiked: boolean;
+    isMine: boolean;
+    isFollowed : boolean;
+    createdDate : string;
+    viewCount: number;
+}
 
 
 export default function FeedDetailPage(){    
@@ -32,7 +43,7 @@ export default function FeedDetailPage(){
     const params = useSearchParams();
     const feedId  = params.get('feedId');
 
-    const [feedData, setFeedData] = useState<Newsfeed | null>(null);
+    const [feedData, setFeedData] = useState<NewsfeedInfo | null>(null);
     
     useEffect(() => {
         const fetchFeedDetail = async () => {
