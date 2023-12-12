@@ -25,7 +25,13 @@ type NewsfeedInfo = {
     viewCount: number;
 }
 
-export default function FeedDetailPage() {
+type ReadProps = {
+    params: {
+      id: number;
+    };
+  };
+
+export default function FeedDetailPage(props: ReadProps) {
     const router = useRouter();
     const params = useSearchParams();
     const feedId  = params.get('feedId');
@@ -33,7 +39,7 @@ export default function FeedDetailPage() {
     console.log(feedId);
     const [feedData, setFeedData] = useState<NewsfeedInfo | null>(null);
 
-    console.log(`Component rendered. feedId: ${feedId}`); // 컴포넌트 렌더링 확인
+    console.log(`Component rendered. feedId: ${props.params.id}`); // 컴포넌트 렌더링 확인
 
     useEffect(() => {
         const fetchFeedDetail = async () => {
