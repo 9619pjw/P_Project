@@ -78,15 +78,11 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
     
     return (
         <div>
-            {/* <Link href="/newsfeed/create">
-                <button className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
-                    피드 생성
-                </button>
-            </Link> */}
             {data?.pages.flatMap((group, i) => (
             <React.Fragment key={i}>
                 {group.newsfeeds.map((newsfeed : Newsfeed) => (
-                <div key={newsfeed.feedId} className="bg-gray-50 flex justify-center p-6">
+                <Link href={`/newsfeed/detail/${newsfeed.feedId}`} key={newsfeed.feedId}>
+                <div className="bg-gray-50 flex justify-center p-6">
                     <div className="bg-white shadow-md rounded-lg w-full max-w-lg">
                         <div className="p-6">
                             <div className="flex items-center mb-4">
@@ -120,6 +116,7 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                         </button>
                     </div>
                 </div>
+                </Link>
             </div>
         </div>
     ))}
