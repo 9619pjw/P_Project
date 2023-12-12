@@ -23,15 +23,19 @@ type NewsfeedInfo = {
 }
 
 type CommentInfo = {
-    commentId : number,        // 댓글 id
-    content : string,  // 댓글 내용
-    likeCount : number,	   // 좋아요 수
-    replyCount : number,	   // 대댓글의 수
-    userId : number,		  // 댓글 작성자 id
-    profileImgURL : string, // 댓글 작성자 프로필 이미지
-    nickname : string,  // 댓글 작성자 닉네임
-    isLiked : boolean,    // 댓글 좋아요 여부
-    createdDate : string // 댓글 생성 날짜
+    commentId : number,      // 댓글 id
+    content : string,        // 댓글 내용
+    likeCount : number,	     // 좋아요 수
+    replyCount : number,	 // 대댓글의 수
+    userId : number,		 // 댓글 작성자 id
+    profileImgURL : string,  // 댓글 작성자 프로필 이미지
+    nickname : string,       // 댓글 작성자 닉네임
+    isLiked : boolean,       // 댓글 좋아요 여부
+    createdDate : string     // 댓글 생성 날짜
+}
+
+type Comment = {
+    content : string;
 }
 
 type ReadProps = {
@@ -44,15 +48,70 @@ export default function FeedDetailPage(props: ReadProps) {
 
     const [feedData, setFeedData] = useState<NewsfeedInfo | null>(null);
     const [comments, setComments] = useState<CommentInfo[]>([]); 
+    const [commentInput, setCommentInput] = useState('');
 
-    console.log(`Component rendered. feedId: ${props.params.id}`); // 컴포넌트 렌더링 확인
+    const handleCommentChange = (e : React.ChangeEvent<HTMLInputElement>) => {
+        setCommentInput(e.target.value);
+    };
 
-    useEffect(() => {
+    const fetchComments = async () => {
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken");
+
+        try {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=1`, {
+                method: "GET",
+                headers: {
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
+
+            const data = await response.json();
+
+            console.log('Comment Response:', data); 
+
+            setComments(data.data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+
+    // 댓글 작성
+    const submitComment = async () => {
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken");
+
+        try {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment`, {
+                method: "POST",
+                headers: {
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    content: commentInput
+                }),
+            });
+
+            const data = await response.json();
+
+            console.log('Comment Post Response:', data); 
+
+            if(data.code === "SUCCESS") {
+                setCommentInput(''); 
+                fetchComments(); 
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
         const fetchFeedDetail = async () => {
             const localStorage: Storage = window.localStorage;
             const token = localStorage.getItem("accessToken");
-
-            console.log(`useEffect triggered. feedId: ${props.params.id}`); // useEffect 실행 확인
 
             try {
                 const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}`, {
@@ -64,9 +123,6 @@ export default function FeedDetailPage(props: ReadProps) {
                 });
 
                 const data = await response.json();
-
-                console.log('Response:', data); // API 호출 응답 값 확인
-
                 setFeedData(data.data);
             } catch (error) {
                 console.error("Error:", error);
@@ -74,39 +130,39 @@ export default function FeedDetailPage(props: ReadProps) {
         };
 
 
-        // 댓글 데이터를 가져오는 함수 추가
-        const fetchComments = async () => {
-            const localStorage: Storage = window.localStorage;
-            const token = localStorage.getItem("accessToken");
+        // // 댓글 데이터를 가져오는 함수 추가
+        // const fetchComments = async () => {
+        //     const localStorage: Storage = window.localStorage;
+        //     const token = localStorage.getItem("accessToken");
 
-            try {
-                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=1`, {
-                    method: "GET",
-                    headers: {
-                        "Credentials": "include",
-                        "Authorization": `Bearer ${token}`,
-                    },
-                });
+        //     try {
+        //         const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=1`, {
+        //             method: "GET",
+        //             headers: {
+        //                 "Credentials": "include",
+        //                 "Authorization": `Bearer ${token}`,
+        //             },
+        //         });
 
-                const data = await response.json();
+        //         const data = await response.json();
 
-                console.log('Comment Response:', data); // API 호출 응답 값 확인
+        //         console.log('Comment Response:', data); // API 호출 응답 값 확인
 
-                setComments(data.data);
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        };
-
-        fetchFeedDetail();
-        fetchComments(); 
-    }, [props.params.id]);
+        //         setComments(data.data);
+        //     } catch (error) {
+        //         console.error("Error:", error);
+        //     }
+        // };
+        
+        
+        useEffect(() => {
+            fetchFeedDetail();
+            fetchComments(); 
+        }, [props.params.id]);
 
     if (!feedData) {
         return <div>Loading...</div>;
     }
-
-    console.log('Rendering feed data:', feedData); 
 
     return (
         <div className="bg-gray-50 flex justify-center p-12">
@@ -156,6 +212,17 @@ export default function FeedDetailPage(props: ReadProps) {
                     Comment : {feedData.commentCount}
                 </button>
             </div>
+
+            <div className="comment-input-section">
+                <input 
+                    type="text" 
+                    value={commentInput} 
+                    onChange={handleCommentChange} 
+                    placeholder="댓글을 작성해주세요." 
+                />
+                <button onClick={submitComment}>댓글 작성</button>
+            </div>
+
             <div className="comments-section">
             {comments.map(comment => (
                 <div key={comment.commentId} className="comment">
