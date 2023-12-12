@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import Link from "next/link";
 import { useRouter } from 'next/router';
 
 type Newsfeed = {
@@ -19,7 +18,6 @@ type Newsfeed = {
 };
 
 export default function FeedDetailPage(){    
-    
     const router = useRouter();
     const { feedId } = router.query;
 
@@ -28,23 +26,22 @@ export default function FeedDetailPage(){
     const [feedData, setFeedData] = useState<Newsfeed | null>(null);
     
     useEffect(() => {
-        if (router.isReady) {
-            const fetchFeedDetail = async () => {
-                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, {
-                headers: {
-                    "Credentials": "include",
-                    "Authorization": `Bearer ${token}`,
-                },
-            });
-            const data = await response.json();
-            if (data.code === "SUCCESS") {
-                setFeedData(data.data);
-            }
-        };
-            
-            fetchFeedDetail();
+        const fetchFeedDetail = async () => {
+            console.log(feedId); 
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, {
+            headers: {
+                "Credentials": "include",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+        const data = await response.json();
+        if (data.code === "SUCCESS") {
+            setFeedData(data.data);
         }
-    }, [feedId, router.isReady]);
+    };
+        
+        fetchFeedDetail();
+    }, [feedId,token]);
     
     if (!feedData) {
         return <div>Loading...</div>;
