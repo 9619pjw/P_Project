@@ -25,52 +25,55 @@ type NewsfeedInfo = {
     viewCount: number;
 }
 
-
-export default function FeedDetailPage(){    
+export default function FeedDetailPage() {
     const router = useRouter();
     const params = useSearchParams();
     const feedId  = params.get('feedId');
 
+    console.log(feedId);
     const [feedData, setFeedData] = useState<NewsfeedInfo | null>(null);
-    
+
+    console.log(`Component rendered. feedId: ${feedId}`); // 컴포넌트 렌더링 확인
+
     useEffect(() => {
         const fetchFeedDetail = async () => {
-            const localStorage: Storage = window.localStorage;
             const token = localStorage.getItem("accessToken");
-            
-            // feedId 값 확인
-            console.log(`feedId: ${feedId}`);
-            try{
-                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, 
-                {
+
+            console.log(`useEffect triggered. feedId: ${feedId}`); // useEffect 실행 확인
+
+            try {
+                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, {
                     method: "GET",
                     headers: {
                         "Credentials": "include",
                         "Authorization": `Bearer ${token}`,
                     },
-                }
-            );
-            const data = await response.json();
+                });
 
-             // API 호출 응답 값 확인
-             console.log('Response:', data);
-            setFeedData(data.data);
+                const data = await response.json();
+
+                console.log('Response:', data); // API 호출 응답 값 확인
+
+                setFeedData(data.data);
             } catch (error) {
                 console.error("Error:", error);
             }
-    };
-        if(feedId){
+        };
+
+        if (feedId) {
             fetchFeedDetail();
         }
     }, [feedId]);
-    
+
     if (!feedData) {
         return <div>Loading...</div>;
     }
 
-    return(
+    console.log('Rendering feed data:', feedData); // 렌더링 데이터 확인
+
+    return (
         <div>
-        
+            {/* 화면 출력 코드 작성 */}
         </div>
     );
 }
