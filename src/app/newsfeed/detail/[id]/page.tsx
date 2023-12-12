@@ -22,6 +22,18 @@ type NewsfeedInfo = {
     viewCount: number;
 }
 
+type CommentInfo = {
+    commentId : number,        // 댓글 id
+    content : string,  // 댓글 내용
+    likeCount : number,	   // 좋아요 수
+    replyCount : number,	   // 대댓글의 수
+    userId : number,		  // 댓글 작성자 id
+    profileImgURL : string, // 댓글 작성자 프로필 이미지
+    nickname : string,  // 댓글 작성자 닉네임
+    isLiked : boolean,    // 댓글 좋아요 여부
+    createdDate : string // 댓글 생성 날짜
+}
+
 type ReadProps = {
     params: {
         id: number;
@@ -31,6 +43,7 @@ type ReadProps = {
 export default function FeedDetailPage(props: ReadProps) {
 
     const [feedData, setFeedData] = useState<NewsfeedInfo | null>(null);
+    const [comments, setComments] = useState<CommentInfo[]>([]); 
 
     console.log(`Component rendered. feedId: ${props.params.id}`); // 컴포넌트 렌더링 확인
 
@@ -60,7 +73,33 @@ export default function FeedDetailPage(props: ReadProps) {
             }
         };
 
+
+        // 댓글 데이터를 가져오는 함수 추가
+        const fetchComments = async () => {
+            const localStorage: Storage = window.localStorage;
+            const token = localStorage.getItem("accessToken");
+
+            try {
+                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=1`, {
+                    method: "GET",
+                    headers: {
+                        "Credentials": "include",
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
+
+                const data = await response.json();
+
+                console.log('Comment Response:', data); // API 호출 응답 값 확인
+
+                setComments(data.data);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        };
+
         fetchFeedDetail();
+        fetchComments(); 
     }, [props.params.id]);
 
     if (!feedData) {
@@ -117,7 +156,29 @@ export default function FeedDetailPage(props: ReadProps) {
                     Comment : {feedData.commentCount}
                 </button>
             </div>
-        </div>
+            <div className="comments-section">
+            {comments.map(comment => (
+                <div key={comment.commentId} className="comment">
+                    <img src={comment.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />            
+                    <div>
+                        <p className="text-sm font-semibold">{comment.nickname}</p>
+                        <p className="text-xs text-gray-500">
+                            작성일 : {
+                                new Date(comment.createdDate).toLocaleDateString('ko-KR', {
+                                    year: 'numeric',
+                                    month: '2-digit',
+                                    day: '2-digit',
+                                    hour: '2-digit',
+                                    minute: '2-digit',
+                                })
+                            }                                             
+                        </p>
+                        <p className="text-gray-700">{comment.content}</p>
+                    </div>
+                </div>
+                ))}
+            </div>
+            </div>
         </div>
     </div>
     );
