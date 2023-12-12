@@ -1,9 +1,8 @@
 "use client";
 
-import { QueryClient, QueryClientProvider, useInfiniteQuery, QueryFunctionContext } from 'react-query';
-import { useInView } from 'react-intersection-observer';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from "next/link";
+
 type Newsfeed = {
     feedId: number;
     userId: number;
@@ -18,23 +17,62 @@ type Newsfeed = {
     createdDate: string;
 };
 
-type NewsfeedComponentProps = {
-    loadData: boolean;
-    fetchNewsfeeds: (context: QueryFunctionContext) => Promise<{ newsfeeds: Newsfeed[]; nextCursor: number }>;
-    token: string | null;
-};
-
 type ReadProps = {
     params: {
         feedId: number;
     };
 };
 
-export default function feedDetailPage(props: ReadProps){
+export default function FeedDetailPage(props: ReadProps){
+
+
+    const [token, setToken] = useState<string | null>(null);
+    const [loadData, setLoadData] = useState(false);
+
+    useEffect(() => {
+        setToken(localStorage.getItem("accessToken"));
+        setLoadData(true); 
+    }, []);
+
+    const fetchNewsfeeds = async () => {
+        const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.feedId}`, {
+        headers: {
+            "Credentials": "include",
+            "Authorization": `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
+    
+    return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
+    };
+    
+    const [feedData, setFeedData] = useState<Newsfeed | null>(null);
+    
+    useEffect(() => {
+        const fetchFeedDetail = async () => {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.feedId}`);
+            const data = await response.json();
+            if (data.code === "SUCCESS") {
+                setFeedData(data.data);
+            }
+        };
+        
+        fetchFeedDetail();
+    }, [props.params.feedId]);
+    
+    if (!feedData) {
+        return <div>Loading...</div>;
+    }
 
     return(
-        <>
-            상세페이지
-        </>
+        <div>
+            <h1>{feedData.title}</h1>
+            <h2>작성자: {feedData.nickname}</h2>
+            <img src={feedData.profileImgURL} alt="Profile" />
+            <img src={feedData.feedImgURL} alt="Feed" />
+            <p>{feedData.content}</p>
+            <p>좋아요: {feedData.likeCount}</p>
+            <p>댓글: {feedData.commentCount}</p>
+        </div>
     );
 }

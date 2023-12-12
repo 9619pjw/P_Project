@@ -90,7 +90,7 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                                     <img src={newsfeed.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />            
                                 </div>
                             <div>
-                            <Link href={`/profile/detail/${newsfeed.userId}`}>    
+                            <Link href={`/profile/${newsfeed.userId}`}>    
                                 <p className="text-sm font-semibold">{newsfeed.nickname}</p>
                             </Link>
                             <p className="text-xs text-gray-500">게시일 : {newsfeed.createdDate}</p>
