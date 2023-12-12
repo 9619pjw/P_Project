@@ -71,18 +71,45 @@ export default function FeedDetailPage(props: ReadProps) {
     console.log('Rendering feed data:', feedData); 
 
     return (
-    <div className="bg-gray-50 flex flex-col items-center p-6">
-        <div className="bg-white shadow-md rounded-lg w-full max-w-lg p-6">
-            <h1 className="text-gray-900 font-bold mb-2">{feedData.title}</h1>
-            <h2 className="text-sm font-semibold mb-4">작성자: {feedData.nickname}</h2>
-            <div className="mb-4">
-                <img src={feedData.profileImgURL} alt="Profile" className="rounded-full w-12 h-12 mb-2" />
-                <img src={feedData.feedImgURL} alt="Feed" className="w-full h-128 rounded-lg object-cover" />
+        <div className="bg-gray-50 flex justify-center p-6">
+        <div className="bg-white shadow-md rounded-lg w-full max-w-lg">
+            <div className="p-6">
+                <div className="flex items-center mb-4">
+                    <div className="mr-2">
+                        <img src={feedData.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />            
+                    </div>
+                <div>
+                <Link href={`/profile/${feedData.userId}`}>    
+                    <p className="text-sm font-semibold">{feedData.nickname}</p>
+                </Link>
+                <p className="text-xs text-gray-500">게시일 : {feedData.createdDate}</p>
             </div>
-            <p className="text-gray-700 mb-2" dangerouslySetInnerHTML={{ __html: feedData.content.replace(/\n/g, '<br />') }}></p>
-            <p className="text-blue-500 border-2 border-blue-500 rounded px-4 py-2">좋아요: {feedData.likeCount}</p>
-            <p className="text-blue-500 border-2 border-blue-500 rounded px-4 py-2 mt-2">댓글: {feedData.commentCount}</p>
         </div>
+        <div className="mb-4">
+            <Link href={`/newsfeed/detail/${feedData.feedId}`}>
+                <img src={feedData.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
+            </Link>
+        </div>
+        <div className="mb-4">
+                <p className="text-gray-900 font-bold">{feedData.title}</p>
+                <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: feedData.content.replace(/\n/g, '<br />') }}></p>
+        </div>
+        <div className="mb-4 flex space-x-2">
+            <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                Like : {feedData.likeCount}
+            </button>
+            <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                </svg>
+                Comment : {feedData.commentCount}
+            </button>
+        </div>
+    </div>
+    </div>
     </div>
     );
 }

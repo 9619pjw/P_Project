@@ -86,7 +86,6 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                         <div className="p-6">
                             <div className="flex items-center mb-4">
                                 <div className="mr-2">
-                                    
                                     <img src={newsfeed.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />            
                                 </div>
                             <div>
