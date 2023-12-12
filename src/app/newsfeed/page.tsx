@@ -101,7 +101,7 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                     <div className="mb-4">
                         <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
                     </div>
-                    <div className="mb-4 text-center">
+                    <div className="mb-4">
                             <p className="text-gray-900 font-bold">{newsfeed.title}</p>
                             <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: newsfeed.content.replace(/\n/g, '<br />') }}></p>
                     </div>
