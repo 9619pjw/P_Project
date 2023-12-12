@@ -72,7 +72,7 @@ export default function FeedDetailPage(props: ReadProps) {
     return (
         <div className="bg-gray-50 flex justify-center p-6">
             <div className="bg-white shadow-md rounded-lg w-full max-w-lg flex">
-                <div className="w-1/2">
+                <div className="w-1/2 h-64">
                     <Link href={`/newsfeed/detail/${feedData.feedId}`}>
                         <img src={feedData.feedImgURL} alt="Project Image" className="w-full h-full object-cover" />
                     </Link>
