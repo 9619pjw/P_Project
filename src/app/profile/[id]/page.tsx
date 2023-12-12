@@ -102,7 +102,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
     <div className="container mx-auto px-4 py-8">
     {!showUserInfo && <div>유저 정보를 불러오는 중입니다...</div>}
     {showUserInfo && (
-      <div className="flex flex-col items-center space-y-4">
+      <div className="bg-gray-100 flex flex-col items-center space-y-4">
         <ProfileInfo userJSON={data} />
         <ProfileMenu pageId={params.id} userJSON={data} />
       </div>
