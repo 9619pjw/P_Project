@@ -19,30 +19,32 @@ type Newsfeed = {
 };
 
 export default function FeedDetailPage(){    
-
+    
     const router = useRouter();
     const { feedId } = router.query;
-    
+
     const localStorage: Storage = window.localStorage;
     const token = localStorage.getItem("accessToken");
     const [feedData, setFeedData] = useState<Newsfeed | null>(null);
     
     useEffect(() => {
-        const fetchFeedDetail = async () => {
-            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, {
-            headers: {
-                "Credentials": "include",
-                "Authorization": `Bearer ${token}`,
-            },
-        });
-        const data = await response.json();
-        if (data.code === "SUCCESS") {
-            setFeedData(data.data);
+        if (router.isReady) {
+            const fetchFeedDetail = async () => {
+                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, {
+                headers: {
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
+            const data = await response.json();
+            if (data.code === "SUCCESS") {
+                setFeedData(data.data);
+            }
+        };
+            
+            fetchFeedDetail();
         }
-    };
-        
-        fetchFeedDetail();
-    }, [feedId]);
+    }, [feedId, router.isReady]);
     
     if (!feedData) {
         return <div>Loading...</div>;
