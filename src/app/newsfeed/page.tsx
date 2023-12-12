@@ -81,7 +81,7 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
             {data?.pages.flatMap((group, i) => (
             <React.Fragment key={i}>
                 {group.newsfeeds.map((newsfeed : Newsfeed) => (
-                <div  key={newsfeed.feedId} className="bg-gray-50 flex justify-center p-6">
+                <div key={newsfeed.feedId} className="bg-gray-50 flex justify-center p-6">
                     <div className="bg-white shadow-md rounded-lg w-full max-w-lg">
                         <div className="p-6">
                             <div className="flex items-center mb-4">

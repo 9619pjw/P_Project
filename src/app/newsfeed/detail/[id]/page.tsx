@@ -68,17 +68,21 @@ export default function FeedDetailPage(props: ReadProps) {
         return <div>Loading...</div>;
     }
 
-    console.log('Rendering feed data:', feedData); // 렌더링 데이터 확인
+    console.log('Rendering feed data:', feedData); 
 
     return (
-        <div>
-             <h1>{feedData.title}</h1>
-            <h2>작성자: {feedData.nickname}</h2>
-            <img src={feedData.profileImgURL} alt="Profile" />
-            <img src={feedData.feedImgURL} alt="Feed" />
-            <p>{feedData.content}</p>
-            <p>좋아요: {feedData.likeCount}</p>
-            <p>댓글: {feedData.commentCount}</p>
+    <div className="bg-gray-50 flex flex-col items-center p-6">
+        <div className="bg-white shadow-md rounded-lg w-full max-w-lg p-6">
+            <h1 className="text-gray-900 font-bold mb-2">{feedData.title}</h1>
+            <h2 className="text-sm font-semibold mb-4">작성자: {feedData.nickname}</h2>
+            <div className="mb-4">
+                <img src={feedData.profileImgURL} alt="Profile" className="rounded-full w-12 h-12 mb-2" />
+                <img src={feedData.feedImgURL} alt="Feed" className="w-full h-128 rounded-lg object-cover" />
+            </div>
+            <p className="text-gray-700 mb-2" dangerouslySetInnerHTML={{ __html: feedData.content.replace(/\n/g, '<br />') }}></p>
+            <p className="text-blue-500 border-2 border-blue-500 rounded px-4 py-2">좋아요: {feedData.likeCount}</p>
+            <p className="text-blue-500 border-2 border-blue-500 rounded px-4 py-2 mt-2">댓글: {feedData.commentCount}</p>
         </div>
+    </div>
     );
 }
