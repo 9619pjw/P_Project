@@ -116,9 +116,9 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                         </button>
                     </div>
                 </div>
-                </Link>
             </div>
         </div>
+        </Link>
     ))}
     </React.Fragment>
     ))}
