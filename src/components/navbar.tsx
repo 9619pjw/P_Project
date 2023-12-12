@@ -21,33 +21,32 @@ export const Navbar = () => {
 	
 	const [isLogin, setIsLogin] = useState(false);
 	useEffect(() => {
-    	const localStorage: Storage = window.localStorage;
-    	const token = localStorage.getItem("accessToken");
-    	const expiredTime = localStorage.getItem("expiredTime");
-    	if (token && expiredTime) {
+		const localStorage: Storage = window.localStorage;
+		const token = localStorage.getItem("accessToken");
+		const expiredTime = localStorage.getItem("expiredTime");
+		if (token && expiredTime) {
 			setIsLogin(true);
-    	} else {
+		} else {
 		setIsLogin(false);
-    	}
+		}
 	}, []);
 
 	useEffect(() => {
 		const checkLoginStatus = () => {
-		  const token = window.localStorage.getItem('accessToken');
-		  setIsLogin(!!token);
+			const token = window.localStorage.getItem('accessToken');
+			setIsLogin(!!token);
 		};
 	
 		// 로그인 상태를 처음 확인합니다.
 		checkLoginStatus();
 	
-		// 1초마다 로그인 상태를 확인합니다.
+		// 1초마다 로그인 상태를 확인
 		const intervalId = setInterval(checkLoginStatus, 1000);
 	
-		// 컴포넌트가 언마운트될 때 setInterval을 정리합니다.
 		return () => {
-		  clearInterval(intervalId);
+			clearInterval(intervalId);
 		};
-	  }, []);
+	}, []);
 
 
 	const loginImage = <LoginButton />;
@@ -57,7 +56,7 @@ export const Navbar = () => {
 	const url: string = "https://funsns.shop:8000/user-service/oauth2/authorization/naver";
 
 	return (
-		<NextUINavbar maxWidth="xl" position="sticky">
+		<NextUINavbar maxWidth="xl" position="sticky" style={{ borderBottom: '1px solid #000' }}>
 			<NavbarContent className="basis-1/5 sm:basis-full" justify="start">
 				<NavbarBrand as="li" className="gap-3 max-w-fit">
 					<NextLink className="flex justify-start items-center gap-1" href="/">

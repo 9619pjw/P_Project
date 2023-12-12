@@ -5,10 +5,6 @@ export const siteConfig = {
 	description: "SNS Crowd Funding Service",
 	navItems: [
 		{
-			label: "Home",
-			href: "/",
-		},
-		{
 			label: "Project",
 			href: "/project",
 		},
