@@ -174,8 +174,6 @@ async function handleUnFollowRequest() {
     });
 }
 
-  
-
   // 사용자 닉네임 검색결과 저장
   type SearchNameUser = {
     userId: number;
@@ -295,7 +293,7 @@ async function handleUnFollowRequest() {
           </button>
       </div>
     )}
-  <div className="flex items-center space-x-4 mb-8">
+  {/* <div className="flex items-center space-x-4 mb-8">
     <input
       id="outlined-basic"
       placeholder="사용자 닉네임 검색"
@@ -319,7 +317,7 @@ async function handleUnFollowRequest() {
         <ShowSearchList searchNameResult={searchNameResult} />
       </div>
     </ModalCustom>
-  </div>
+  </div> */}
   <div className="flex flex-col items-center mt-4">
     <IsYours
       pageId={pageId}
