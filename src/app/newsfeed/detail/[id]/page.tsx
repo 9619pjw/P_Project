@@ -18,11 +18,7 @@ type Newsfeed = {
     createdDate: string;
 };
 
-type ReadProps = {
-    feedId: number;
-};
-
-export default function FeedDetailPage(props: ReadProps){    
+export default function FeedDetailPage(){    
 
     const router = useRouter();
     const { feedId } = router.query;
