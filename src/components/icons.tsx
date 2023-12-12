@@ -10,8 +10,8 @@ export const Logo: React.FC<ImgHTMLAttributes<HTMLImageElement>> = () => {
 	return (
 		<img
 			src="/Logo.png"
-			height={90}
-			width={200}
+			height={70}
+			width={155}
 			alt="Logo-image"
 			onClick={() => router.push('/')}
 			
