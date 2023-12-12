@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useState } from 'react';
+import { QueryClient, QueryClientProvider, useInfiniteQuery, QueryFunctionContext } from 'react-query';
+import { useInView } from 'react-intersection-observer';
+import React, { useEffect, useState } from 'react';
+import Link from "next/link";
 import { useRouter , useSearchParams } from 'next/navigation';
 
 type Newsfeed = {
@@ -17,12 +20,18 @@ type Newsfeed = {
     createdDate: string;
 };
 
+type NewsfeedComponentProps = {
+    loadData: boolean;
+    fetchNewsfeeds: (context: QueryFunctionContext) => Promise<{ newsfeeds: Newsfeed[]; nextCursor: number }>;
+    token: string | null;
+};
+
+
 export default function FeedDetailPage(){    
     const router = useRouter();
     const params = useSearchParams();
     const feedId  = params.get('feedId');
 
-   
     const [feedData, setFeedData] = useState<Newsfeed | null>(null);
     
     useEffect(() => {
@@ -31,7 +40,7 @@ export default function FeedDetailPage(){
             const token = localStorage.getItem("accessToken");
             
             try{
-                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, 
+                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/8`, 
                 {
                     method: "GET",
                     headers: {
