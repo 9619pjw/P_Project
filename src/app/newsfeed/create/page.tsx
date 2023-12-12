@@ -196,7 +196,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
             </label>
             <label className="block">
                 <span className="text-gray-700">내용:</span>
-                <textarea name="content" value={feed.content} onChange={handleChange} className="mt-1 block w-full h-128 rounded-md border-gray-300 shadow-sm"/>
+                <textarea name="content" value={feed.content} onChange={handleChange} className="mt-1 block w-full h-20 rounded-md border-gray-300 shadow-sm"/>
             </label>
             <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 작성</button>
         </form>
