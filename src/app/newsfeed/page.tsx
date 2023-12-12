@@ -78,11 +78,11 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
     
     return (
         <div>
-            <Link href="/newsfeed/create">
+            {/* <Link href="/newsfeed/create">
                 <button className="px-4 py-2 bg-blue-500 text-white rounded mb-8">
                     피드 생성
                 </button>
-            </Link>
+            </Link> */}
             {data?.pages.flatMap((group, i) => (
             <React.Fragment key={i}>
                 {group.newsfeeds.map((newsfeed : Newsfeed) => (
