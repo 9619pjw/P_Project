@@ -82,7 +82,17 @@ export default function FeedDetailPage(props: ReadProps) {
                 <Link href={`/profile/${feedData.userId}`}>    
                     <p className="text-sm font-semibold">{feedData.nickname}</p>
                 </Link>
-                <p className="text-xs text-gray-500">게시일 : {feedData.createdDate}</p>
+                <p className="text-xs text-gray-500">
+                                    게시일 : {
+                                                new Date(feedData.createdDate).toLocaleDateString('ko-KR', {
+                                                    year: 'numeric',
+                                                    month: '2-digit',
+                                                    day: '2-digit',
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                })
+                                        }                                             
+                                </p>
             </div>
         </div>
         <div className="mb-4">
