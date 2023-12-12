@@ -4,7 +4,7 @@ import { title } from "@/components/primitives";
 export default function Home() {
 	return ( 
 		<div className="w-[1440px] h-[1876px]  bg-gray-50 flex-col justify-start items-center inline-flex">
-			<div className="self-stretch px-[170px] py-[60px] justify-center items-center gap-[60px] inline-flex  mx-auto">
+			<div className="self-stretch px-[170px] py-[30px] justify-center items-center gap-[60px] inline-flex  mx-auto">
 				<div className="grow shrink basis-0 flex-col justify-start items-start gap-6 inline-flex">
 					<div className="self-stretch text-black text-[40px] font-bold font-['Arial'] leading-[48px]">
 						당신의 아이디어로 
@@ -12,7 +12,6 @@ export default function Home() {
 						꿈을 이루는 시작 
 						<img src="/funs.png" alt="Funs image" className="self-stretch" />
 					</div>
-					
 				</div>
 				<div className="grow shrink basis-0 h-[400px] py-1 justify-start items-start flex">
 				<img src="/funding.png" alt="Funding image" className="w-[520px] h-[392px] rounded-md" />
