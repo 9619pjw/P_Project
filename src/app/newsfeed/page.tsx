@@ -81,13 +81,14 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
             {data?.pages.flatMap((group, i) => (
             <React.Fragment key={i}>
                 {group.newsfeeds.map((newsfeed : Newsfeed) => (
-                <Link href={`/newsfeed/detail/${newsfeed.feedId}`} key={newsfeed.feedId}>
-                <div className="bg-gray-50 flex justify-center p-6">
+                <div  key={newsfeed.feedId} className="bg-gray-50 flex justify-center p-6">
                     <div className="bg-white shadow-md rounded-lg w-full max-w-lg">
                         <div className="p-6">
                             <div className="flex items-center mb-4">
                                 <div className="mr-2">
-                                    <img src={newsfeed.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />
+                                    <Link href={`/newsfeed/detail/${newsfeed.feedId}`}>
+                                        <img src={newsfeed.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />
+                                    </Link>
                                 </div>
                             <div>
                             <p className="text-sm font-semibold">{newsfeed.nickname}</p>
@@ -118,7 +119,6 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                 </div>
             </div>
         </div>
-        </Link>
     ))}
     </React.Fragment>
     ))}
