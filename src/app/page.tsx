@@ -2,8 +2,8 @@ import { title } from "@/components/primitives";
 
 
 export default function Home() {
-	return (
-		<div className="w-[1440px] h-[1876px] bg-gray-50 flex justify-center p-6">
+	return ( 
+		<div className="w-[1440px] h-[1876px]  bg-gray-50 flex-col justify-start items-center inline-flex">
 			<div className="self-stretch px-[170px] py-[60px] justify-center items-center gap-[60px] inline-flex  mx-auto">
 				<div className="grow shrink basis-0 flex-col justify-start items-start gap-6 inline-flex">
 					<div className="self-stretch text-black text-[40px] font-bold font-['Arial'] leading-[48px]">
