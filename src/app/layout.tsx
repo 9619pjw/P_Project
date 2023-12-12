@@ -19,7 +19,6 @@ export const metadata: Metadata = {
 	],
 	icons: {
 		icon: "/favicon.ico",
-		shortcut: "/favicon-16x16.png",
 		apple: "/apple-touch-icon.png",
 	},
 };
@@ -39,7 +38,7 @@ export default function RootLayout({
 				)}
 			>
 				<Providers themeProps={{ attribute: "class", defaultTheme: "white" }}>
-					<div className="relative flex flex-col h-screen">
+					<div className=" bg-gray-50 flex justify-center p-6">
 						<Navbar />
 						<main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
 							{children}
