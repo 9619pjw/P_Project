@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from "next/link";
+import { useRouter } from 'next/router';
 
 type Newsfeed = {
     feedId: number;
@@ -18,12 +19,13 @@ type Newsfeed = {
 };
 
 type ReadProps = {
-    params: {
-        feedId: number;
-    };
+    feedId: number;
 };
 
 export default function FeedDetailPage(props: ReadProps){    
+
+    const router = useRouter();
+    const { feedId } = router.query;
     
     const localStorage: Storage = window.localStorage;
     const token = localStorage.getItem("accessToken");
@@ -31,8 +33,7 @@ export default function FeedDetailPage(props: ReadProps){
     
     useEffect(() => {
         const fetchFeedDetail = async () => {
-            console.log(props.params.feedId); 
-            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.feedId}`, {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, {
             headers: {
                 "Credentials": "include",
                 "Authorization": `Bearer ${token}`,
@@ -45,7 +46,7 @@ export default function FeedDetailPage(props: ReadProps){
     };
         
         fetchFeedDetail();
-    }, [props.params.feedId]);
+    }, [feedId]);
     
     if (!feedData) {
         return <div>Loading...</div>;
