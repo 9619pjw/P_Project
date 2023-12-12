@@ -1,7 +1,5 @@
 "use client";
 
-import { QueryClient, QueryClientProvider, useInfiniteQuery, QueryFunctionContext } from 'react-query';
-import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import { useRouter , useSearchParams } from 'next/navigation';
@@ -32,17 +30,14 @@ type ReadProps = {
   };
 
 export default function FeedDetailPage(props: ReadProps) {
-    const router = useRouter();
-    const params = useSearchParams();
-    const feedId  = params.get('feedId');
 
-    console.log(feedId);
     const [feedData, setFeedData] = useState<NewsfeedInfo | null>(null);
 
     console.log(`Component rendered. feedId: ${props.params.id}`); // 컴포넌트 렌더링 확인
 
     useEffect(() => {
         const fetchFeedDetail = async () => {
+            const localStorage: Storage = window.localStorage;
             const token = localStorage.getItem("accessToken");
 
             console.log(`useEffect triggered. feedId: ${props.params.id}`); // useEffect 실행 확인
@@ -66,10 +61,8 @@ export default function FeedDetailPage(props: ReadProps) {
             }
         };
 
-        if (feedId) {
-            fetchFeedDetail();
-        }
-    }, [feedId]);
+        fetchFeedDetail();
+    }, [props.params.id]);
 
     if (!feedData) {
         return <div>Loading...</div>;
