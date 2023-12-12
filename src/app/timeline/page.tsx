@@ -35,7 +35,7 @@ export default function NewsfeedPage(){
     }, []);
 
     const fetchNewsfeeds = async ({ pageParam = 0 }: QueryFunctionContext) => {
-        const response = await fetch(`https://funsns.shop:8000/feed-service/feed/newsfeed?cursor=${pageParam}&size=5`, {
+        const response = await fetch(`https://funsns.shop:8000/feed-service/feed/timeline?cursor=${pageParam}&size=5`, {
         headers: {
             "Credentials": "include",
             "Authorization": `Bearer ${token}`,
