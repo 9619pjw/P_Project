@@ -45,10 +45,10 @@ export default function FeedDetailPage(props: ReadProps) {
         const fetchFeedDetail = async () => {
             const token = localStorage.getItem("accessToken");
 
-            console.log(`useEffect triggered. feedId: ${feedId}`); // useEffect 실행 확인
+            console.log(`useEffect triggered. feedId: ${props.params.id}`); // useEffect 실행 확인
 
             try {
-                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, {
+                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}`, {
                     method: "GET",
                     headers: {
                         "Credentials": "include",
@@ -79,7 +79,13 @@ export default function FeedDetailPage(props: ReadProps) {
 
     return (
         <div>
-            {/* 화면 출력 코드 작성 */}
+             <h1>{feedData.title}</h1>
+            <h2>작성자: {feedData.nickname}</h2>
+            <img src={feedData.profileImgURL} alt="Profile" />
+            <img src={feedData.feedImgURL} alt="Feed" />
+            <p>{feedData.content}</p>
+            <p>좋아요: {feedData.likeCount}</p>
+            <p>댓글: {feedData.commentCount}</p>
         </div>
     );
 }
