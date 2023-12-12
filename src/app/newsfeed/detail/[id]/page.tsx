@@ -38,6 +38,8 @@ export default function FeedDetailPage(){
             const localStorage: Storage = window.localStorage;
             const token = localStorage.getItem("accessToken");
             
+            // feedId 값 확인
+            console.log(`feedId: ${feedId}`);
             try{
                 const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${feedId}`, 
                 {
@@ -49,6 +51,9 @@ export default function FeedDetailPage(){
                 }
             );
             const data = await response.json();
+
+             // API 호출 응답 값 확인
+             console.log('Response:', data);
             setFeedData(data.data);
             } catch (error) {
                 console.error("Error:", error);
