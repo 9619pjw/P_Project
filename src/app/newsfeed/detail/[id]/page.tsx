@@ -23,39 +23,25 @@ type ReadProps = {
     };
 };
 
-export default function FeedDetailPage(props: ReadProps){
-
-
-    const [token, setToken] = useState<string | null>(null);
-    const [loadData, setLoadData] = useState(false);
-
-    useEffect(() => {
-        setToken(localStorage.getItem("accessToken"));
-        setLoadData(true); 
-    }, []);
-
-    const fetchNewsfeeds = async () => {
-        const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.feedId}`, {
-        headers: {
-            "Credentials": "include",
-            "Authorization": `Bearer ${token}`,
-        },
-    });
-    const data = await response.json();
+export default function FeedDetailPage(props: ReadProps){    
     
-    return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
-    };
-    
+    const localStorage: Storage = window.localStorage;
+    const token = localStorage.getItem("accessToken");
     const [feedData, setFeedData] = useState<Newsfeed | null>(null);
     
     useEffect(() => {
         const fetchFeedDetail = async () => {
-            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.feedId}`);
-            const data = await response.json();
-            if (data.code === "SUCCESS") {
-                setFeedData(data.data);
-            }
-        };
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.feedId}`, {
+            headers: {
+                "Credentials": "include",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+        const data = await response.json();
+        if (data.code === "SUCCESS") {
+            setFeedData(data.data);
+        }
+    };
         
         fetchFeedDetail();
     }, [props.params.feedId]);
