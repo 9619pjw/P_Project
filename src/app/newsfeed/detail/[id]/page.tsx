@@ -20,7 +20,7 @@ type Newsfeed = {
 export default function FeedDetailPage(){    
     const router = useRouter();
     const params = useSearchParams();
-    const feedId  = params.get('gifticonId');
+    const feedId  = params.get('feedId');
 
    
     const [feedData, setFeedData] = useState<Newsfeed | null>(null);
