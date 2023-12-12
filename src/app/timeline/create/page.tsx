@@ -186,19 +186,18 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
         <form onSubmit={handleSubmit} className="space-y-4">
             <input type="hidden" name="userId" value={feed.userId} />
             <label className="block">
+                <span className="text-gray-700">이미지:</span>
+                <input type="file" name="image" onChange={handleImageChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"/>
+            </label>
+            {previewImage && <img src={previewImage} alt="Preview" className="mt-4"/>}
+            <label className="block">
                 <span className="text-gray-700">제목:</span>
                 <input type="text" name="title" value={feed.title} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" />
             </label>
             <label className="block">
                 <span className="text-gray-700">내용:</span>
-                <textarea name="content" value={feed.content} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"/>
+                <textarea name="content" value={feed.content} onChange={handleChange} className="mt-1 block w-full h-20 rounded-md border-gray-300 shadow-sm"/>
             </label>
-            <label className="block">
-                <span className="text-gray-700">이미지:</span>
-                <input type="file" name="image" onChange={handleImageChange} className="mt-1 block w-full rounded-md border-gray-300 shadow-sm"/>
-            </label>
-            {previewImage && <img src={previewImage} alt="Preview" className="mt-4"/>}
-            {/* {feed.image && <img src={feed.image} alt="Preview" />} */}
             <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 작성</button>
         </form>
     </div>
