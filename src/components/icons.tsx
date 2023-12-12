@@ -10,20 +10,13 @@ export const Logo: React.FC<ImgHTMLAttributes<HTMLImageElement>> = () => {
 	return (
 		<img
 			src="/Logo.png"
-			height={100}
+			height={90}
 			width={200}
 			alt="Logo-image"
 			onClick={() => router.push('/')}
 			
 		/>	
 	);
-	// <img
-	// 	src="/Logo.png"
-	// 	height={100}
-	// 	width={200}
-	// 	alt="Logo-image"
-	// 	{...props}
-	// />
 };
 
 export const DiscordIcon: React.FC<IconSvgProps> = ({
