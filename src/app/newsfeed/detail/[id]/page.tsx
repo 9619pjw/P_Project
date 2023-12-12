@@ -31,6 +31,7 @@ export default function FeedDetailPage(props: ReadProps){
     
     useEffect(() => {
         const fetchFeedDetail = async () => {
+            console.log(props.params.feedId); 
             const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.feedId}`, {
             headers: {
                 "Credentials": "include",
