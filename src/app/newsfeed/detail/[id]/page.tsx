@@ -84,7 +84,7 @@ export default function FeedDetailPage(props: ReadProps) {
         const token = localStorage.getItem("accessToken");
 
         try {
-            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment`, {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=10`, {
                 method: "POST",
                 headers: {
                     "Credentials": "include",
@@ -129,31 +129,6 @@ export default function FeedDetailPage(props: ReadProps) {
             }
         };
 
-
-        // // 댓글 데이터를 가져오는 함수 추가
-        // const fetchComments = async () => {
-        //     const localStorage: Storage = window.localStorage;
-        //     const token = localStorage.getItem("accessToken");
-
-        //     try {
-        //         const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=1`, {
-        //             method: "GET",
-        //             headers: {
-        //                 "Credentials": "include",
-        //                 "Authorization": `Bearer ${token}`,
-        //             },
-        //         });
-
-        //         const data = await response.json();
-
-        //         console.log('Comment Response:', data); // API 호출 응답 값 확인
-
-        //         setComments(data.data);
-        //     } catch (error) {
-        //         console.error("Error:", error);
-        //     }
-        // };
-        
         
         useEffect(() => {
             fetchFeedDetail();
@@ -212,17 +187,6 @@ export default function FeedDetailPage(props: ReadProps) {
                     Comment : {feedData.commentCount}
                 </button>
             </div>
-
-            <div className="comment-input-section">
-                <input 
-                    type="text" 
-                    value={commentInput} 
-                    onChange={handleCommentChange} 
-                    placeholder="댓글을 작성해주세요." 
-                />
-                <button onClick={submitComment}>댓글 작성</button>
-            </div>
-
             <div className="comments-section">
             {comments.map(comment => (
                 <div key={comment.commentId} className="comment">
@@ -245,6 +209,16 @@ export default function FeedDetailPage(props: ReadProps) {
                 </div>
                 ))}
             </div>
+            <div className="comment-input-section">
+                <input 
+                    type="text" 
+                    value={commentInput} 
+                    onChange={handleCommentChange} 
+                    placeholder="댓글을 작성해주세요." 
+                />
+                <button onClick={submitComment}>댓글 작성</button>
+            </div>
+
             </div>
         </div>
     </div>
