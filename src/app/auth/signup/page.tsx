@@ -77,7 +77,7 @@ export default function SignUpPage() {
                 src="/funding.png"
                 alt="auth-page-image"
                 width={800}
-                height={800}
+                height={1400}
                 style={{ marginLeft: "50px" }}
             />
         </div>
