@@ -139,14 +139,12 @@ export default function PostList() {
       <br />
       <div>
       {isLoggedIn ? (
-        //  <button onClick={handleLogout} className={styles.loginButton} style={{ marginRight: "10px" }}>
         <button onClick={handleLogout} className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">  
           Logout
         </button>
       ) : (
         <>
           <Link href="/post/login">
-            {/* <button className={styles.loginButton} style={{ marginRight: "10px" }}> */}
             <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">
               Login
             </button>
@@ -175,14 +173,12 @@ export default function PostList() {
             value={keyword}
             onChange={handleKeywordChange}
           />
-          {/* <button className={styles.searchButton} onClick={handleSearch} style={{ marginLeft: "10px" }}> */}
           <button className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer ml-2 h-10" onClick={handleSearch}>
             Search
           </button>
         </div>
         </div>
       </div>
-      {/* <ul className={styles.noticeList}> */}
       <br />
       <ul className="w-9/10 bg-gray-100 p-5 rounded-md">
         <Link
@@ -207,10 +203,8 @@ export default function PostList() {
 
       <h3 className="text-xl my-3">자주 묻는 Q&A</h3>
       <div className="w-full bg-gray-200 p-5 my-2 rounded-md">
-      {/* <div className={styles.popularList}> */}
         {popularPosts.map((post) => (
           <div key ={post.id} className="flex justify-between mb-2">
-           {/* <div key={post.id} className={styles.popularPostItem}> */}
             <style jsx>{`a{ color : black; text-decoration:none; flex-grow: 1;}`}</style>
             <a href={`/post/detail/${post.id}`} className={styles.popularPostLink}>{post.subject}</a>
             <span>추천 수: {post.voter.length}</span>

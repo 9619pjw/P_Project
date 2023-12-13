@@ -101,8 +101,10 @@ export default function FeedDetailPage(props: ReadProps) {
             console.log('Comment Post Response:', data); 
 
             if(data.code === "SUCCESS") {
+                alert('댓글 작성이 완료되었습니다.');
                 setCommentInput(''); 
-                fetchComments(); 
+                fetchComments();
+                window.location.reload();
             }
         } catch (error) {
             console.error("Error:", error);
@@ -213,10 +215,11 @@ export default function FeedDetailPage(props: ReadProps) {
                 <input 
                     type="text" 
                     value={commentInput} 
-                    onChange={handleCommentChange} 
+                    onChange={handleCommentChange}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" 
                     placeholder="댓글을 작성해주세요." 
                 />
-                <button onClick={submitComment}>댓글 작성</button>
+                <button onClick={submitComment} className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer" >댓글 작성</button>
             </div>
 
             </div>
