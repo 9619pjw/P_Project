@@ -143,7 +143,7 @@ export default function FeedDetailPage(props: ReadProps) {
 
     return (
         <div className="bg-gray-50 flex justify-center p-12">
-            <div className="bg-white shadow-md rounded-lg w-full max-w-2xl flex">
+            <div className="bg-white shadow-md rounded-lg w-full max-w-4xl flex">
                 <div className="w-1/2 h-256">
                     <Link href={`/newsfeed/detail/${feedData.feedId}`}>
                         <img src={feedData.feedImgURL} alt="Project Image" className="w-full h-full object-cover" />
@@ -228,7 +228,6 @@ export default function FeedDetailPage(props: ReadProps) {
                 <br />
                 <button onClick={submitComment} className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer" >댓글 작성</button>
             </div>
-
             </div>
         </div>
     </div>
