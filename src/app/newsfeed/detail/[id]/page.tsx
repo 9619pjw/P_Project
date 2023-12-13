@@ -154,81 +154,87 @@ export default function FeedDetailPage(props: ReadProps) {
                         <div className="mr-2">
                             <img src={feedData.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />            
                         </div>
-                    <div>
-                    <Link href={`/profile/${feedData.userId}`}>    
-                        <p className="text-sm font-semibold">{feedData.nickname}</p>
-                    </Link>
-                    <p className="text-xs text-gray-500">
-                        게시일 : {
-                            new Date(feedData.createdDate).toLocaleDateString('ko-KR', {
-                                year: 'numeric',
-                                month: '2-digit',
-                                day: '2-digit',
-                                hour: '2-digit',
-                                minute: '2-digit',
-                            })
-                        }                                             
-                    </p>
-                </div>
-            </div>
-            <div className="mb-4">
-                    <p className="text-gray-900 font-bold">{feedData.title}</p>
-                    <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: feedData.content.replace(/\n/g, '<br />') }}></p>
-            </div>
-            <div className="mb-4 flex space-x-2" style={{ borderBottom: '1px solid #000' }}>
-                <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                    Like : {feedData.likeCount}
-                </button>
-                <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-                    </svg>
-                    Comment : {feedData.commentCount}
-                </button>
-                <br />
-            </div>
-            <div className="comments-section">
-            {comments.map(comment => (
-                <div key={comment.commentId} className="comment">
-                    <img src={comment.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />            
-                    <div>
-                        <p className="text-sm font-semibold">{comment.nickname}</p>
-                        <p className="text-xs text-gray-500">
-                            작성일 : {
-                                new Date(comment.createdDate).toLocaleDateString('ko-KR', {
-                                    year: 'numeric',
-                                    month: '2-digit',
-                                    day: '2-digit',
-                                    hour: '2-digit',
-                                    minute: '2-digit',
-                                })
-                            }                                             
-                        </p>
-                        <p className="text-gray-700">{comment.content}</p>
+                        <div>
+                            <Link href={`/profile/${feedData.userId}`}>    
+                                <p className="text-sm font-semibold">{feedData.nickname}</p>
+                            </Link>
+                            <p className="text-xs text-gray-500">
+                                게시일 : {
+                                    new Date(feedData.createdDate).toLocaleDateString('ko-KR', {
+                                        year: 'numeric',
+                                        month: '2-digit',
+                                        day: '2-digit',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                    })
+                                }                                             
+                            </p>
+                        </div>
                     </div>
+                    <div className="mb-4">
+                        <p className="text-gray-900 font-bold">{feedData.title}</p>
+                        <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: feedData.content.replace(/\n/g, '<br />') }}></p>
+                    </div>
+                <div className="mb-4 flex space-x-2" style={{ borderBottom: '1px solid #000' }}>
                     <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                    Like : {comment.likeCount}
-                </button>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        Like : {feedData.likeCount}
+                    </button>
+                    <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                        </svg>
+                        Comment : {feedData.commentCount}
+                    </button>
+                    <br />
                 </div>
-                ))}
-            </div>
-            <div className="comment-input-section">
-                <input 
-                    type="text" 
-                    value={commentInput} 
-                    onChange={handleCommentChange}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" 
-                    placeholder="댓글을 작성해주세요." 
-                />
-                <br />
-                <button onClick={submitComment} className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer" >댓글 작성</button>
-            </div>
+                <div className="comments-section">
+                    {comments.map(comment => (
+                        <div key={comment.commentId} className="className=flex items-center mb-4">
+                            <div className="mr-2">
+                                <img src={comment.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />            
+                            </div>
+                            <div>
+                                <Link href={`/profile/${feedData.userId}`}>    
+                                    <p className="text-sm font-semibold">{comment.nickname}</p>
+                                </Link>
+                                <p className="text-xs text-gray-500">
+                                    작성일 : {
+                                        new Date(comment.createdDate).toLocaleDateString('ko-KR', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                        })
+                                    }                                             
+                                </p>
+                                <p className="text-gray-700"  dangerouslySetInnerHTML={{ __html: comment.content.replace(/\n/g, '<br />') }}></p>
+                            </div>
+                            <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                Like : {comment.likeCount}
+                            </button>
+                        </div>
+                        )
+                    )
+                }
+                </div>
+                <div className="comment-input-section">
+                    <input 
+                        type="text" 
+                        value={commentInput} 
+                        onChange={handleCommentChange}
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm" 
+                        placeholder="댓글을 작성해주세요." 
+                    />
+                    <br />
+                    <button onClick={submitComment} className="border border-gray-300 bg-grey-500 text-black px-2 py-1 rounded-md cursor-pointer">댓글 작성</button>
+                </div>
             </div>
         </div>
     </div>
