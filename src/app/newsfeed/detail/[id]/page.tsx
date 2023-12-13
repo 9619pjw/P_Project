@@ -189,6 +189,7 @@ export default function FeedDetailPage(props: ReadProps) {
                         Comment : {feedData.commentCount}
                     </button>
                     <br />
+                    <br />
                 </div>
                 <div className="comments-section">
                     {comments.map(comment => (
