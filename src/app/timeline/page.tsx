@@ -94,12 +94,26 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                                     <img src={newsfeed.profileImgURL} alt="User Avatar" className="rounded-full w-12 h-12" />
                                 </div>
                             <div>
-                            <p className="text-sm font-semibold">{newsfeed.nickname}</p>
-                            <p className="text-xs text-gray-500">게시일 : {newsfeed.createdDate}</p>
+                                <Link href={`/profile/${newsfeed.userId}`}>    
+                                    <p className="text-sm font-semibold">{newsfeed.nickname}</p>
+                                </Link>
+                                <p className="text-xs text-gray-500">
+                                    게시일 : {
+                                                new Date(newsfeed.createdDate).toLocaleDateString('ko-KR', {
+                                                    year: 'numeric',
+                                                    month: '2-digit',
+                                                    day: '2-digit',
+                                                    hour: '2-digit',
+                                                    minute: '2-digit',
+                                                })
+                                        }                                             
+                                </p>
+                            </div>
                         </div>
-                    </div>
                     <div className="mb-4">
-                        <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
+                        <Link href={`/newsfeed/detail/${newsfeed.feedId}`}>
+                            <img src={newsfeed.feedImgURL} alt="Project Image" className="w-full h-128 rounded-lg object-cover" />
+                        </Link>
                     </div>
                     <div className="mb-4">
                             <p className="text-gray-900 font-bold">{newsfeed.title}</p>
@@ -110,13 +124,13 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                             </svg>
-                            Like
+                            Like : {newsfeed.likeCount}
                         </button>
                         <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
                             </svg>
-                            Comment
+                            Comment : {newsfeed.commentCount}
                         </button>
                     </div>
                 </div>
