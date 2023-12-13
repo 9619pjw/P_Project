@@ -49,7 +49,9 @@ export default function SignUpPage() {
                     <select 
                         id="userType" 
                         value={userType} 
-                        onChange={event => setUserType(event.target.value)}>
+                        onChange={event => setUserType(event.target.value)}
+                        className ="px-3 py-2 border rounded"
+                        >
                         <option value="후원자">후원자</option>
                         <option value="연구자">연구자</option>
                     </select>
