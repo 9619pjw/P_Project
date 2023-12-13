@@ -59,7 +59,7 @@ export default function FeedDetailPage(props: ReadProps) {
         const token = localStorage.getItem("accessToken");
 
         try {
-            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=1`, {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=10`, {
                 method: "GET",
                 headers: {
                     "Credentials": "include",
@@ -84,7 +84,7 @@ export default function FeedDetailPage(props: ReadProps) {
         const token = localStorage.getItem("accessToken");
 
         try {
-            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment?cursor=0&size=10`, {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/comment`, {
                 method: "POST",
                 headers: {
                     "Credentials": "include",
