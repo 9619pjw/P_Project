@@ -52,44 +52,78 @@ export default function FeedDetailPage(props: ReadProps) {
 
     // 피드 좋아요 관리
     const [likeCount, setLikeCount] = useState(feedData ? feedData.likeCount : 0);
+    const [isLiked, setIsLiked] = useState(feedData ? feedData.isLiked : false);
 
     const handleCommentChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setCommentInput(e.target.value);
     };
 
-    // 피드 좋아요 처리 함수
-    const handleLike = async () => {
-        const localStorage: Storage = window.localStorage;
-        const token = localStorage.getItem("accessToken");
+    // // 피드 좋아요 처리 함수
+    // const handleLike = async () => {
+    //     const localStorage: Storage = window.localStorage;
+    //     const token = localStorage.getItem("accessToken");
 
-        try {
-            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/like`, {
-                method: 'POST',
-                headers: {
-                    "Credentials": "include",
-                    "Authorization": `Bearer ${token}`,
-                },
-            });
+    //     try {
+    //         const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/like`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 "Credentials": "include",
+    //                 "Authorization": `Bearer ${token}`,
+    //             },
+    //         });
 
-            // 응답 처리
-            if (response.ok) {
-                const result = await response.json();
+    //         // 응답 처리
+    //         if (response.ok) {
+    //             const result = await response.json();
 
-                if (result.code === 'SUCCESS') {
-                    // 좋아요 개수 증가
-                    setLikeCount(likeCount + 1);
-                    window.location.reload();
-                } else {
-                throw new Error(result.message);
-                }
+    //             if (result.code === 'SUCCESS') {
+    //                 // 좋아요 개수 증가
+    //                 setLikeCount(likeCount + 1);
+    //                 window.location.reload();
+    //             } else {
+    //             throw new Error(result.message);
+    //             }
+    //         } else {
+    //             throw new Error('API 요청 실패');
+    //         }
+    //     } catch (error) {
+    //         console.error('피드 좋아요 처리 실패:', error);
+    //     }
+    // };
+
+    // 좋아요 또는 좋아요 취소 처리 함수
+const handleLike = async () => {
+    const localStorage: Storage = window.localStorage;
+    const token = localStorage.getItem("accessToken");
+
+    try {
+        const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/like`, {
+            method: isLiked ? 'DELETE' : 'POST', // 좋아요 상태에 따라 메서드 변경
+            headers: {
+                "Credentials": "include",
+                "Authorization": `Bearer ${token}`,
+            },
+        });
+
+        // 응답 처리
+        if (response.ok) {
+            const result = await response.json();
+
+            if (result.code === 'SUCCESS') {
+                // 좋아요 상태 및 개수 업데이트
+                setIsLiked(!isLiked);
+                setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
+                window.location.reload();
             } else {
-                throw new Error('API 요청 실패');
+                throw new Error(result.message);
             }
-        } catch (error) {
-            console.error('피드 좋아요 처리 실패:', error);
+        } else {
+            throw new Error('API 요청 실패');
         }
-    };
-
+    } catch (error) {
+        console.error('피드 좋아요 처리 실패:', error);
+    }
+};
 
 
 
