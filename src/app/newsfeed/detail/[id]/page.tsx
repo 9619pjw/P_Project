@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
-import { useRouter , useSearchParams } from 'next/navigation';
+// import { useRouter , useSearchParams } from 'next/navigation';
 
 
 type NewsfeedInfo = {
@@ -50,9 +50,48 @@ export default function FeedDetailPage(props: ReadProps) {
     const [comments, setComments] = useState<CommentInfo[]>([]); 
     const [commentInput, setCommentInput] = useState('');
 
+    // 피드 좋아요 관리
+    const [likeCount, setLikeCount] = useState(feedData ? feedData.likeCount : 0);
+
     const handleCommentChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setCommentInput(e.target.value);
     };
+
+    // 피드 좋아요 처리 함수
+    const handleLike = async () => {
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken");
+
+        try {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/like`, {
+                method: 'POST',
+                headers: {
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
+
+            // 응답 처리
+            if (response.ok) {
+                const result = await response.json();
+
+                if (result.code === 'SUCCESS') {
+                    // 좋아요 개수 증가
+                    setLikeCount(likeCount + 1);
+                    window.location.reload();
+                } else {
+                throw new Error(result.message);
+                }
+            } else {
+                throw new Error('API 요청 실패');
+            }
+        } catch (error) {
+            console.error('피드 좋아요 처리 실패:', error);
+        }
+    };
+
+
+
 
     const fetchComments = async () => {
         const localStorage: Storage = window.localStorage;
@@ -68,9 +107,6 @@ export default function FeedDetailPage(props: ReadProps) {
             });
 
             const data = await response.json();
-
-            console.log('Comment Response:', data); 
-
             setComments(data.data);
         } catch (error) {
             console.error("Error:", error);
@@ -111,31 +147,33 @@ export default function FeedDetailPage(props: ReadProps) {
         }
     };
 
-        const fetchFeedDetail = async () => {
-            const localStorage: Storage = window.localStorage;
-            const token = localStorage.getItem("accessToken");
+    // 피드 정보 가져옴
+    const fetchFeedDetail = async () => {
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken");
 
-            try {
-                const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}`, {
-                    method: "GET",
-                    headers: {
-                        "Credentials": "include",
-                        "Authorization": `Bearer ${token}`,
-                    },
-                });
+        try {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}`, {
+                method: "GET",
+                headers: {
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
 
-                const data = await response.json();
-                setFeedData(data.data);
+            const data = await response.json();
+            setFeedData(data.data);
             } catch (error) {
                 console.error("Error:", error);
             }
-        };
+    };
 
         
-        useEffect(() => {
-            fetchFeedDetail();
-            fetchComments(); 
-        }, [props.params.id]);
+    useEffect(() => {
+        fetchFeedDetail();
+        fetchComments(); 
+    }, [props.params.id]);
+
 
     if (!feedData) {
         return <div>Loading...</div>;
@@ -176,7 +214,7 @@ export default function FeedDetailPage(props: ReadProps) {
                         <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: feedData.content.replace(/\n/g, '<br />') }}></p>
                     </div>
                 <div className="mb-4 flex space-x-2 py-4 border-b">
-                    <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                    <button onClick={handleLike}  className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                         </svg>
