@@ -13,7 +13,8 @@ type UserJSON = {
 	nickname: string;
 	introduction: string | null;
 	profileImage: string | null | undefined;
-  };
+  userType : string;  
+};
   
 
 type PageParams = {

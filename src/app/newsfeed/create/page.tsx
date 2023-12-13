@@ -14,6 +14,7 @@ type UserJSON = {
     availableFollow : boolean;
     followerCount : number;
     followingCount : number;
+    userType : string;
 };
 
 type PageParams = {
@@ -47,6 +48,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
         availableFollow : true,
         followerCount : 0,
         followingCount : 0,
+        userType : "후원자",
     };
     const [data, setData] = useState<UserJSON>(userJSON);
     

@@ -16,6 +16,7 @@ type UserJSON = {
   availableFollow : boolean;
   followerCount : number;
   followingCount : number;
+  userType : string;
 };
 
 type ProfileProps = {

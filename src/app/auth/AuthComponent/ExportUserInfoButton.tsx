@@ -5,6 +5,7 @@ type ExportUserInfoProps = {
     nickname: string;
     validName: boolean;
     introduction : string | null;
+    userType : string;
 };
 
 export default function ExportUserInfoProps(props: ExportUserInfoProps) {

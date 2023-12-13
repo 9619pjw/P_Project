@@ -16,6 +16,7 @@ type UserJSON = {
   availableFollow : boolean;
   followerCount : number;
   followingCount : number;
+  userType : string;
 };
 
 export default function ProfilePage({ params }: { params: PageParams }) {
@@ -31,6 +32,7 @@ export default function ProfilePage({ params }: { params: PageParams }) {
     availableFollow : true,
     followerCount : 0,
     followingCount : 0,
+    userType :"후원자", 
   };
   const [data, setData] = useState<UserJSON>(userJSON);
 
