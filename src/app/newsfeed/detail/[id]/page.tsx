@@ -143,7 +143,7 @@ export default function FeedDetailPage(props: ReadProps) {
 
     return (
         <div className="bg-gray-50 flex justify-center p-12">
-            <div className="bg-white shadow-md rounded-lg w-full max-w-4xl flex">
+            <div className="bg-white shadow-md rounded-lg w-full max-w-6xl flex">
                 <div className="w-1/2 h-256">
                     <Link href={`/newsfeed/detail/${feedData.feedId}`}>
                         <img src={feedData.feedImgURL} alt="Project Image" className="w-full h-full object-cover" />
@@ -188,6 +188,7 @@ export default function FeedDetailPage(props: ReadProps) {
                     </svg>
                     Comment : {feedData.commentCount}
                 </button>
+                <br />
             </div>
             <div className="comments-section">
             {comments.map(comment => (
