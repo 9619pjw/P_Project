@@ -290,12 +290,12 @@ export default function GifticonPage({ params }: { params: PageParams }) {
         <div>
         <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
           <thead>
-            <tr style={{ backgroundColor: "black" }}>
-              <th style={{ color: "white", padding: "20px" }}>카테고리</th>
-              <th style={{ color: "white", padding: "20px" }}>상품명</th>
-              <th style={{ color: "white", padding: "20px" }}>설명</th>
-              <th style={{ color: "white", padding: "20px" }}>가격</th>
-              <th style={{ color: "white", padding: "20px" }}>수량</th>
+            <tr className="bg-black">
+              <th className="text-white p-5">카테고리</th>
+              <th className="text-white p-5">상품명</th>
+              <th className="text-white p-5">설명</th>
+              <th className="text-white p-5">가격</th>
+              <th className="text-white p-5">수량</th>
             </tr>
           </thead>
           <tbody>
@@ -324,11 +324,11 @@ export default function GifticonPage({ params }: { params: PageParams }) {
         <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
           <thead>
             <tr style={{ backgroundColor: "black" }}>
-              <th style={{ color: "white", padding: "20px" }}>카테고리</th>
-              <th style={{ color: "white", padding: "20px" }}>상품명</th>
-              <th style={{ color: "white", padding: "20px" }}>설명</th>
-              <th style={{ color: "white", padding: "20px" }}>가격</th>
-              <th style={{ color: "white", padding: "20px" }}>수량</th>
+              <th className="text-white p-5">카테고리</th>
+              <th className="text-white p-5">상품명</th>
+              <th className="text-white p-5">설명</th>
+              <th className="text-white p-5">가격</th>
+              <th className="text-white p-5">수량</th>
             </tr>
           </thead>
           <tbody>
@@ -354,19 +354,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
 
         {/* 상품 상세 화면 모달창 */}
         {modalOpen && selectedGift && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              position: "fixed",
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0,
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-            }}
-          >
+          <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
             <form
               onSubmit={handleSubmit}
               className={styles["modal-form"]}
