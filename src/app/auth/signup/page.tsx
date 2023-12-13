@@ -39,20 +39,21 @@ export default function SignUpPage() {
         <h1 className="text-4xl font-bold mb-2">Funs! CrowdFunding Service</h1>
         <br />
         <br />
-        <div className="mb-4">
-            <label htmlFor="userType" className="block text-lg mb-2">사용자 유형</label>
-            <select 
-                id="userType" 
-                value={userType} 
-                onChange={event => setUserType(event.target.value)}>
-                <option value="후원자">후원자</option>
-                <option value="연구자">연구자</option>
-            </select>
-        </div>
+        
         <div className="inputUserInfo" style={{ display: "flex", justifyContent: "space-around", alignItems: "start" }}>
             <div style={{ display: "flex", flexDirection: "column"}}>
                 <h4 className="text-2xl font-semibold mb-4">회원정보 입력</h4>
                 <br />
+                <div className="mb-4">
+                    <label htmlFor="userType" className="block text-lg mb-2">사용자 유형</label>
+                    <select 
+                        id="userType" 
+                        value={userType} 
+                        onChange={event => setUserType(event.target.value)}>
+                        <option value="후원자">후원자</option>
+                        <option value="연구자">연구자</option>
+                    </select>
+                </div>
                 <div className="mb-4">
                     <label htmlFor="image" className="block text-lg mb-2"> 프로필 이미지</label>
                     <input id="image" type="file" onChange={handleImageChange}></input>
