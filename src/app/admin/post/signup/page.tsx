@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from "../../Home.module.css";
+import styles from "../../../Home.module.css";
 
 type User = {
     username : string;  // id 입력 

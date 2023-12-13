@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import styles from "../../Home.module.css";
+
 
 // 게시글 정보를 담는 타입 정의
 type Post = {

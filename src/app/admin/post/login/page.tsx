@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import styles from "../../Home.module.css";
+import styles from "../../../Home.module.css";
 
 type User = {
   username: string;
