@@ -52,7 +52,14 @@ export default function FeedDetailPage(props: ReadProps) {
 
     // 피드 좋아요 관리
     const [likeCount, setLikeCount] = useState(feedData ? feedData.likeCount : 0);
-    const [isLiked, setIsLiked] = useState(feedData ? feedData.isLiked : false);
+    const [isLiked, setIsLiked] = useState(false);
+
+    // feedData가 변경될 때마다 좋아요 상태 업데이트
+    useEffect(() => {
+        if (feedData) {
+            setIsLiked(feedData.isLiked);
+        }
+    }, [feedData]);
 
     const handleCommentChange = (e : React.ChangeEvent<HTMLInputElement>) => {
         setCommentInput(e.target.value);
