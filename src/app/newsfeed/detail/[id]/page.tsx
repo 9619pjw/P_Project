@@ -87,6 +87,7 @@ export default function FeedDetailPage(props: ReadProps) {
                     setIsLiked(true);
                     setLikeCount(likeCount + 1);
                     fetchFeedDetail();
+                    window.location.href = `/newsfeed/detail/${props.params.id}`;
                 } else {
                     throw new Error(result.message);
                 }
@@ -120,6 +121,7 @@ export default function FeedDetailPage(props: ReadProps) {
                     setIsLiked(false);
                     setLikeCount(likeCount - 1);
                     fetchFeedDetail();
+                    window.location.href = `/newsfeed/detail/${props.params.id}`;
                 } else {
                     throw new Error(result.message);
                 }
