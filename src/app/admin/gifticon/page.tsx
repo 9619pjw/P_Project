@@ -151,7 +151,7 @@ export default function GifticonPage() {
     const token = localStorage.getItem("accessToken");
     try {
       const response = await fetch(
-        `https://withsports.shop:8000/gifticon-service/gifticon/category/${categoryName}`,
+        `https://funsns.shop:8000/gifticon-service/gifticon/category/${categoryName}`,
         {
           method: "GET",
           headers: {
@@ -245,7 +245,7 @@ export default function GifticonPage() {
       }
 
       const response = await fetch(
-        `https://withsports.shop:8000/gifticon-service/gifticon/${selectedGift.gifticonId}`,
+        `https://funsns.shop:8000/gifticon-service/gifticon/${selectedGift.gifticonId}`,
         {
           method: "PUT",
           headers: {
@@ -285,7 +285,7 @@ export default function GifticonPage() {
 
       try {
         const response = await fetch(
-          `https://withsports.shop:8000/gifticon-service/gifticon/${selectedGift.gifticonId}`,
+          `https://funsns.shop:8000/gifticon-service/gifticon/${selectedGift.gifticonId}`,
           {
             method: "DELETE",
             headers: {
