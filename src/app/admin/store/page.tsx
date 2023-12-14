@@ -175,7 +175,7 @@ export default function GifticonPage() {
 
   useEffect(() => {
     fetchGifts("service", setServiceGifts);
-    fetchGifts("sportequipment", setProductGifts);
+    fetchGifts("product", setProductGifts);
   }, []);
 
   // 상세 정보
