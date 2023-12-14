@@ -133,6 +133,37 @@ export default function FeedDetailPage(props: ReadProps) {
         }
     };
 
+    // 피드 삭제 함수
+    const deleteFeed = async () => {
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken");
+
+        try {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}`, {
+                method: 'DELETE',
+                headers: { 
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
+
+            // 응답 처리
+            if (response.ok) {
+                const result = await response.json();
+
+                if (result.code === 'SUCCESS') {
+                    alert("피드 삭제가 완료되었습니다.");
+                    window.location.reload();
+                } else {
+                    throw new Error(result.message);
+                }
+            } else {
+                throw new Error('API 요청 실패');
+            }
+        } catch (error) {
+            console.error('피드 삭제 실패:', error);
+        }
+    };
 
     // 댓글 함수
     const fetchComments = async () => {
@@ -250,6 +281,11 @@ export default function FeedDetailPage(props: ReadProps) {
                                 }                                             
                             </p>
                         </div>
+                        {feedData.isMine && 
+                            <button onClick={deleteFeed} className="px-4 py-2 bg-red-500 text-white rounded">
+                                피드 삭제
+                            </button>
+                        }
                     </div>
                     <div className="mb-4">
                         <p className="text-gray-900 font-bold">{feedData.title}</p>
