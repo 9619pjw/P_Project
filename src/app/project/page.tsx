@@ -14,7 +14,7 @@ export default function ProjectPage() {
                     <p className="text-lg">Crowd Funding Service with Social Network Service</p>
                 </header>
                 <div className="text-center mb-8">
-                    <Link href="/project/list">
+                    <Link href="http://3.37.181.58:3000">
                         <a className="px-4 py-2 bg-green-500 text-white rounded mr-2">시작하기</a>
                     </Link>
                 </div>
