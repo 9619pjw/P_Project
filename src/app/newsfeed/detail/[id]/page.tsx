@@ -50,7 +50,7 @@ export default function FeedDetailPage(props: ReadProps) {
 
     // 피드 좋아요 관리
     const [likeCount, setLikeCount] = useState(feedData ? feedData.likeCount : 0);
-    const [isLiked, setIsLiked] = useState(false);
+    const [isLiked, setIsLiked] = useState(feedData ? (feedData.isLiked ? true : false) : null);
 
 
     // feedData가 변경될 때마다 좋아요 상태 업데이트
@@ -84,7 +84,7 @@ export default function FeedDetailPage(props: ReadProps) {
 
                 if (result.code === 'SUCCESS') {
                     // 좋아요 상태 및 개수 업데이트
-                    setIsLiked(true);
+                    !isLiked;
                     setLikeCount(likeCount + 1);
                     fetchFeedDetail();
                     window.location.href = `/newsfeed/detail/${props.params.id}`;
