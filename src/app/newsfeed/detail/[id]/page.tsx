@@ -63,10 +63,13 @@ export default function FeedDetailPage(props: ReadProps) {
         const localStorage: Storage = window.localStorage;
         const token = localStorage.getItem("accessToken");
 
+        const method = isLiked ? 'DELETE' : 'POST'; // 좋아요 상태에 따라 메서드 결정
+
         try {
             const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/like`, {
-                method: isLiked ? 'DELETE' : 'POST', // 좋아요 상태에 따라 메서드 변경
-                headers: {
+                //method: isLiked ? 'DELETE' : 'POST', // 좋아요 상태에 따라 메서드 변경
+                method : method,
+                headers: { 
                 "Credentials": "include",
                 "Authorization": `Bearer ${token}`,
                 },

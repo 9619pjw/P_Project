@@ -293,31 +293,6 @@ async function handleUnFollowRequest() {
           </button>
       </div>
     )}
-  {/* <div className="flex items-center space-x-4 mb-8">
-    <input
-      id="outlined-basic"
-      placeholder="사용자 닉네임 검색"
-      className="border-2 border-gray-300 rounded-md p-2"
-      value={checkName}
-      onChange={typeName}
-    />
-    <img
-      onClick={searchNameFetch}
-      src="/search.png"
-      alt="search"
-      width={40}
-      height={40}
-      className="ml-2 cursor-pointer"
-    />
-    <ModalCustom
-      show={showSearchNameModal}
-      setShow={setShowSearchNameModal}
-    >
-      <div>
-        <ShowSearchList searchNameResult={searchNameResult} />
-      </div>
-    </ModalCustom>
-  </div> */}
   <div className="flex flex-col items-center mt-4">
     <IsYours
       pageId={pageId}
