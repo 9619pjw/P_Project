@@ -271,6 +271,8 @@ export default function FeedDetailPage(props: ReadProps) {
 
                 if (result.code === 'SUCCESS') {
                     alert("댓글 좋아요가 완료되었습니다.");
+                    setIsLiked(true);
+                    setLikeCount(likeCount + 1);
                     window.location.reload();
                 } else {
                     throw new Error(result.message);
@@ -303,6 +305,8 @@ export default function FeedDetailPage(props: ReadProps) {
 
                 if (result.code === 'SUCCESS') {
                     alert("댓글 좋아요 취소가 완료되었습니다.");
+                    setIsLiked(false);
+                    setLikeCount(likeCount - 1);
                     window.location.reload();
                 } else {
                     throw new Error(result.message);
