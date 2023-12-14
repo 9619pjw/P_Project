@@ -446,16 +446,12 @@ export default function FeedDetailPage(props: ReadProps) {
                                         좋아요 : {comment.likeCount}
                                     </button>
                                 )}
-                                {comments.map((comment: CommentInfo) => (
-                                    <div key={comment.commentId}>
-                                        {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
-                                            <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
-                                                댓글 삭제   
-                                            </button>
-                                        }
-                                    </div>
-                                ))}
-                        </div>
+                                {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
+                                    <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
+                                        댓글 삭제   
+                                    </button>
+                                }
+                        </div>    
                         )
                     )
                 }
