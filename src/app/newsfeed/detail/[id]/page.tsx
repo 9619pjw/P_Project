@@ -272,13 +272,20 @@ export default function FeedDetailPage(props: ReadProps) {
 
                 if (result.code === 'SUCCESS') {
                     alert("댓글 좋아요가 완료되었습니다.");
+                    const newComments = [...comments];  // comments 배열 복사
+                    const targetComment = newComments.find(comment => comment.commentId === commentId);
+                    if (targetComment) {
+                        targetComment.isLiked = true;
+                        targetComment.likeCount++;
+                    }
+                    setComments(newComments);
                     // 좋아요 상태 및 개수 업데이트
-                    setComments(comments.map(comment =>
-                        comment.commentId === commentId
-                            ? { ...comment, isLiked: true, likeCount: comment.likeCount + 1 }
-                            : comment
-                        )
-                    );
+                    // setComments(comments.map(comment =>
+                    //     comment.commentId === commentId
+                    //         ? { ...comment, isLiked: true, likeCount: comment.likeCount + 1 }
+                    //         : comment
+                    //     )
+                    // );
                     window.location.reload();
                 } else {
                     throw new Error(result.message);
@@ -312,12 +319,19 @@ export default function FeedDetailPage(props: ReadProps) {
                 if (result.code === 'SUCCESS') {
                     alert("댓글 좋아요 취소가 완료되었습니다.");
                     // 좋아요 상태 및 개수 업데이트
-                    setComments(comments.map(comment =>
-                        comment.commentId === commentId
-                            ? { ...comment, isLiked: false, likeCount: comment.likeCount - 1 }
-                            : comment
-                        )
-                    );
+                    const newComments = [...comments];  // comments 배열 복사
+                    const targetComment = newComments.find(comment => comment.commentId === commentId);
+                    if (targetComment) {
+                        targetComment.isLiked = false;
+                        targetComment.likeCount--;
+                    }
+                    setComments(newComments);
+                    // setComments(comments.map(comment =>
+                    //     comment.commentId === commentId
+                    //         ? { ...comment, isLiked: false, likeCount: comment.likeCount - 1 }
+                    //         : comment
+                    //     )
+                    // );
                     window.location.reload();
                 } else {
                     throw new Error(result.message);
