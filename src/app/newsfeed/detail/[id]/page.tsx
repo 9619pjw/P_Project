@@ -54,6 +54,7 @@ export default function FeedDetailPage(props: ReadProps) {
     const [likeCount, setLikeCount] = useState(feedData ? feedData.likeCount : 0);
     const [isLiked, setIsLiked] = useState(false);
 
+
     // feedData가 변경될 때마다 좋아요 상태 업데이트
     useEffect(() => {
         if (feedData) {
@@ -271,8 +272,13 @@ export default function FeedDetailPage(props: ReadProps) {
 
                 if (result.code === 'SUCCESS') {
                     alert("댓글 좋아요가 완료되었습니다.");
-                    setIsLiked(true);
-                    setLikeCount(likeCount + 1);
+                    // 좋아요 상태 및 개수 업데이트
+                    setComments(comments.map(comment =>
+                        comment.commentId === commentId
+                            ? { ...comment, isLiked: true, likeCount: comment.likeCount + 1 }
+                            : comment
+                        )
+                    );
                     window.location.reload();
                 } else {
                     throw new Error(result.message);
@@ -305,8 +311,13 @@ export default function FeedDetailPage(props: ReadProps) {
 
                 if (result.code === 'SUCCESS') {
                     alert("댓글 좋아요 취소가 완료되었습니다.");
-                    setIsLiked(false);
-                    setLikeCount(likeCount - 1);
+                    // 좋아요 상태 및 개수 업데이트
+                    setComments(comments.map(comment =>
+                        comment.commentId === commentId
+                            ? { ...comment, isLiked: false, likeCount: comment.likeCount - 1 }
+                            : comment
+                        )
+                    );
                     window.location.reload();
                 } else {
                     throw new Error(result.message);
