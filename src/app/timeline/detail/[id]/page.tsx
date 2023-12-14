@@ -153,7 +153,7 @@ export default function FeedDetailPage(props: ReadProps) {
 
                 if (result.code === 'SUCCESS') {
                     alert("피드 삭제가 완료되었습니다.");
-                    window.location.reload();
+                    window.location.href = '/timeline';
                 } else {
                     throw new Error(result.message);
                 }
