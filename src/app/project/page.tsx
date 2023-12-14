@@ -11,7 +11,7 @@ export default function ProjectPage() {
             <div className="bg-gray-100 container mx-auto px-4 py-8">
                 <header className="text-center mb-8">
                     <h1 className="text-4xl font-bold mb-2">Funs!</h1>
-                    <p className="text-lg">Crowd Funding Service with Social Network Service</p>
+                    <p className="text-lg">SNS형 크라우드 펀딩 서비스</p>
                 </header>
                 <div className="text-center mb-8">
                     <Link href="http://3.37.181.58:3000">

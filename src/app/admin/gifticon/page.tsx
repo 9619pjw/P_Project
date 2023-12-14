@@ -15,13 +15,12 @@ type GiftInfo = {
   amount: number; // 수량
 };
 
-// 페이지네이션 추가하기
-
-
 export default function GifticonPage() {
-  // 기프티콘 등록
-  const [foodGifts, setFoodGifts] = useState<GiftInfo[]>([]);
-  const [sportGifts, setSportGifts] = useState<GiftInfo[]>([]);
+  // 기프티콘 등록 
+  // service => service, sportequipment => product
+  // serviceGifts => serviceGifts, productGifts => productGift 
+  const [serviceGifts, setServiceGifts] = useState<GiftInfo[]>([]);
+  const [productGifts, setProductGifts] = useState<GiftInfo[]>([]);
 
   // 기프티콘 상세
   const [selectedGift, setSelectedGift] = useState<GiftInfo | null>(null);
@@ -34,7 +33,7 @@ export default function GifticonPage() {
 
   const [form, setForm] = useState<GiftInfo>({
     image: "",
-    categoryName: "food",
+    categoryName: "service",
     gifticonName: "",
     description: "",
     price: 0,
@@ -177,8 +176,8 @@ export default function GifticonPage() {
   };
 
   useEffect(() => {
-    fetchGifts("food", setFoodGifts);
-    fetchGifts("sportequipment", setSportGifts);
+    fetchGifts("service", setServiceGifts);
+    fetchGifts("sportequipment", setProductGifts);
   }, []);
 
   // 상세 정보
@@ -374,8 +373,8 @@ export default function GifticonPage() {
                   value={form.categoryName}
                   onChange={handleChange}
                 >
-                  <option value="food">Food</option>
-                  <option value="sportequipment">Sport Equipment</option>
+                  <option value="service">Service</option>
+                  <option value="product">Product</option>
                 </select>
               </label>
               <label>
@@ -419,7 +418,7 @@ export default function GifticonPage() {
         )}
 
         <h3>식품</h3>
-        {/* food 상품 목록 창 */}
+        {/* service 상품 목록 창 */}
         <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
           <thead>
             <tr style={{ backgroundColor: "black" }}>
@@ -431,12 +430,12 @@ export default function GifticonPage() {
             </tr>
           </thead>
           <tbody>
-            {foodGifts.length === 0 ? (
+            {serviceGifts.length === 0 ? (
               <tr>
                 <td colSpan={5}>상품을 등록해주세요!</td>
               </tr>
             ) : (
-              foodGifts.map((gift, index) => (
+              serviceGifts.map((gift, index) => (
                 <tr key={index} onClick={() => openDetailModal(gift)}>
                   <td>식품</td>
                   <td>{gift.gifticonName}</td>
@@ -449,8 +448,8 @@ export default function GifticonPage() {
           </tbody>
         </table>
 
-        <h3>스포츠 용품</h3>
-        {/* sportequipment 상품 목록 창 */}
+        <h3>제품</h3>
+        {/* 제품 목록 창 */}
         <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
           <thead>
             <tr style={{ backgroundColor: "black" }}>
@@ -462,14 +461,14 @@ export default function GifticonPage() {
             </tr>
           </thead>
           <tbody>
-            {sportGifts.length === 0 ? (
+            {productGifts.length === 0 ? (
               <tr>
                 <td colSpan={5}>상품을 등록해주세요!</td>
               </tr>
             ) : (
-              sportGifts.map((gift, index) => (
+              productGifts.map((gift, index) => (
                 <tr key={index} onClick={() => openDetailModal(gift)}>
-                  <td>운동기구</td>
+                  <td>제품</td>
                   <td>{gift.gifticonName}</td>
                   <td>{gift.description}</td>
                   <td>{gift.price}</td>
@@ -535,8 +534,8 @@ export default function GifticonPage() {
                         value={form.categoryName}
                         onChange={handleChange}
                       >
-                        <option value="food">Food</option>
-                        <option value="sportequipment">Sport Equipment</option>
+                        <option value="service">Service</option>
+                        <option value="product">Product</option>
                       </select>
                   </label>
                 </>

@@ -74,9 +74,12 @@ export default function GifticonPage({ params }: { params: PageParams }) {
     fetchUserInfo();
   }, []);
 
+ // service => service, productequipment => product
+ // serviceGifts => serviceGifts, productGifts => productGift 로 변경 예정
+
   const [gifts, setGifts] = useState<GiftInfo[]>([]);
-  const [foodGifts, setFoodGifts] = useState<GiftInfo[]>([]);
-  const [sportGifts, setSportGifts] = useState<GiftInfo[]>([]);
+  const [serviceGifts, setServiceGifts] = useState<GiftInfo[]>([]);
+  const [productGifts, setProductGifts] = useState<GiftInfo[]>([]);
 
   const [selectedGift, setSelectedGift] = useState<GiftInfo | null>(null);
   const [isEditing, setIsEditing] = useState(false);
@@ -85,7 +88,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
 
   const [form, setForm] = useState<GiftInfo>({
     image: "",
-    categoryName: "food",
+    categoryName: "service",
     gifticonName: "",
     description: "",
     price: 0,
@@ -237,8 +240,8 @@ export default function GifticonPage({ params }: { params: PageParams }) {
   };
 
   useEffect(() => {
-    fetchGifts('food', setFoodGifts);
-    fetchGifts('sportequipment', setSportGifts);
+    fetchGifts('service', setServiceGifts);
+    fetchGifts('productequipment', setProductGifts);
   }, []);
 
   // 상세 정보
@@ -285,8 +288,8 @@ export default function GifticonPage({ params }: { params: PageParams }) {
             보낸 기프티콘
           </button>
         </div>
-        <h3>식품</h3>
-        {/* food 상품 목록 창 */}
+        <h3>펀딩 출시 서비스</h3>
+        {/* service 상품 목록 창 */}
         <div>
         <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
           <thead>
@@ -299,14 +302,14 @@ export default function GifticonPage({ params }: { params: PageParams }) {
             </tr>
           </thead>
           <tbody>
-            {foodGifts.length === 0 ? (
+            {serviceGifts.length === 0 ? (
               <tr>
                 <td colSpan={5}>상품을 등록해주세요!</td>
               </tr>
             ) : (
-              foodGifts.map((gift, index) => (
+              serviceGifts.map((gift, index) => (
                 <tr key={index} onClick={() => openDetailModal(gift)}>
-                  <td>식품</td>
+                  <td>서비스</td>
                   <td>{gift.gifticonName}</td>
                   <td>{gift.description}</td>
                   <td>{gift.price}</td>
@@ -318,8 +321,8 @@ export default function GifticonPage({ params }: { params: PageParams }) {
         </table>
         </div>
 
-        <h3>스포츠 용품</h3>
-        {/* sportequipment 상품 목록 창 */}
+        <h3>펀딩 출시 제품</h3>
+        {/* productequipment 상품 목록 창 */}
         <div>
         <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
           <thead>
@@ -332,14 +335,14 @@ export default function GifticonPage({ params }: { params: PageParams }) {
             </tr>
           </thead>
           <tbody>
-            {sportGifts.length === 0 ? (
+            {productGifts.length === 0 ? (
               <tr>
                 <td colSpan={5}>상품을 등록해주세요!</td>
               </tr>
             ) : (
-              sportGifts.map((gift, index) => (
+              productGifts.map((gift, index) => (
                 <tr key={index} onClick={() => openDetailModal(gift)}>
-                  <td>운동기구</td>
+                  <td>제품</td>
                   <td>{gift.gifticonName}</td>
                   <td>{gift.description}</td>
                   <td>{gift.price}</td>
