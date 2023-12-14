@@ -17,8 +17,6 @@ type GiftInfo = {
 
 export default function GifticonPage() {
   // 기프티콘 등록 
-  // service => service, sportequipment => product
-  // serviceGifts => serviceGifts, productGifts => productGift 
   const [serviceGifts, setServiceGifts] = useState<GiftInfo[]>([]);
   const [productGifts, setProductGifts] = useState<GiftInfo[]>([]);
 
@@ -417,7 +415,7 @@ export default function GifticonPage() {
           </div>
         )}
 
-        <h3>식품</h3>
+        <h3>펀딩 출시 서비스</h3>
         {/* service 상품 목록 창 */}
         <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
           <thead>
@@ -437,7 +435,7 @@ export default function GifticonPage() {
             ) : (
               serviceGifts.map((gift, index) => (
                 <tr key={index} onClick={() => openDetailModal(gift)}>
-                  <td>식품</td>
+                  <td>서비스</td>
                   <td>{gift.gifticonName}</td>
                   <td>{gift.description}</td>
                   <td>{gift.price}</td>
@@ -448,7 +446,7 @@ export default function GifticonPage() {
           </tbody>
         </table>
 
-        <h3>제품</h3>
+        <h3>펀딩 출시 제품</h3>
         {/* 제품 목록 창 */}
         <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
           <thead>
