@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 export default function Admin() {
     const buttons = [
         { name: 'Newsfeed', imgSrc:'/newsfeed.png'},
-        { name: 'Gifticon', imgSrc:'/gifticon.png'},
+        { name: 'Store', imgSrc:'/gifticon.png'},
         { name: 'Post', imgSrc: '/post.png'}
     ];
 

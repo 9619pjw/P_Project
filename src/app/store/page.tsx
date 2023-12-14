@@ -109,7 +109,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
       if (userInfo && userInfo.balance < selectedGift.price) {
         alert('포인트가 부족합니다!');
       } else {
-        router.push(`/gifticon/order?gifticonId=${selectedGift.gifticonId}`);
+        router.push(`/store/order?gifticonId=${selectedGift.gifticonId}`);
       }
     } else {
       console.error('No gift selected');
@@ -120,13 +120,13 @@ export default function GifticonPage({ params }: { params: PageParams }) {
   // 받은 기프티콘 조회 버튼
   const handleGiftReceived = (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    router.push('/gifticon/received');
+    router.push('/store/received');
   };
 
   // 보낸 기프티콘 조회 버튼
   const handleGiftSent = (e:React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    router.push('/gifticon/sent')
+    router.push('/store/sent')
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

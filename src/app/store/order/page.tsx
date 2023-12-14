@@ -83,7 +83,7 @@ export default function GiftOrderPage() {
 
  // 뒤로가기 버튼
   const handleGoBack = () => {
-    window.location.href = "/gifticon";
+    window.location.href = "/store";
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setOrderInfo({ ...orderInfo, [e.target.name]: e.target.value });
@@ -129,7 +129,7 @@ export default function GiftOrderPage() {
       if (data.code === "SUCCESS") {
         alert(data.message);
         // 주문 성공 후 원하는 페이지로 이동
-        router.push("/gifticon/sent");
+        router.push("/store/sent");
       } else {
         alert("주문에 실패하였습니다.");
       }

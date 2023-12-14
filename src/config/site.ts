@@ -9,8 +9,8 @@ export const siteConfig = {
 			href: "/project",
 		},
 		{
-			label: "Gifticon",
-			href: "/gifticon",
+			label: "Store",
+			href: "/store",
 		},
 		{
 			label: "Newsfeed",
