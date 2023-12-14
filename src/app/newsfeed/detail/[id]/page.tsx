@@ -375,7 +375,6 @@ export default function FeedDetailPage(props: ReadProps) {
                             </button>
                                 {comments.map((comment: CommentInfo) => (
                                     <div key={comment.commentId}>
-                                        <p>{comment.content}</p>
                                         {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
                                             <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
                                                 댓글 삭제   
