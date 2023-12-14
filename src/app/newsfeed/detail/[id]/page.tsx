@@ -2,8 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
-// import { useRouter , useSearchParams } from 'next/navigation';
-
 
 type NewsfeedInfo = {
     feedId: number;
@@ -88,7 +86,7 @@ export default function FeedDetailPage(props: ReadProps) {
                     // 좋아요 상태 및 개수 업데이트
                     setIsLiked(true);
                     setLikeCount(likeCount + 1);
-                    window.location.reload();
+                    fetchFeedDetail();
                 } else {
                     throw new Error(result.message);
                 }
@@ -121,7 +119,7 @@ export default function FeedDetailPage(props: ReadProps) {
                     // 좋아요 상태 및 개수 업데이트
                     setIsLiked(false);
                     setLikeCount(likeCount - 1);
-                    window.location.reload();
+                    fetchFeedDetail();
                 } else {
                     throw new Error(result.message);
                 }
@@ -213,7 +211,7 @@ export default function FeedDetailPage(props: ReadProps) {
                 alert('댓글 작성이 완료되었습니다.');
                 setCommentInput(''); 
                 fetchComments();
-                window.location.reload();
+                fetchFeedDetail();
             }
         } catch (error) {
             console.error("Error:", error);
@@ -240,7 +238,7 @@ export default function FeedDetailPage(props: ReadProps) {
 
                 if (result.code === 'SUCCESS') {
                     alert("댓글 삭제가 완료되었습니다.");
-                    window.location.reload();
+                    fetchFeedDetail();
                 } else {
                     throw new Error(result.message);
                 }
@@ -279,14 +277,7 @@ export default function FeedDetailPage(props: ReadProps) {
                         targetComment.likeCount++;
                     }
                     setComments(newComments);
-                    // 좋아요 상태 및 개수 업데이트
-                    // setComments(comments.map(comment =>
-                    //     comment.commentId === commentId
-                    //         ? { ...comment, isLiked: true, likeCount: comment.likeCount + 1 }
-                    //         : comment
-                    //     )
-                    // );
-                    window.location.reload();
+                    fetchFeedDetail();
                 } else {
                     throw new Error(result.message);
                 }
@@ -326,13 +317,7 @@ export default function FeedDetailPage(props: ReadProps) {
                         targetComment.likeCount--;
                     }
                     setComments(newComments);
-                    // setComments(comments.map(comment =>
-                    //     comment.commentId === commentId
-                    //         ? { ...comment, isLiked: false, likeCount: comment.likeCount - 1 }
-                    //         : comment
-                    //     )
-                    // );
-                    window.location.reload();
+                    fetchFeedDetail();
                 } else {
                     throw new Error(result.message);
                 }
