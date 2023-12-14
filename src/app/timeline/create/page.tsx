@@ -123,7 +123,7 @@ export default function NewsfeedCreatePage({ params }: { params: PageParams }){
             if (data.code === "SUCCESS") {
                 alert(data.message);
                 setFeed({ userId: feed.userId, image: "", title: "", content: "" });
-                router.push('/newsfeed');
+                router.push('/timeline');
             } else {
                 alert("피드 작성에 실패하였습니다.");
             }
