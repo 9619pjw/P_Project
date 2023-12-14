@@ -61,7 +61,7 @@ export default function SentGiftPage(){
   
         try {
           const response = await fetch(
-            "https://withsports.shop:8000/gifticon-service/order/gifticon/list/sent",
+            "https://funsns.shop:8000/gifticon-service/order/gifticon/list/sent",
             {
               method: "GET",
               headers: {

@@ -167,7 +167,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
       });
 
       const response = await fetch(
-        "https://withsports.shop:8000/gifticon-service/gifticon",
+        "https://funsns.shop:8000/gifticon-service/gifticon",
         {
           method: "POST",
           headers: {
@@ -211,7 +211,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
     const token = localStorage.getItem("accessToken");
     try {
       const response = await fetch(
-        `https://withsports.shop:8000/gifticon-service/gifticon/category/${categoryName}`,
+        `https://funsns.shop:8000/gifticon-service/gifticon/category/${categoryName}`,
         {
           method: "GET",
           headers: {

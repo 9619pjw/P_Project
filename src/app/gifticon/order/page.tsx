@@ -56,7 +56,7 @@ export default function GiftOrderPage() {
       const token = localStorage.getItem("accessToken");
 
       try {
-        const response = await fetch(`https://withsports.shop:8000/gifticon-service/gifticon/${gifticonId}`,
+        const response = await fetch(`https://funsns.shop:8000/gifticon-service/gifticon/${gifticonId}`,
         {
           method:"GET",
           headers: {
@@ -103,7 +103,7 @@ export default function GiftOrderPage() {
 
     try {
       const response = await fetch(
-        "https://withsports.shop:8000/gifticon-service/order/gifticon",
+        "https://funsns.shop:8000/gifticon-service/order/gifticon",
         {
           method: "POST",
           headers: {

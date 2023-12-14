@@ -59,7 +59,7 @@ export default function ReceivedGiftPage(){
         const localStorage: Storage = window.localStorage;
         const token = localStorage.getItem("accessToken");
         try {
-          const response = await fetch("https://withsports.shop:8000/gifticon-service/order/gifticon/list/received",
+          const response = await fetch("https://funsns.shop:8000/gifticon-service/order/gifticon/list/received",
             {
               method: "GET",
               headers: {

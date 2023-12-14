@@ -102,7 +102,7 @@ export default function GifticonPage() {
       });
 
       const response = await fetch(
-        "https://withsports.shop:8000/gifticon-service/gifticon",
+        "https://funsns.shop:8000/gifticon-service/gifticon",
         {
           method: "POST",
           headers: {
