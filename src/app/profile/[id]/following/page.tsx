@@ -29,6 +29,10 @@ export default function FollowingListPage({ params }: { params: PageParams }){
 
     const [followingList, setFollowingList] = useState<FollowingUser[]>([]);
 
+    const handleGoBack = (e: React.MouseEvent) => {
+        window.location.href = "/profile";
+    };
+
     useEffect(() => {
         const fetchFollowingList = async () => {
             const localStorage: Storage = window.localStorage;
@@ -65,6 +69,9 @@ export default function FollowingListPage({ params }: { params: PageParams }){
                     </Link>
                 </div>
             ))}
+            <button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"> 
+                뒤로 가기 
+            </button>
         </div>
     );
 }

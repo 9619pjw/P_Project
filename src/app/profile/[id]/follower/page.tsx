@@ -29,6 +29,11 @@ export default function FollowerListPage({ params }: { params: PageParams }){
 
     const [followerList, setFollowerList] = useState<FollowerUser[]>([]);
 
+    const handleGoBack = (e: React.MouseEvent) => {
+        window.location.href = "/profile";
+    };
+    
+
     useEffect(() => {
         const fetchFollowerList = async () => {
             const localStorage: Storage = window.localStorage;
@@ -56,7 +61,7 @@ export default function FollowerListPage({ params }: { params: PageParams }){
 
     return (
         <div className="bg-gray-100 flex flex-col items-center space-y-4">
-            <h1 className="text-3xl font-bold mb-4">팔로워 목록</h1>
+            <h1 className="text-2xl font-bold mb-4">팔로워 목록</h1>
             {followerList.map(user => (
                 <div key={user.userId} className="flex items-center space-x-4 mr-2 border-bottom">
                     <img src={user.profileImage || "/default-profile.png"} alt="profile" className="rounded-full w-12 h-12"/>
@@ -65,6 +70,9 @@ export default function FollowerListPage({ params }: { params: PageParams }){
                     </Link>
                 </div>
             ))}
+            <button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"> 
+                뒤로 가기 
+            </button>
         </div>
     );
 }
