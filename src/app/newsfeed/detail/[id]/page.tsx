@@ -167,6 +167,16 @@ export default function FeedDetailPage(props: ReadProps) {
         }
     };
 
+      // 댓글 수정
+    const [editCommentId, setEditCommentId] = useState<number | null>(null);
+    const [editedContent, setEditedContent] = useState('');
+
+      // 댓글 수정 모달 
+    const showEditModal = (commentId: number, content: string) => {
+        setEditCommentId(commentId);
+        setEditedContent(content);
+    }
+
 
     // 댓글 함수
     const fetchComments = async () => {
@@ -215,6 +225,38 @@ export default function FeedDetailPage(props: ReadProps) {
             if(data.code === "SUCCESS") {
                 alert('댓글 작성이 완료되었습니다.');
                 setCommentInput(''); 
+                fetchComments();
+                fetchFeedDetail();
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    // 댓글 수정 함수
+    const editComment = async () => {
+        if (editCommentId === null) 
+            return;
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken");
+
+        try {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/comment/${editCommentId}`, {
+                method: 'PUT',
+                headers: { 
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    content: editedContent
+                }),
+            });
+
+            const data = await response.json();
+
+            if(data.code === "SUCCESS") {
+                alert('댓글 수정이 완료되었습니다.');
                 fetchComments();
                 fetchFeedDetail();
             }
@@ -477,9 +519,14 @@ export default function FeedDetailPage(props: ReadProps) {
                                     </button>
                                 )}
                                 {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
-                                    <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
-                                        댓글 삭제   
-                                    </button>
+                                    <>
+                                        <button onClick={() => showEditModal(comment.commentId, comment.content)} className="px-4 py-2 bg-blue-500 text-white rounded">
+                                            댓글 수정   
+                                        </button>
+                                        <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
+                                            댓글 삭제   
+                                        </button>
+                                    </>
                                 }
                         </div>    
                         )
