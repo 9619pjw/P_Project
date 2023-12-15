@@ -511,14 +511,14 @@ export default function FeedDetailPage(props: ReadProps) {
                                     }                                             
                                 </p>
                                 {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
-                                    <>
+                                    <div className="flex space-x-2">
                                         <button onClick={() => showEditModal(comment.commentId, comment.content)} className="px-4 py-2 bg-blue-500 text-white rounded">
                                             댓글 수정   
                                         </button>
                                         <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
                                             댓글 삭제   
                                         </button>
-                                    </>
+                                    </div>
                                 }
                                 <p className="text-gray-700"  dangerouslySetInnerHTML={{ __html: comment.content.replace(/\n/g, '<br />') }}></p>
                             </div>
