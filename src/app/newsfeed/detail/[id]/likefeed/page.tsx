@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
@@ -9,13 +10,14 @@ type LikeInfo = {
     followed: boolean;
 }
 
-type LikeListProps = {
+type ReadProps = {
     params: {
         id: number;
     };
 };
 
-export default function LikeListPage(props: LikeListProps) {
+
+export default function LikeListPage(props: ReadProps) {
     const [likeList, setLikeList] = useState<LikeInfo[]>([]);
 
     // 좋아요 리스트 정보 가져옴
