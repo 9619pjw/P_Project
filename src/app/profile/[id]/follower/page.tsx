@@ -58,7 +58,7 @@ export default function FollowerListPage({ params }: { params: PageParams }){
         <div className="bg-gray-100 flex flex-col items-center space-y-4">
             <h1 className="text-3xl font-bold mb-4">팔로워 목록</h1>
             {followerList.map(user => (
-                <div key={user.userId} className="mr-2 border-bottom">
+                <div key={user.userId} className="flex items-center space-x-4 mr-2 border-bottom">
                     <img src={user.profileImage || "/default-profile.png"} alt="profile" className="rounded-full w-12 h-12"/>
                     <Link href={`/profile/${user.userId}`}>    
                         <p className="text-sm font-semibold">{user.nickname}</p>
