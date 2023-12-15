@@ -60,8 +60,8 @@ export default function FollowingListPage({ params }: { params: PageParams }){
     }, [params.id]);
 
     return (
-        <div>
-            <h1>팔로잉 목록</h1>
+        <div className="bg-gray-100 flex flex-col items-center space-y-4">
+            <h1 className="text-3xl font-bold mb-4">팔로잉 목록</h1>
             {followingList.map(user => (
                 <div key={user.userId} className="mr-2 border-bottom">
                     <img src={user.profileImage || "/default-profile.png"} alt="profile" className="rounded-full w-12 h-12"/>
