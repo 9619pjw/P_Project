@@ -165,14 +165,14 @@ export default function Profile({ userJSON }: ProfileProps) {
           {userData.introduction}
         </div>
         <div className="flex justify-center mb-5 text-blue-600">
-        <Link href="/follower">
+        <Link href = {`/profile/${userData.userId}/follower`}>
           <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
           팔로워 수: {userData.followerCount}
           </button>
         </Link>
         </div>
         <div className="flex justify-center mb-5 text-blue-600">
-        <Link href="/following">
+        <Link href= {`/profile/${userData.userId}/following`}>
           <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
               팔로잉 수: {userData.followingCount}
           </button>
