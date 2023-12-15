@@ -5,7 +5,7 @@ import CheckNickButton from "@/app/auth/AuthComponent/CheckNickButton";
 import InsertProfileImage from "../profileComponent/InsertProfileImage";
 import ShowSearchList from "../profileComponent/ShowSearchList";
 import IsYours from "../profileComponent/IsYours";
-
+import Link from "next/link";
 
 type UserJSON = {
     userId: number;
@@ -63,9 +63,11 @@ export default function FollowingListPage({ params }: { params: PageParams }){
         <div>
             <h1>팔로잉 목록</h1>
             {followingList.map(user => (
-                <div key={user.userId}>
-                    <img src={user.profileImage || "/default-profile.png"} alt="profile" />
-                    <h2>{user.nickname}</h2>
+                <div key={user.userId} className="mr-2 border-bottom">
+                    <img src={user.profileImage || "/default-profile.png"} alt="profile" className="rounded-full w-12 h-12"/>
+                    <Link href={`/profile/${user.userId}`}>    
+                        <p className="text-sm font-semibold">{user.nickname}</p>
+                    </Link>
                 </div>
             ))}
         </div>
