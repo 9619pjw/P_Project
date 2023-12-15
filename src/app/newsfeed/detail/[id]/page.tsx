@@ -539,14 +539,15 @@ export default function FeedDetailPage(props: ReadProps) {
                                 }
                                  {/* 모달창 JSX 코드 */}
                                 {isModalOpen && (
-                                <div className="modal">
-                                    <div className="modal-content">
+                                    <div className="modal fixed top-0 left-0 w-full h-full flex items-center justify-center"
+                                        style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
+                                    <div className="modal-content  bg-white p-4 rounded-lg w-1/3">
                                         <label>
                                             댓글 내용 수정:
-                                            <textarea value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
+                                            <textarea className="border p-2 w-full mb-4" value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
                                         </label>
-                                        <button onClick={editComment}>수정완료</button>
-                                        <button onClick={closeModal}>닫기</button>
+                                        <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={editComment}>수정완료</button>
+                                        <button className="bg-red-500 text-white px-4 py-2 rounded"onClick={closeModal}>닫기</button>
                                     </div>
                                 </div>
                                 )}
