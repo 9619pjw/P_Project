@@ -167,14 +167,23 @@ export default function FeedDetailPage(props: ReadProps) {
         }
     };
 
-      // 댓글 수정
+    // 댓글 수정
     const [editCommentId, setEditCommentId] = useState<number | null>(null);
     const [editedContent, setEditedContent] = useState('');
 
-      // 댓글 수정 모달 
+    // 모달창을 위한 상태 추가
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // 댓글 수정 모달창
     const showEditModal = (commentId: number, content: string) => {
         setEditCommentId(commentId);
         setEditedContent(content);
+        setIsModalOpen(true);
+    }
+
+    // 모달창 닫기 함수
+    const closeModal = () => {
+        setIsModalOpen(false);
     }
 
 
@@ -528,6 +537,19 @@ export default function FeedDetailPage(props: ReadProps) {
                                         </button>
                                     </>
                                 }
+                                 {/* 모달창 JSX 코드 */}
+                                {isModalOpen && (
+                                <div className="modal">
+                                    <div className="modal-content">
+                                        <label>
+                                            댓글 내용 수정:
+                                            <textarea value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
+                                        </label>
+                                        <button onClick={editComment}>수정완료</button>
+                                        <button onClick={closeModal}>닫기</button>
+                                    </div>
+                                </div>
+                                )}
                         </div>    
                         )
                     )
