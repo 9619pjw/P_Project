@@ -1,10 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import ModalCustom from "@/components/ModalCustom";
-import CheckNickButton from "@/app/auth/AuthComponent/CheckNickButton";
-import InsertProfileImage from "../profileComponent/InsertProfileImage";
-import ShowSearchList from "../profileComponent/ShowSearchList";
-import IsYours from "../profileComponent/IsYours";
 import Link from "next/link";
 
 type UserJSON = {
@@ -72,5 +67,4 @@ export default function FollowingListPage({ params }: { params: PageParams }){
             ))}
         </div>
     );
-
 }
