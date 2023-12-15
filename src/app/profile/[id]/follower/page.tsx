@@ -62,14 +62,18 @@ export default function FollowerListPage({ params }: { params: PageParams }){
     return (
         <div className="bg-gray-100 flex flex-col items-center space-y-4">
             <h1 className="text-2xl font-bold mb-4">팔로워 목록</h1>
-            {followerList.map(user => (
-                <div key={user.userId} className="flex items-center space-x-4 mr-2 border-bottom">
-                    <img src={user.profileImage || "/default-profile.png"} alt="profile" className="rounded-full w-12 h-12"/>
-                    <Link href={`/profile/${user.userId}`}>    
-                        <p className="text-sm font-semibold">{user.nickname}</p>
-                    </Link>
-                </div>
-            ))}
+            {followerList.length === 0 ? (
+                <p>회원님을 팔로우하는 모든 사람들이 표시됩니다</p>
+            ) : (
+                followerList.map(user => (
+                    <div key={user.userId} className="flex items-center space-x-4 mr-2 border-bottom">
+                        <img src={user.profileImage || "/default-profile.png"} alt="profile" className="rounded-full w-12 h-12"/>
+                        <Link href={`/profile/${user.userId}`}>    
+                            <p className="text-sm font-semibold">{user.nickname}</p>
+                        </Link>
+                    </div>
+                ))
+            )}
             <button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"> 
                 뒤로 가기 
             </button>
