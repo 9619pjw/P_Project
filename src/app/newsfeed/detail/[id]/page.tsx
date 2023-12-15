@@ -510,6 +510,16 @@ export default function FeedDetailPage(props: ReadProps) {
                                         })
                                     }                                             
                                 </p>
+                                {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
+                                    <>
+                                        <button onClick={() => showEditModal(comment.commentId, comment.content)} className="px-4 py-2 bg-blue-500 text-white rounded">
+                                            댓글 수정   
+                                        </button>
+                                        <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
+                                            댓글 삭제   
+                                        </button>
+                                    </>
+                                }
                                 <p className="text-gray-700"  dangerouslySetInnerHTML={{ __html: comment.content.replace(/\n/g, '<br />') }}></p>
                             </div>
                                 {comment.isLiked ? (
@@ -527,16 +537,7 @@ export default function FeedDetailPage(props: ReadProps) {
                                         좋아요 : {comment.likeCount}
                                     </button>
                                 )}
-                                {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
-                                    <>
-                                        <button onClick={() => showEditModal(comment.commentId, comment.content)} className="px-4 py-2 bg-blue-500 text-white rounded">
-                                            댓글 수정   
-                                        </button>
-                                        <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
-                                            댓글 삭제   
-                                        </button>
-                                    </>
-                                }
+                            
                                  {/* 모달창 JSX 코드 */}
                                 {isModalOpen && (
                                     <div className="modal fixed top-0 left-0 w-full h-full flex items-center justify-center"
