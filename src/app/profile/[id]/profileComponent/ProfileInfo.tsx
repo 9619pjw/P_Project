@@ -121,8 +121,6 @@ export default function Profile({ userJSON }: ProfileProps) {
       });
   }
 
-
-
   return (
     <div className="bg-gray-100 container mx-auto px-4 py-8 flex flex-col items-center">
       <div className="flex items-center space-x-4 mb-8">
