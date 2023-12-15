@@ -131,6 +131,10 @@ export default function FeedDetailPage(props: ReadProps) {
             console.error('피드 좋아요 취소 실패:', error);
         }
     };
+    // 피드 수정 페이지로 이동
+    const editFeed = (e:React.MouseEvent) => {
+        window.location.href = `/newsfeed/detail/${props.params.id}/modify`;
+    }
     // 피드 삭제 함수
     const deleteFeed = async () => {
         const localStorage: Storage = window.localStorage;
@@ -392,9 +396,14 @@ export default function FeedDetailPage(props: ReadProps) {
                             </p>
                         </div>
                         {feedData.isMine && 
-                            <button onClick={deleteFeed} className="px-4 py-2 bg-red-500 text-white rounded">
-                                피드 삭제
-                            </button>
+                            <div className="flex space-x-2">
+                                <button type="button" onClick={editFeed} className="px-4 py-2 bg-blue-500 text-white rounded">
+                                    피드 수정
+                                </button>
+                                <button onClick={deleteFeed} className="px-4 py-2 bg-red-500 text-white rounded">
+                                    피드 삭제
+                                </button>
+                            </div>
                         }
                     </div>
                     <div className="mb-4">
@@ -403,7 +412,7 @@ export default function FeedDetailPage(props: ReadProps) {
                     </div>
                 <div className="mb-4 flex flex-col space-y-4 py-4 border-b">
                     <Link href={`/newsfeed/detail/${feedData.feedId}/likefeed`}>
-                        <a className="text-black-500">{feedData.likeCount} 명이 좋아합니다</a>
+                        <a className="text-black-500">{feedData.likeCount}명이 좋아합니다</a>
                     </Link>
                     <div className="flex space-x-2">
                         {feedData.isLiked ? (
