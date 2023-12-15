@@ -5,7 +5,7 @@ import CheckNickButton from "@/app/auth/AuthComponent/CheckNickButton";
 import InsertProfileImage from "./InsertProfileImage";
 import ShowSearchList from "./ShowSearchList";
 import IsYours from "./IsYours";
-
+import Link from "next/link";
 
 type UserJSON = {
   userId: number;
@@ -165,10 +165,18 @@ export default function Profile({ userJSON }: ProfileProps) {
           {userData.introduction}
         </div>
         <div className="flex justify-center mb-5 text-blue-600">
+        <Link href="/follower">
+          <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
           팔로워 수: {userData.followerCount}
+          </button>
+        </Link>
         </div>
         <div className="flex justify-center mb-5 text-blue-600">
-          팔로잉 수: {userData.followingCount}
+        <Link href="/following">
+          <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+              팔로잉 수: {userData.followingCount}
+          </button>
+        </Link>
         </div>
       </div>
     </div>
