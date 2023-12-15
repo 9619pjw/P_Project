@@ -19,8 +19,8 @@ type UserJSON = {
     userType : string;
 };
 
-type ProfileProps = {
-    userJSON: UserJSON;
+type PageParams = {
+    id: number;
 };
 
 type FollowingUser = {
@@ -30,7 +30,7 @@ type FollowingUser = {
     followed: boolean;
 }
 
-export default function FollowingListPage({ userJSON }: ProfileProps){
+export default function FollowingListPage({ params }: { params: PageParams }){
 
     const [followingList, setFollowingList] = useState<FollowingUser[]>([]);
 
@@ -39,7 +39,7 @@ export default function FollowingListPage({ userJSON }: ProfileProps){
             const localStorage: Storage = window.localStorage;
             const token = localStorage.getItem("accessToken");
 
-            const response = await fetch(`https://funsns.shop:8000/follow-service/followings/${userJSON.userId}?cursor=0&size=100`, {
+            const response = await fetch(`https://funsns.shop:8000/follow-service/followings/${params.id}?cursor=0&size=100`, {
                 headers: {
                     Credentials: "include",
                     "Content-Type": "application/json",
@@ -57,7 +57,7 @@ export default function FollowingListPage({ userJSON }: ProfileProps){
         }
 
         fetchFollowingList();
-    }, [userJSON.userId]);
+    }, [params.id]);
 
     return (
         <div>
