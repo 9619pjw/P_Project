@@ -2,9 +2,9 @@
 import { useState } from "react";
 import ModalCustom from "@/components/ModalCustom";
 import CheckNickButton from "@/app/auth/AuthComponent/CheckNickButton";
-import InsertProfileImage from "./InsertProfileImage";
-import ShowSearchList from "./ShowSearchList";
-import IsYours from "./IsYours";
+import InsertProfileImage from "../profileComponent/InsertProfileImage";
+import ShowSearchList from "../profileComponent/ShowSearchList";
+import IsYours from "../profileComponent/IsYours";
 
 
 type UserJSON = {
@@ -23,11 +23,11 @@ type ProfileProps = {
     userJSON: UserJSON;
 };
 
-export default function FollowerListPage({ userJSON }: ProfileProps){
+export default function FollowerListPage(){
 
-    console.log("userJSON:");
-    console.log(userJSON);
-    let userData = userJSON;
+    // console.log("userJSON:");
+    // console.log(userJSON);
+    // let userData = userJSON;
 
     return <>팔로워 목록</>
 
