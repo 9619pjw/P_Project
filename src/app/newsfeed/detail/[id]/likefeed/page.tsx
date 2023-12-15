@@ -1,0 +1,63 @@
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+
+type LikeInfo = {
+    cursorId: number;
+    userId: number;
+    nickname: string;
+    profileImgURL: string;
+    followed: boolean;
+}
+
+type LikeListProps = {
+    params: {
+        id: number;
+    };
+};
+
+export default function LikeListPage(props: LikeListProps) {
+    const [likeList, setLikeList] = useState<LikeInfo[]>([]);
+
+    // 좋아요 리스트 정보 가져옴
+    const fetchLikeList = async () => {
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken");
+
+        try {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/${props.params.id}/like-list?cursor=0&size=10`, {
+                method: "GET",
+                headers: {
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
+
+            const data = await response.json();
+            setLikeList(data.data);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchLikeList();
+    }, [props.params.id]);
+
+    if (!likeList) {
+        return <div>Loading...</div>;
+    }
+
+    return (
+        <div className="bg-gray-100 flex flex-col items-center space-y-4">
+            <h1 className="text-3xl font-bold mb-4">좋아요 목록</h1>
+            {likeList.map(user => (
+                <div key={user.userId} className="flex items-center space-x-4 mr-2 border-bottom">
+                    <img src={user.profileImgURL || "/default-profile.png"} alt="profile" className="rounded-full w-12 h-12"/>
+                    <Link href={`/profile/${user.userId}`}>    
+                        <p className="text-sm font-semibold">{user.nickname}</p>
+                    </Link>
+                </div>
+            ))}
+        </div>
+    );            
+}

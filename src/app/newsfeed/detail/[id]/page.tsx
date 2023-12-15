@@ -52,7 +52,6 @@ export default function FeedDetailPage(props: ReadProps) {
     const [likeCount, setLikeCount] = useState(feedData ? feedData.likeCount : 0);
     const [isLiked, setIsLiked] = useState(feedData ? (feedData.isLiked ? true : false) : null);
 
-
     // feedData가 변경될 때마다 좋아요 상태 업데이트
     useEffect(() => {
         if (feedData) {
