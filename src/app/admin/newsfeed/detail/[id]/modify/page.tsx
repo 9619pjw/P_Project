@@ -115,7 +115,7 @@ export default function FeedModifyPage(props: ReadProps) {
 
             if (data.code === "SUCCESS") {
                 alert(data.message);
-                router.push(`/timeline/detail/${props.params.id}`);
+                router.push(`/admin/newsfeed/detail/${props.params.id}`);
             } else {
                 alert("피드 수정에 실패하였습니다.");
             }
@@ -125,7 +125,7 @@ export default function FeedModifyPage(props: ReadProps) {
     };
 
     const handleGoBack = (e: React.MouseEvent) => {
-        window.location.href = `/timeline/detail/${props.params.id}`;
+        window.location.href = `/admin/newsfeed/detail/${props.params.id}`;
     };
 
 
@@ -147,6 +147,7 @@ export default function FeedModifyPage(props: ReadProps) {
                 </label>
                 <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded mb-8">피드 수정</button>
             </form>
+
 
             <button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"> 
                 뒤로 가기 
