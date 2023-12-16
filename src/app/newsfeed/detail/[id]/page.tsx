@@ -537,7 +537,7 @@ export default function FeedDetailPage(props: ReadProps) {
                                         </button>
                                     </div>
                                 }
-                                 {/* 모달창 JSX 코드 */}
+                                {/* 모달창 */}
                                 {isModalOpen && (
                                     <div className="modal fixed top-0 left-0 w-full h-full flex items-center justify-center"
                                         style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>

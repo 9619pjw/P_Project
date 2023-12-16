@@ -52,7 +52,6 @@ export default function FeedDetailPage(props: ReadProps) {
     const [likeCount, setLikeCount] = useState(feedData ? feedData.likeCount : 0);
     const [isLiked, setIsLiked] = useState(feedData ? (feedData.isLiked ? true : false) : null);
 
-
     // feedData가 변경될 때마다 좋아요 상태 업데이트
     useEffect(() => {
         if (feedData) {
@@ -132,6 +131,10 @@ export default function FeedDetailPage(props: ReadProps) {
             console.error('피드 좋아요 취소 실패:', error);
         }
     };
+    // 피드 수정 페이지로 이동
+    const editFeed = (e:React.MouseEvent) => {
+        window.location.href = `/timeline/detail/${props.params.id}/modify`;
+    }
     // 피드 삭제 함수
     const deleteFeed = async () => {
         const localStorage: Storage = window.localStorage;
@@ -163,6 +166,25 @@ export default function FeedDetailPage(props: ReadProps) {
             console.error('피드 삭제 실패:', error);
         }
     };
+
+    // 댓글 수정
+    const [editCommentId, setEditCommentId] = useState<number | null>(null);
+    const [editedContent, setEditedContent] = useState('');
+
+    // 모달창을 위한 상태 추가
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // 댓글 수정 모달창
+    const showEditModal = (commentId: number, content: string) => {
+        setEditCommentId(commentId);
+        setEditedContent(content);
+        setIsModalOpen(true);
+    }
+
+    // 모달창 닫기 함수
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
 
 
     // 댓글 함수
@@ -220,6 +242,38 @@ export default function FeedDetailPage(props: ReadProps) {
         }
     };
 
+    // 댓글 수정 함수
+    const editComment = async () => {
+        if (editCommentId === null) 
+            return;
+        const localStorage: Storage = window.localStorage;
+        const token = localStorage.getItem("accessToken");
+
+        try {
+            const response = await fetch(`https://funsns.shop:8000/feed-service/feed/comment/${editCommentId}`, {
+                method: 'PUT',
+                headers: { 
+                    "Credentials": "include",
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    content: editedContent
+                }),
+            });
+
+            const data = await response.json();
+
+            if(data.code === "SUCCESS") {
+                alert('댓글 수정이 완료되었습니다.');
+                fetchComments();
+                fetchFeedDetail();
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
     // 댓글 삭제 함수
     const deleteComment = async (commentId : number) => {
         const localStorage: Storage = window.localStorage;
@@ -252,8 +306,8 @@ export default function FeedDetailPage(props: ReadProps) {
         }
     };
 
-     // 댓글 좋아요 함수
-     const likeComment = async (commentId: number) => {
+    // 댓글 좋아요 함수
+    const likeComment = async (commentId: number) => {
         const localStorage: Storage = window.localStorage;
         const token = localStorage.getItem("accessToken");
 
@@ -393,37 +447,47 @@ export default function FeedDetailPage(props: ReadProps) {
                             </p>
                         </div>
                         {feedData.isMine && 
-                            <button onClick={deleteFeed} className="px-4 py-2 bg-red-500 text-white rounded">
-                                피드 삭제
-                            </button>
+                            <div className="flex space-x-2">
+                                <button type="button" onClick={editFeed} className="px-4 py-2 bg-blue-500 text-white rounded">
+                                    피드 수정
+                                </button>
+                                <button onClick={deleteFeed} className="px-4 py-2 bg-red-500 text-white rounded">
+                                    피드 삭제
+                                </button>
+                            </div>
                         }
                     </div>
                     <div className="mb-4">
                         <p className="text-gray-900 font-bold">{feedData.title}</p>
                         <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: feedData.content.replace(/\n/g, '<br />') }}></p>
                     </div>
-                <div className="mb-4 flex space-x-2 py-4 border-b">
-                {feedData.isLiked ? (
-                    <button onClick={handleUnlike} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                        좋아요 취소 : {feedData.likeCount}
-                    </button> 
-                ):(
-                    <button onClick={handleLike} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                        좋아요 : {feedData.likeCount}
-                    </button>
-                )}
-                    <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-                        </svg>
-                        댓글 : {feedData.commentCount}
-                    </button>
+                <div className="mb-4 flex flex-col space-y-4 py-4 border-b">
+                    <Link href={`/newsfeed/detail/${feedData.feedId}/likefeed`}>
+                        <a className="text-black-500">{feedData.likeCount}명이 좋아합니다</a>
+                    </Link>
+                    <div className="flex space-x-2">
+                        {feedData.isLiked ? (
+                            <button onClick={handleUnlike} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                좋아요 취소
+                            </button> 
+                        ):(
+                            <button onClick={handleLike} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                좋아요
+                            </button>
+                        )}
+                        <button className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                            </svg>
+                            댓글 : {feedData.commentCount}
+                        </button>
+                    </div>
                 </div>
                 <div className="comments-section">
                     {comments.map(comment => (
@@ -448,26 +512,45 @@ export default function FeedDetailPage(props: ReadProps) {
                                 </p>
                                 <p className="text-gray-700"  dangerouslySetInnerHTML={{ __html: comment.content.replace(/\n/g, '<br />') }}></p>
                             </div>
-                            {comment.isLiked ? (
-                                <button onClick={() => unlikeComment(comment.commentId)} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
+                                {comment.isLiked ? (
+                                    <button onClick={() => unlikeComment(comment.commentId)} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                        </svg>
                                         좋아요 취소 : {comment.likeCount}
-                                </button>
-                            ) : (
-                                <button onClick={() => likeComment(comment.commentId)} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
+                                    </button>
+                                ) : (
+                                    <button onClick={() => likeComment(comment.commentId)} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                        </svg>
                                         좋아요 : {comment.likeCount}
-                                </button>
-                            )}
-                            {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
-                                <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
-                                    댓글 삭제   
-                                </button>
-                            }
+                                    </button>
+                                )}
+                                {comment.userId === parseInt(localStorage.getItem("userId") || "0", 10) && 
+                                <div className="flex space-x-2">
+                                    <button onClick={() => showEditModal(comment.commentId, comment.content)} className="px-4 py-2 bg-blue-500 text-white rounded">
+                                        댓글 수정   
+                                    </button>
+                                    <button onClick={() => deleteComment(comment.commentId)} className="px-4 py-2 bg-red-500 text-white rounded">
+                                        댓글 삭제   
+                                    </button>
+                                </div>
+                                }
+                                 {/* 모달창 */}
+                                {isModalOpen && (
+                                    <div className="modal fixed top-0 left-0 w-full h-full flex items-center justify-center"
+                                        style={{backgroundColor: 'rgba(0, 0, 0, 0.5)'}}>
+                                    <div className="modal-content  bg-white p-4 rounded-lg w-1/3">
+                                        <label>
+                                            댓글 내용 수정:
+                                            <textarea className="border p-2 w-full mb-4" value={editedContent} onChange={(e) => setEditedContent(e.target.value)} />
+                                        </label>
+                                        <button className="bg-blue-500 text-white px-4 py-2 rounded mr-2" onClick={editComment}>수정완료</button>
+                                        <button className="bg-red-500 text-white px-4 py-2 rounded"onClick={closeModal}>닫기</button>
+                                    </div>
+                                </div>
+                                )}
                         </div>
                         )
                     )
