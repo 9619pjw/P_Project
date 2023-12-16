@@ -115,7 +115,7 @@ export default function FeedModifyPage(props: ReadProps) {
 
             if (data.code === "SUCCESS") {
                 alert(data.message);
-                router.push(`/newsfeed/detail/${props.params.id}`);
+                router.push(`/timeline/detail/${props.params.id}`);
             } else {
                 alert("피드 수정에 실패하였습니다.");
             }
