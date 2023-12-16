@@ -448,9 +448,6 @@ export default function FeedDetailPage(props: ReadProps) {
                             </p>
                         </div>
                             <div className="flex space-x-2">
-                                <button type="button" onClick={editFeed} className="px-4 py-2 bg-blue-500 text-white rounded">
-                                    피드 수정
-                                </button>
                                 <button onClick={deleteFeed} className="px-4 py-2 bg-red-500 text-white rounded">
                                     피드 삭제
                                 </button>
