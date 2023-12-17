@@ -303,7 +303,6 @@ export default function GifticonPage({ params }: { params: PageParams }) {
           </button>
         </div>
         <h3 className="mb-4">펀딩 출시 서비스</h3>
-        <div>
           <table className="w-full border-collapse mt-2">
             <thead>
               <tr className="bg-black">
@@ -458,7 +457,6 @@ export default function GifticonPage({ params }: { params: PageParams }) {
             </form>
           </div>
         )}
-      </div>
     </div>
   );
 }
