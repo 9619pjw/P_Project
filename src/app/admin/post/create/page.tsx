@@ -16,7 +16,7 @@ type Post = {
 
 export default function CreatePost() {
   const [title, setTitle] = useState("");
-  const [isNotice, setIsNotice] = useState(false);
+  const [isNotice, setIsNotice] = useState(true);
   const [content, setContent] = useState("");
   const router = useRouter();
 
@@ -72,7 +72,7 @@ export default function CreatePost() {
   return (
     <div className="bg-gray-50 container mx-auto px-4 py-8">
     <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-4">질문글 작성</h1>
+      <h1 className="text-3xl font-bold mb-4">공지글 작성</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="title" className="block text-lg mb-2">제목</label>
