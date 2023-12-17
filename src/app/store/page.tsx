@@ -337,7 +337,6 @@ export default function GifticonPage({ params }: { params: PageParams }) {
               )}
             </tbody>
           </table>
-        </div>
 
         <h3 className="mt-8 mb-4">펀딩 출시 제품</h3>
         <div>
@@ -458,5 +457,6 @@ export default function GifticonPage({ params }: { params: PageParams }) {
           </div>
         )}
     </div>
+  </div>
   );
 }

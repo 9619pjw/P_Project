@@ -445,7 +445,6 @@ export default function GifticonPage() {
             )}
           </tbody>
         </table>
-
         <h3 className="mt-8 mb-4">펀딩 출시 제품</h3>
         <table className="w-full border-collapse mt-2">
           <thead>
