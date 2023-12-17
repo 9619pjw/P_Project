@@ -326,11 +326,13 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                     onClick={() => openDetailModal(gift)}
                     className="cursor-pointer hover:bg-gray-200"
                   >
-                    <td>서비스</td>
-                    <td>{gift.gifticonName}</td>
-                    <td>{gift.description}</td>
-                    <td>{gift.price}</td>
-                    <td>{gift.amount}</td>
+                    <td className="text-white px-5 py-3">서비스</td>
+                    <td className="text-white px-5 py-3">
+                      {gift.gifticonName}
+                    </td>
+                    <td className="text-white px-5 py-3">{gift.description}</td>
+                    <td className="text-white px-5 py-3">{gift.price}</td>
+                    <td className="text-white px-5 py-3">{gift.amount}</td>
                   </tr>
                 ))
               )}
@@ -353,7 +355,9 @@ export default function GifticonPage({ params }: { params: PageParams }) {
             <tbody>
               {productGifts.length === 0 ? (
                 <tr>
-                  <td colSpan={5}>상품을 등록해주세요!</td>
+                  <td colSpan={5} className="text-white px-5 py-3">
+                    상품을 등록해주세요!
+                  </td>
                 </tr>
               ) : (
                 productGifts.map((gift, index) => (
@@ -362,34 +366,25 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                     onClick={() => openDetailModal(gift)}
                     className="cursor-pointer hover:bg-gray-200"
                   >
-                    <td>제품</td>
-                    <td>{gift.gifticonName}</td>
-                    <td>{gift.description}</td>
-                    <td>{gift.price}</td>
-                    <td>{gift.amount}</td>
+                    <td className="text-white px-5 py-3">제품</td>
+                    <td className="text-white px-5 py-3">
+                      {gift.gifticonName}
+                    </td>
+                    <td className="text-white px-5 py-3">{gift.description}</td>
+                    <td className="text-white px-5 py-3">{gift.price}</td>
+                    <td className="text-white px-5 py-3">{gift.amount}</td>
                   </tr>
                 ))
               )}
             </tbody>
           </table>
         </div>
-        
-        {/* 상품 상세 화면 모달창 */}
+
         {modalOpen && selectedGift && (
           <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
             <form
               onSubmit={handleSubmit}
-              className={styles["modal-form"]}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "white",
-                borderRadius: "10px",
-                padding: "20px",
-                width: "300px",
-              }}
+              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72"
             >
               {/* 이미지 표시*/}
               {selectedGift.image && (
@@ -400,6 +395,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                   height={200}
                 />
               )}
+
               <input
                 type="text"
                 name="gifticonName"
@@ -407,7 +403,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 onChange={handleChange}
                 placeholder="상품명"
                 required
-                className={styles["input-box"]}
+                className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
               <input
@@ -417,7 +413,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 onChange={handleChange}
                 placeholder="설명"
                 required
-                className={styles["input-box"]}
+                className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
               <input
@@ -427,7 +423,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 onChange={handleChange}
                 placeholder="가격"
                 required
-                className={styles["input-box"]}
+                className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
               <input
@@ -437,15 +433,14 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 onChange={handleChange}
                 placeholder="수량"
                 required
-                className={styles["input-box"]}
+                className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div className="flex justify-between mt-4">
                 <button
                   type="button"
                   onClick={handleGiftOrder}
-                  className={styles.addButton}
-                  style={{ marginRight: "10px" }}
+                  className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
                 >
                   선물하기
                 </button>
@@ -455,7 +450,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                     setModalOpen(false);
                     setIsEditing(false);
                   }}
-                  className={styles.backbutton}
+                  className="px-4 py-2 bg-red-500 text-white rounded"
                 >
                   취소
                 </button>
