@@ -99,7 +99,7 @@ export default function PointPage() {
   const router = useRouter();
 
   const handleGoBack = () => {
-    window.location.href = "/gifticon";
+    window.location.href = "/store";
   };
 
   return (
