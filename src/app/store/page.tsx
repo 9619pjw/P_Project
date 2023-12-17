@@ -380,7 +380,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
           <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72"
+              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-96 h-96"
             >
               {/* 이미지 표시*/}
               {selectedGift.image && (

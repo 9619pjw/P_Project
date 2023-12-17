@@ -247,5 +247,4 @@ P_Project
 │     └─ index.ts
 ├─ tailwind.config.js
 └─ tsconfig.json
-
 ```
