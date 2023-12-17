@@ -380,7 +380,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
           <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-96 h-96"
+              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-96 h-128"
             >
               {/* 이미지 표시*/}
               {selectedGift.image && (
@@ -392,6 +392,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 />
               )}
 
+              <label>상품명</label>
               <input
                 type="text"
                 name="gifticonName"
@@ -402,6 +403,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
+              <label>상품 상세</label>
               <input
                 type="text"
                 name="description"
@@ -412,6 +414,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
+              <label>상품 가격</label>
               <input
                 type="number"
                 name="price"
@@ -422,6 +425,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
+              <label>잔여 수량</label>
               <input
                 type="number"
                 name="amount"
