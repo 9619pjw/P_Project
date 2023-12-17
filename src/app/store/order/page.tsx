@@ -155,19 +155,6 @@ export default function GiftOrderPage() {
         )}
         <div className="mt-4">
           <p>상품명 : {gifticon?.gifticonName}</p>
-          {/* <div className="mt-4">
-            <label>기프티콘 ID:</label>
-            <input
-              type="number"
-              name="gifticonId"
-              value={orderInfo.gifticonId}
-              onChange={handleChange}
-              placeholder="기프티콘 ID"
-              required
-              readOnly
-              className="mt-2 border border-gray-300 px-2 w-full"
-            />
-          </div> */}
           <div className="mt-4">
             <label>받을사람 닉네임</label>
             <input
