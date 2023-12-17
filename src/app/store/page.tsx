@@ -4,18 +4,17 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "../Home.module.css";
 import Image from "next/image";
-import Link from 'next/link';
-import Head from 'next/head';
+import Link from "next/link";
+import Head from "next/head";
 
 type UserJSON = {
-	userId: number;
-	name : string;
-	nickname: string;
-	introduction: string | null;
-	profileImage: string | null | undefined;
-  userType : string;  
+  userId: number;
+  name: string;
+  nickname: string;
+  introduction: string | null;
+  profileImage: string | null | undefined;
+  userType: string;
 };
-  
 
 type PageParams = {
   id: number;
@@ -28,9 +27,8 @@ type UserInfo = {
   balance: number;
 };
 
-
 type GiftInfo = {
-  gifticonId ?: number; // 기프티콘 id
+  gifticonId?: number; // 기프티콘 id
   image: string | null; // 기프티콘 이미지 추가
   categoryName: string; // 카테고리 이름
   gifticonName: string; // 상품명
@@ -39,28 +37,27 @@ type GiftInfo = {
   amount: number; // 수량
 };
 
-
-
-
 export default function GifticonPage({ params }: { params: PageParams }) {
-
   const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
 
   async function fetchUserInfo() {
     const localStorage: Storage = window.localStorage;
     const token = localStorage.getItem("accessToken");
-    const response = await fetch("https://funsns.shop:8000/point-service/point", {
-      method: "GET",
-      headers: {
-        Credentials: "include",
-        ContentType: "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    
-    if(response.ok) {
+    const response = await fetch(
+      "https://funsns.shop:8000/point-service/point",
+      {
+        method: "GET",
+        headers: {
+          Credentials: "include",
+          ContentType: "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (response.ok) {
       const data = await response.json();
-      if(data.code === "SUCCESS") {
+      if (data.code === "SUCCESS") {
         setUserInfo(data.data);
       } else {
         console.error("Failed to fetch user info");
@@ -74,8 +71,8 @@ export default function GifticonPage({ params }: { params: PageParams }) {
     fetchUserInfo();
   }, []);
 
- // service => service, productequipment => product
- // serviceGifts => serviceGifts, productGifts => productGift 로 변경 예정
+  // service => service, productequipment => product
+  // serviceGifts => serviceGifts, productGifts => productGift 로 변경 예정
 
   const [gifts, setGifts] = useState<GiftInfo[]>([]);
   const [serviceGifts, setServiceGifts] = useState<GiftInfo[]>([]);
@@ -97,37 +94,38 @@ export default function GifticonPage({ params }: { params: PageParams }) {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   // 선물하기 버튼
-  const handleGiftOrder = (e : React.MouseEvent<HTMLButtonElement>) => {
+  const handleGiftOrder = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     if (selectedGift) {
       if (userInfo && userInfo.balance < selectedGift.price) {
-        alert('포인트가 부족합니다!');
+        alert("포인트가 부족합니다!");
       } else {
         router.push(`/store/order?gifticonId=${selectedGift.gifticonId}`);
       }
     } else {
-      console.error('No gift selected');
+      console.error("No gift selected");
     }
-    
   };
 
   // 받은 기프티콘 조회 버튼
-  const handleGiftReceived = (e:React.MouseEvent<HTMLButtonElement>) => {
+  const handleGiftReceived = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    router.push('/store/received');
+    router.push("/store/received");
   };
 
   // 보낸 기프티콘 조회 버튼
-  const handleGiftSent = (e:React.MouseEvent<HTMLButtonElement>) => {
+  const handleGiftSent = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    router.push('/store/sent')
-  }
+    router.push("/store/sent");
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -208,7 +206,10 @@ export default function GifticonPage({ params }: { params: PageParams }) {
     setIsEditing(false);
   };
 
-  const fetchGifts = async (categoryName: string, setGifts: React.Dispatch<React.SetStateAction<GiftInfo[]>>) => {
+  const fetchGifts = async (
+    categoryName: string,
+    setGifts: React.Dispatch<React.SetStateAction<GiftInfo[]>>
+  ) => {
     // 로컬스토리지 토큰 가져오기
     const localStorage: Storage = window.localStorage;
     const token = localStorage.getItem("accessToken");
@@ -240,8 +241,8 @@ export default function GifticonPage({ params }: { params: PageParams }) {
   };
 
   useEffect(() => {
-    fetchGifts('service', setServiceGifts);
-    fetchGifts('product', setProductGifts);
+    fetchGifts("service", setServiceGifts);
+    fetchGifts("product", setProductGifts);
   }, []);
 
   // 상세 정보
@@ -249,20 +250,24 @@ export default function GifticonPage({ params }: { params: PageParams }) {
     setSelectedGift(gift);
     setForm(gift);
     setModalOpen(true);
-    console.log('Image URL:', gift.image);
+    console.log("Image URL:", gift.image);
     console.log(gift.gifticonId);
- };
+  };
 
   return (
     <>
       <div className="bg-gray-100 container mx-auto px-4 py-8 flex flex-col items-center">
         <header className="text-center mb-8">
-          <h1 className="text-4xl font-bold mb-2">{userInfo?.nickname} 님의 포인트</h1>
+          <h1 className="text-4xl font-bold mb-2">
+            {userInfo?.nickname} 님의 포인트
+          </h1>
         </header>
 
         {userInfo ? (
           <div className="text-center">
-            <p className="mb-6 text-gray-600">포인트 잔액: {userInfo.balance}</p>
+            <p className="mb-6 text-gray-600">
+              포인트 잔액: {userInfo.balance}
+            </p>
             <button className="px-4 py-2 bg-blue-500 text-white rounded">
               <Link href="/point">
                 <a className="text-white no-underline">포인트 내역</a>
@@ -274,87 +279,101 @@ export default function GifticonPage({ params }: { params: PageParams }) {
         )}
 
         <br />
-        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
-          <button type="button"
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "20px",
+          }}
+        >
+          <button
+            type="button"
             onClick={handleGiftReceived}
             className={styles.addButton}
-            style={{ marginRight: "10px" }}>
+            style={{ marginRight: "10px" }}
+          >
             받은 기프티콘
           </button>
-          <button 
+          <button
             type="button"
             onClick={handleGiftSent}
-            className={styles.modifybutton}>
+            className={styles.modifybutton}
+          >
             보낸 기프티콘
           </button>
         </div>
-        <h3>펀딩 출시 서비스</h3>
-        {/* service 상품 목록 창 */}
+        <h3 className="mb-4">펀딩 출시 서비스</h3>
         <div>
-        <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
-          <thead>
-            <tr className="bg-black">
-              <th className="text-white p-5">카테고리</th>
-              <th className="text-white p-5">상품명</th>
-              <th className="text-white p-5">설명</th>
-              <th className="text-white p-5">가격</th>
-              <th className="text-white p-5">수량</th>
-            </tr>
-          </thead>
-          <tbody>
-            {serviceGifts.length === 0 ? (
-              <tr>
-                <td colSpan={5}>상품을 등록해주세요!</td>
+          <table className="w-full border-collapse mt-2">
+            <thead>
+              <tr className="bg-black">
+                <th className="text-white px-5 py-3">카테고리</th>
+                <th className="text-white px-5 py-3">상품명</th>
+                <th className="text-white px-5 py-3">설명</th>
+                <th className="text-white px-5 py-3">가격</th>
+                <th className="text-white px-5 py-3">수량</th>
               </tr>
-            ) : (
-              serviceGifts.map((gift, index) => (
-                <tr key={index} onClick={() => openDetailModal(gift)}>
-                  <td>서비스</td>
-                  <td>{gift.gifticonName}</td>
-                  <td>{gift.description}</td>
-                  <td>{gift.price}</td>
-                  <td>{gift.amount}</td>
+            </thead>
+            <tbody>
+              {serviceGifts.length === 0 ? (
+                <tr>
+                  <td colSpan={5}>상품을 등록해주세요!</td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                serviceGifts.map((gift, index) => (
+                  <tr
+                    key={index}
+                    onClick={() => openDetailModal(gift)}
+                    className="cursor-pointer hover:bg-gray-200"
+                  >
+                    <td>서비스</td>
+                    <td>{gift.gifticonName}</td>
+                    <td>{gift.description}</td>
+                    <td>{gift.price}</td>
+                    <td>{gift.amount}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
         </div>
 
-        <h3>펀딩 출시 제품</h3>
-        {/* productequipment 상품 목록 창 */}
+        <h3 className="mt-8 mb-4">펀딩 출시 제품</h3>
         <div>
-        <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
-          <thead>
-            <tr style={{ backgroundColor: "black" }}>
-              <th className="text-white p-5">카테고리</th>
-              <th className="text-white p-5">상품명</th>
-              <th className="text-white p-5">설명</th>
-              <th className="text-white p-5">가격</th>
-              <th className="text-white p-5">수량</th>
-            </tr>
-          </thead>
-          <tbody>
-            {productGifts.length === 0 ? (
-              <tr>
-                <td colSpan={5}>상품을 등록해주세요!</td>
+          <table className="w-full border-collapse mt-2">
+            <thead>
+              <tr className="bg-black">
+                <th className="text-white px-5 py-3">카테고리</th>
+                <th className="text-white px-5 py-3">상품명</th>
+                <th className="text-white px-5 py-3">설명</th>
+                <th className="text-white px-5 py-3">가격</th>
+                <th className="text-white px-5 py-3">수량</th>
               </tr>
-            ) : (
-              productGifts.map((gift, index) => (
-                <tr key={index} onClick={() => openDetailModal(gift)}>
-                  <td>제품</td>
-                  <td>{gift.gifticonName}</td>
-                  <td>{gift.description}</td>
-                  <td>{gift.price}</td>
-                  <td>{gift.amount}</td>
+            </thead>
+            <tbody>
+              {productGifts.length === 0 ? (
+                <tr>
+                  <td colSpan={5}>상품을 등록해주세요!</td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                productGifts.map((gift, index) => (
+                  <tr
+                    key={index}
+                    onClick={() => openDetailModal(gift)}
+                    className="cursor-pointer hover:bg-gray-200"
+                  >
+                    <td>제품</td>
+                    <td>{gift.gifticonName}</td>
+                    <td>{gift.description}</td>
+                    <td>{gift.price}</td>
+                    <td>{gift.amount}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
         </div>
-
-
+        
         {/* 상품 상세 화면 모달창 */}
         {modalOpen && selectedGift && (
           <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
