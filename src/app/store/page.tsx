@@ -380,26 +380,21 @@ export default function GifticonPage({ params }: { params: PageParams }) {
           <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-96 h-128"
+              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-256 h-256"
             >
               {/* 이미지 표시*/}
               {selectedGift.image && (
                 <Image
                   src={selectedGift.image}
                   alt={selectedGift.gifticonName}
-                  width={200}
-                  height={200}
+                  width={256}
+                  height={256}
                 />
               )}
-
-      
                 <p>상품명: {form.gifticonName}</p>
                 <p>상품 상세:{form.description}</p>
                 <p>상품 가격:{form.price}</p>
                 <p>잔여 수량:{form.amount}</p>
-
-
-              
               <div className="flex justify-between mt-4">
                 <button
                   type="button"
