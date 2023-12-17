@@ -16,7 +16,7 @@ type GiftInfo = {
 };
 
 export default function GifticonPage() {
-  // 기프티콘 등록 
+  // 기프티콘 등록
   const [serviceGifts, setServiceGifts] = useState<GiftInfo[]>([]);
   const [productGifts, setProductGifts] = useState<GiftInfo[]>([]);
 
@@ -41,7 +41,9 @@ export default function GifticonPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [addModalOpen, setAddModalOpen] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -54,7 +56,14 @@ export default function GifticonPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!image || !form.categoryName || !form.gifticonName || !form.description || !form.price || !form.amount) {
+    if (
+      !image ||
+      !form.categoryName ||
+      !form.gifticonName ||
+      !form.description ||
+      !form.price ||
+      !form.amount
+    ) {
       alert("모든 항목을 입력해주세요.");
       return;
     }
@@ -313,86 +322,105 @@ export default function GifticonPage() {
 
   return (
     <div className="flex h-screen">
-    <div className="flex-1 flex flex-col items-center justify-start pt-5">
-      <button
-        onClick={() => setAddModalOpen(true)}
-        className="px-4 py-2 bg-blue-500 text-white rounded mb-8"
-      >
-        기프티콘 등록
-      </button>
-      {addModalOpen && (
-        <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
-          <form
-            onSubmit={isEditing ? handleUpdateSubmit : handleSubmit}
-            className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72"
-          >
-            {/* 이미지 등록 폼 */}
-            <label className="flex flex-col items-start mb-4">
-              Image
-              <input type="file" name="image" onChange={handleImageChange} className="mt-2 border border-gray-300 px-2 w-full"/>
-            </label>
+      <div className="flex-1 flex flex-col items-center justify-start pt-5">
+        <button
+          onClick={() => setAddModalOpen(true)}
+          className="px-4 py-2 bg-blue-500 text-white rounded mb-8"
+        >
+          기프티콘 등록
+        </button>
+        {addModalOpen && (
+          <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
+            <form
+              onSubmit={isEditing ? handleUpdateSubmit : handleSubmit}
+              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72"
+            >
+              {/* 이미지 등록 폼 */}
+              <label className="flex flex-col items-start mb-4">
+                Image
+                <input
+                  type="file"
+                  name="image"
+                  onChange={handleImageChange}
+                  className="mt-2 border border-gray-300 px-2 w-full"
+                />
+              </label>
 
-            <label className="flex flex-col items-start mb-4">
-              Category
-              <select
-                name="categoryName"
-                value={form.categoryName}
-                onChange={handleChange}
-                className="mt-2 border border-gray-300 px-2 w-full"
-              >
-                <option value="service">Service</option>
-                <option value="product">Product</option>
-              </select>
-            </label>
-            <label className="flex flex-col items-start mb-4">
-              Gifticon
-              <input
-                type="text"
-                name="gifticonName"
-                onChange={handleChange}
-                className="mt-2 border border-gray-300 px-2 w-full"
-              />
-            </label>
-            <label className="flex flex-col items-start mb-4">
-              Description
-              <input type="text" name="description" onChange={handleChange} className="mt-2 border border-gray-300 px-2 w-full"/>
-            </label>
-            <label className="flex flex-col items-start mb-4">
-              Price
-              <input type="number" name="price" onChange={handleChange} className="mt-2 border border-gray-300 px-2 w-full"/>
-            </label>
-            <label className="flex flex-col items-start mb-4">
-              Amount
-              <input type="number" name="amount" onChange={handleChange} className="mt-2 border border-gray-300 px-2 w-full"/>
-            </label>
-            <div className="flex justify-between">
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
-              >
-                등록
-              </button>
-              <button
-                type="button"
-                onClick={() => setAddModalOpen(false)}
-                className="px-4 py-2 bg-red-500 text-white rounded"
-              >
-                취소
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
-        <h3>펀딩 출시 서비스</h3>
-        {/* service 상품 목록 창 */}
-        <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
+              <label className="flex flex-col items-start mb-4">
+                Category
+                <select
+                  name="categoryName"
+                  value={form.categoryName}
+                  onChange={handleChange}
+                  className="mt-2 border border-gray-300 px-2 w-full"
+                >
+                  <option value="service">Service</option>
+                  <option value="product">Product</option>
+                </select>
+              </label>
+              <label className="flex flex-col items-start mb-4">
+                Gifticon
+                <input
+                  type="text"
+                  name="gifticonName"
+                  onChange={handleChange}
+                  className="mt-2 border border-gray-300 px-2 w-full"
+                />
+              </label>
+              <label className="flex flex-col items-start mb-4">
+                Description
+                <input
+                  type="text"
+                  name="description"
+                  onChange={handleChange}
+                  className="mt-2 border border-gray-300 px-2 w-full"
+                />
+              </label>
+              <label className="flex flex-col items-start mb-4">
+                Price
+                <input
+                  type="number"
+                  name="price"
+                  onChange={handleChange}
+                  className="mt-2 border border-gray-300 px-2 w-full"
+                />
+              </label>
+              <label className="flex flex-col items-start mb-4">
+                Amount
+                <input
+                  type="number"
+                  name="amount"
+                  onChange={handleChange}
+                  className="mt-2 border border-gray-300 px-2 w-full"
+                />
+              </label>
+              <div className="flex justify-between">
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
+                >
+                  등록
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setAddModalOpen(false)}
+                  className="px-4 py-2 bg-red-500 text-white rounded"
+                >
+                  취소
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+        <h3 className="mb-4">펀딩 출시 서비스</h3>
+        <table className="w-full border-collapse mt-2">
           <thead>
-            <tr style={{ backgroundColor: "black" }}>
-              <th style={{ color: "white", padding: "20px" }}>카테고리</th>
-              <th style={{ color: "white", padding: "20px" }}>상품명</th>
-              <th style={{ color: "white", padding: "20px" }}>설명</th>
-              <th style={{ color: "white", padding: "20px" }}>가격</th>
-              <th style={{ color: "white", padding: "20px" }}>수량</th>
+            <tr className="bg-black">
+              <th className="text-white px-5 py-3">카테고리</th>
+              <th className="text-white px-5 py-3">상품명</th>
+              <th className="text-white px-5 py-3">설명</th>
+              <th className="text-white px-5 py-3">가격</th>
+              <th className="text-white px-5 py-3">수량</th>
             </tr>
           </thead>
           <tbody>
@@ -402,7 +430,11 @@ export default function GifticonPage() {
               </tr>
             ) : (
               serviceGifts.map((gift, index) => (
-                <tr key={index} onClick={() => openDetailModal(gift)}>
+                <tr
+                  key={index}
+                  onClick={() => openDetailModal(gift)}
+                  className="cursor-pointer hover:bg-gray-200"
+                >
                   <td>서비스</td>
                   <td>{gift.gifticonName}</td>
                   <td>{gift.description}</td>
@@ -414,16 +446,15 @@ export default function GifticonPage() {
           </tbody>
         </table>
 
-        <h3>펀딩 출시 제품</h3>
-        {/* 제품 목록 창 */}
-        <table className={styles.giftListTable} style={{ marginTop: "10px" }}>
+        <h3 className="mt-8 mb-4">펀딩 출시 제품</h3>
+        <table className="w-full border-collapse mt-2">
           <thead>
-            <tr style={{ backgroundColor: "black" }}>
-              <th style={{ color: "white", padding: "20px" }}>카테고리</th>
-              <th style={{ color: "white", padding: "20px" }}>상품명</th>
-              <th style={{ color: "white", padding: "20px" }}>설명</th>
-              <th style={{ color: "white", padding: "20px" }}>가격</th>
-              <th style={{ color: "white", padding: "20px" }}>수량</th>
+            <tr className="bg-black">
+              <th className="text-white px-5 py-3">카테고리</th>
+              <th className="text-white px-5 py-3">상품명</th>
+              <th className="text-white px-5 py-3">설명</th>
+              <th className="text-white px-5 py-3">가격</th>
+              <th className="text-white px-5 py-3">수량</th>
             </tr>
           </thead>
           <tbody>
@@ -433,7 +464,11 @@ export default function GifticonPage() {
               </tr>
             ) : (
               productGifts.map((gift, index) => (
-                <tr key={index} onClick={() => openDetailModal(gift)}>
+                <tr
+                  key={index}
+                  onClick={() => openDetailModal(gift)}
+                  className="cursor-pointer hover:bg-gray-200"
+                >
                   <td>제품</td>
                   <td>{gift.gifticonName}</td>
                   <td>{gift.description}</td>
@@ -445,64 +480,52 @@ export default function GifticonPage() {
           </tbody>
         </table>
 
-        {/* 상품 상세 화면 모달창 */}
         {modalOpen && selectedGift && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              position: "fixed",
-              top: 0,
-              right: 0,
-              bottom: 0,
-              left: 0,
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-            }}
-          >
-            {/*  수정폼 */}
-
+          <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
             <form
               onSubmit={isEditing ? handleUpdateSubmit : handleSubmit}
-              className={styles["modal-form"]}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "white",
-                borderRadius: "10px",
-                padding: "20px",
-                width: "300px",
-              }}
+              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72"
             >
-              {/* 이미지 표시*/}
-              {selectedGift.image && (
-                <Image
-                  src={selectedGift.image}
-                  alt={selectedGift.gifticonName}
-                  width={200}
-                  height={200}
-                />
-              )}
+              {/*  수정폼 */}
+
+              <form
+                onSubmit={isEditing ? handleUpdateSubmit : handleSubmit}
+                className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72"
+              >
+                {/* 이미지 표시*/}
+                {selectedGift.image && (
+                  <Image
+                    src={selectedGift.image}
+                    alt={selectedGift.gifticonName}
+                    width={200}
+                    height={200}
+                  />
+                )}
+              </form>
 
               {isEditing ? (
                 <>
-                {/* 이미지 등록 폼*/}
-                  <label>
-                      Image
-                      <input type="file" name="image" onChange={handleImageChange} />
+                  {/* 이미지 등록 폼*/}
+                  <label className="flex flex-col items-start mb-4">
+                    Image
+                    <input
+                      type="file"
+                      name="image"
+                      onChange={handleImageChange}
+                      className="mt-2 border border-gray-300 px-2 w-full"
+                    />
                   </label>
-                  <label>
-                      Category
-                      <select
-                        name="categoryName"
-                        value={form.categoryName}
-                        onChange={handleChange}
-                      >
-                        <option value="service">Service</option>
-                        <option value="product">Product</option>
-                      </select>
+                  <label className="flex flex-col items-start mb-4">
+                    Category
+                    <select
+                      name="categoryName"
+                      value={form.categoryName}
+                      onChange={handleChange}
+                      className="mt-2 border border-gray-300 px-2 w-full"
+                    >
+                      <option value="service">Service</option>
+                      <option value="product">Product</option>
+                    </select>
                   </label>
                 </>
               ) : null}
@@ -514,7 +537,7 @@ export default function GifticonPage() {
                 onChange={handleChange}
                 placeholder="상품명"
                 required
-                className={styles["input-box"]}
+                className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
               <input
@@ -524,7 +547,7 @@ export default function GifticonPage() {
                 onChange={handleChange}
                 placeholder="설명"
                 required
-                className={styles["input-box"]}
+                className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
               <input
@@ -534,7 +557,7 @@ export default function GifticonPage() {
                 onChange={handleChange}
                 placeholder="가격"
                 required
-                className={styles["input-box"]}
+                className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
               <input
@@ -544,16 +567,15 @@ export default function GifticonPage() {
                 onChange={handleChange}
                 placeholder="수량"
                 required
-                className={styles["input-box"]}
+                className="mt-2 border border-gray-300 px-2 w-full"
                 readOnly={!isEditing}
               />
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div className="flex justify-between">
                 {isEditing ? (
                   <>
                     <button
                       type="submit"
-                      className={styles.addButton}
-                      style={{ marginRight: "10px" }}
+                      className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
                     >
                       수정 완료
                     </button>
@@ -562,7 +584,7 @@ export default function GifticonPage() {
                       onClick={() => {
                         setIsEditing(false);
                       }}
-                      className={styles.backbutton}
+                      className="px-4 py-2 bg-gray-500 text-white rounded"
                     >
                       취소
                     </button>
@@ -572,16 +594,14 @@ export default function GifticonPage() {
                     <button
                       type="button"
                       onClick={handleUpdate}
-                      className={styles.addButton}
-                      style={{ marginRight: "10px" }}
+                      className="px-4 py-2 bg-blue-500 text-white rounded mr-2"
                     >
                       정보 수정
                     </button>
                     <button
                       type="button"
                       onClick={handleDelete}
-                      className={styles.deletebutton}
-                      style={{ marginRight: "10px" }}
+                      className="px-4 py-2 bg-red-500 text-white rounded mr-2"
                     >
                       삭제
                     </button>
@@ -591,7 +611,7 @@ export default function GifticonPage() {
                         setModalOpen(false);
                         setIsEditing(false);
                       }}
-                      className={styles.backbutton}
+                      className="px-4 py-2 bg-gray-500 text-white rounded"
                     >
                       취소
                     </button>
