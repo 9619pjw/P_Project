@@ -86,12 +86,12 @@ export default function SentGiftPage() {
   return (
     <div className="bg-gray-100 container mx-auto px-4 py-8 flex-1 flex flex-col items-center justify-start pt-5">
       <h4 className="text-lg font-bold mb-4">보낸 기프티콘</h4>
-      <table className="table-auto w-full mb-4">
+      <table className="w-full border-collapse mt-2">
         <thead>
-          <tr>
-            <th className="border px-4 py-2">기프티콘</th>
-            <th className="border px-4 py-2">받은 사람</th>
-            <th className="border px-4 py-2">편지</th>
+          <tr className="bg-black">
+            <th className="text-white border px-4 py-2">기프티콘</th>
+            <th className="text-white border px-4 py-2">받은 사람</th>
+            <th className="text-white border px-4 py-2">편지</th>
           </tr>
         </thead>
         <tbody>

@@ -89,10 +89,10 @@ export default function ReceivedGiftPage() {
       <h4 className="text-lg font-bold mb-4">받은 기프티콘</h4>
       <table className="table-auto w-full mb-4">
         <thead>
-          <tr>
-            <th className="border px-4 py-2">기프티콘</th>
-            <th className="border px-4 py-2">Serial Num.</th>
-            <th className="border px-4 py-2">사용 여부</th>
+          <tr className="bg-black">
+            <th className="text-white border px-4 py-2">기프티콘</th>
+            <th className="text-white border px-4 py-2">Serial Num.</th>
+            <th className="text-white border px-4 py-2">사용 여부</th>
           </tr>
         </thead>
         <tbody>

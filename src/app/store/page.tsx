@@ -339,7 +339,6 @@ export default function GifticonPage({ params }: { params: PageParams }) {
           </table>
 
         <h3 className="mt-8 mb-4">펀딩 출시 제품</h3>
-        <div>
           <table className="w-full border-collapse mt-2">
             <thead>
               <tr className="bg-black">
@@ -376,7 +375,6 @@ export default function GifticonPage({ params }: { params: PageParams }) {
               )}
             </tbody>
           </table>
-        </div>
 
         {modalOpen && selectedGift && (
           <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
