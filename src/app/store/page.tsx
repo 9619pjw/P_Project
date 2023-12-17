@@ -392,50 +392,16 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                 />
               )}
 
-              <label>상품명</label>
-              <input
-                type="text"
-                name="gifticonName"
-                value={form.gifticonName}
-                onChange={handleChange}
-                placeholder="상품명"
-                required
-                className="mt-2 border border-gray-300 px-2 w-full"
-                readOnly={!isEditing}
-              />
-              <label>상품 상세</label>
-              <input
-                type="text"
-                name="description"
-                value={form.description}
-                onChange={handleChange}
-                placeholder="설명"
-                required
-                className="mt-2 border border-gray-300 px-2 w-full"
-                readOnly={!isEditing}
-              />
-              <label>상품 가격</label>
-              <input
-                type="number"
-                name="price"
-                value={form.price}
-                onChange={handleChange}
-                placeholder="가격"
-                required
-                className="mt-2 border border-gray-300 px-2 w-full"
-                readOnly={!isEditing}
-              />
-              <label>잔여 수량</label>
-              <input
-                type="number"
-                name="amount"
-                value={form.amount}
-                onChange={handleChange}
-                placeholder="수량"
-                required
-                className="mt-2 border border-gray-300 px-2 w-full"
-                readOnly={!isEditing}
-              />
+            <label>상품명</label>
+            <p>{form.gifticonName}</p>
+            <label>상품 상세</label>
+            <p>{form.description}</p>
+            <label>상품 가격</label>
+            <p>{form.price}</p>
+            <label>잔여 수량</label>
+            <p>{form.amount}</p>
+
+              
               <div className="flex justify-between mt-4">
                 <button
                   type="button"
