@@ -118,7 +118,7 @@ export default function ReceivedGiftPage() {
 
       {modalOpen && selectedGift && (
         <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
-          <div className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72">
+          <div className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-96 h-128">
             {/* 바코드 표시*/}
             <Image src="/barcode.png" width={300} height={100} alt="Barcode" />
             <p className="mt-2">Serial : {selectedGift.serialNumber}</p>

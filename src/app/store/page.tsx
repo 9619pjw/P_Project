@@ -393,20 +393,10 @@ export default function GifticonPage({ params }: { params: PageParams }) {
               )}
 
             <div className="flex justify-between w-full">
-                <label>상품명:</label>
-                <p>{form.gifticonName}</p>
-            </div>
-            <div className="flex justify-between w-full">
-                <label>상품 상세:</label>
-                <p>{form.description}</p>
-            </div>
-            <div className="flex justify-between w-full">
-                <label>상품 가격:</label>
-                <p>{form.price}</p>
-            </div>
-            <div className="flex justify-between w-full">
-                <label>잔여 수량:</label>
-                <p>{form.amount}</p>
+                <p>상품명: {form.gifticonName}</p>
+                <p>상품 상세:{form.description}</p>
+                <p>상품 가격:{form.price}</p>
+                <p>잔여 수량:{form.amount}</p>
             </div>
 
               

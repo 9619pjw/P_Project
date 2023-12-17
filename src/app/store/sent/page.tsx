@@ -116,7 +116,7 @@ export default function SentGiftPage() {
 
       {modalOpen && selectedGift && (
         <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
-          <div className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72">
+          <div className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-96 h-128">
             <h5 className="font-bold">{selectedGift.gifticonName}</h5>
             <p className="mt-2">받은 사람: {selectedGift.toUserNickname}</p>
             <p className="mt-2">메시지 : {selectedGift.letter}</p>
