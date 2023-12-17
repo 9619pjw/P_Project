@@ -53,6 +53,10 @@ export default function ReceivedGiftPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
 
+  const handleGoBack = (e: React.MouseEvent) => {
+    window.location.href = `/store`;
+  };
+
   useEffect(() => {
     const fetchReceivedGifts = async () => {
       const localStorage: Storage = window.localStorage;
@@ -90,9 +94,9 @@ export default function ReceivedGiftPage() {
       <table className="table-auto w-full mb-4">
         <thead>
           <tr className="bg-black">
-            <th className="text-white border px-4 py-2">기프티콘</th>
-            <th className="text-white border px-4 py-2">Serial Num.</th>
-            <th className="text-white border px-4 py-2">사용 여부</th>
+            <th className="text-white px-4 py-2">기프티콘</th>
+            <th className="text-white px-4 py-2">Serial Num.</th>
+            <th className="text-white px-4 py-2">사용 여부</th>
           </tr>
         </thead>
         <tbody>
@@ -102,9 +106,9 @@ export default function ReceivedGiftPage() {
               onClick={() => openDetailModal(gift)}
               className="hover:bg-gray-100 cursor-pointer"
             >
-              <td className="border px-4 py-2">{gift.gifticonName}</td>
-              <td className="border px-4 py-2">{gift.serialNumber}</td>
-              <td className="border px-4 py-2">
+              <td className="px-4 py-2">{gift.gifticonName}</td>
+              <td className="px-4 py-2">{gift.serialNumber}</td>
+              <td className="px-4 py-2">
                 {gift.used ? "사용완료" : "사용가능"}
               </td>
             </tr>
@@ -136,6 +140,10 @@ export default function ReceivedGiftPage() {
           </div>
         </div>
       )}
+
+      <button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"> 
+        뒤로 가기 
+      </button>
     </div>
   );
 }

@@ -50,6 +50,11 @@ export default function SentGiftPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const router = useRouter();
 
+  const handleGoBack = (e: React.MouseEvent) => {
+    window.location.href = `/store`;
+  };
+
+
   useEffect(() => {
     const fetchSentGifts = async () => {
       const localStorage: Storage = window.localStorage;
@@ -89,9 +94,9 @@ export default function SentGiftPage() {
       <table className="w-full border-collapse mt-2">
         <thead>
           <tr className="bg-black">
-            <th className="text-white border px-4 py-2">기프티콘</th>
-            <th className="text-white border px-4 py-2">받은 사람</th>
-            <th className="text-white border px-4 py-2">편지</th>
+            <th className="text-white px-4 py-2">기프티콘</th>
+            <th className="text-white px-4 py-2">받은 사람</th>
+            <th className="text-white px-4 py-2">편지</th>
           </tr>
         </thead>
         <tbody>
@@ -101,9 +106,9 @@ export default function SentGiftPage() {
               onClick={() => openDetailModal(gift)}
               className="hover:bg-gray-100 cursor-pointer"
             >
-              <td className="border px-4 py-2">{gift.gifticonName}</td>
-              <td className="border px-4 py-2">{gift.toUserNickname}</td>
-              <td className="border px-4 py-2">{gift.letter}</td>
+              <td className="px-4 py-2">{gift.gifticonName}</td>
+              <td className="px-4 py-2">{gift.toUserNickname}</td>
+              <td className="px-4 py-2">{gift.letter}</td>
             </tr>
           ))}
         </tbody>
@@ -130,6 +135,9 @@ export default function SentGiftPage() {
           </div>
         </div>
       )}
+      <button onClick={handleGoBack} className="bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded"> 
+        뒤로 가기 
+      </button>
     </div>
   );
 }
