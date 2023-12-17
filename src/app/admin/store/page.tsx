@@ -483,21 +483,21 @@ export default function GifticonPage() {
           <div className="flex items-center justify-center fixed top-0 right-0 bottom-0 left-0 bg-black bg-opacity-50">
             <form
               onSubmit={isEditing ? handleUpdateSubmit : handleSubmit}
-              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72"
+              className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-96 h-128"
             >
               {/*  수정폼 */}
 
               <form
                 onSubmit={isEditing ? handleUpdateSubmit : handleSubmit}
-                className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-72"
+                className="flex flex-col items-center justify-center bg-white rounded-lg p-5 w-96 h-128"
               >
                 {/* 이미지 표시*/}
                 {selectedGift.image && (
                   <Image
                     src={selectedGift.image}
                     alt={selectedGift.gifticonName}
-                    width={200}
-                    height={200}
+                    width={300}
+                    height={300}
                   />
                 )}
               </form>
