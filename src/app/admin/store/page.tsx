@@ -435,11 +435,11 @@ export default function GifticonPage() {
                   onClick={() => openDetailModal(gift)}
                   className="cursor-pointer hover:bg-gray-200"
                 >
-                  <td className="text-white px-5 py-3">서비스</td>
-                  <td className="text-white px-5 py-3">{gift.gifticonName}</td>
-                  <td className="text-white px-5 py-3">{gift.description}</td>
-                  <td className="text-white px-5 py-3">{gift.price}</td>
-                  <td className="text-white px-5 py-3">{gift.amount}</td>
+                  <td className="text-black px-5 py-3">서비스</td>
+                  <td className="text-black px-5 py-3">{gift.gifticonName}</td>
+                  <td className="text-black px-5 py-3">{gift.description}</td>
+                  <td className="text-black px-5 py-3">{gift.price}</td>
+                  <td className="text-black px-5 py-3">{gift.amount}</td>
                 </tr>
               ))
             )}
@@ -469,11 +469,11 @@ export default function GifticonPage() {
                   onClick={() => openDetailModal(gift)}
                   className="cursor-pointer hover:bg-gray-200"
                 >
-                  <td className="text-white px-5 py-3">제품</td>
-                  <td className="text-white px-5 py-3">{gift.gifticonName}</td>
-                  <td className="text-white px-5 py-3">{gift.description}</td>
-                  <td className="text-white px-5 py-3">{gift.price}</td>
-                  <td className="text-white px-5 py-3">{gift.amount}</td>
+                  <td className="text-black px-5 py-3">제품</td>
+                  <td className="text-black px-5 py-3">{gift.gifticonName}</td>
+                  <td className="text-black px-5 py-3">{gift.description}</td>
+                  <td className="text-black px-5 py-3">{gift.price}</td>
+                  <td className="text-black px-5 py-3">{gift.amount}</td>
                 </tr>
               ))
             )}

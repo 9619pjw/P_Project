@@ -255,8 +255,8 @@ export default function GifticonPage({ params }: { params: PageParams }) {
   };
 
   return (
-    <>
-      <div className="bg-gray-100 container mx-auto px-4 py-8 flex flex-col items-center">
+    <div className="flex h-screen">
+      <div className="bg-gray-100 container mx-auto px-4 py-8 flex-1 flex flex-col items-center justify-start pt-5">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2">
             {userInfo?.nickname} 님의 포인트
@@ -326,13 +326,13 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                     onClick={() => openDetailModal(gift)}
                     className="cursor-pointer hover:bg-gray-200"
                   >
-                    <td className="text-white px-5 py-3">서비스</td>
-                    <td className="text-white px-5 py-3">
+                    <td className="text-black px-5 py-3">서비스</td>
+                    <td className="text-black px-5 py-3">
                       {gift.gifticonName}
                     </td>
-                    <td className="text-white px-5 py-3">{gift.description}</td>
-                    <td className="text-white px-5 py-3">{gift.price}</td>
-                    <td className="text-white px-5 py-3">{gift.amount}</td>
+                    <td className="text-black px-5 py-3">{gift.description}</td>
+                    <td className="text-black px-5 py-3">{gift.price}</td>
+                    <td className="text-black px-5 py-3">{gift.amount}</td>
                   </tr>
                 ))
               )}
@@ -355,7 +355,7 @@ export default function GifticonPage({ params }: { params: PageParams }) {
             <tbody>
               {productGifts.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="text-white px-5 py-3">
+                  <td colSpan={5} className="text-black px-5 py-3">
                     상품을 등록해주세요!
                   </td>
                 </tr>
@@ -366,13 +366,13 @@ export default function GifticonPage({ params }: { params: PageParams }) {
                     onClick={() => openDetailModal(gift)}
                     className="cursor-pointer hover:bg-gray-200"
                   >
-                    <td className="text-white px-5 py-3">제품</td>
-                    <td className="text-white px-5 py-3">
+                    <td className="text-black px-5 py-3">제품</td>
+                    <td className="text-black px-5 py-3">
                       {gift.gifticonName}
                     </td>
-                    <td className="text-white px-5 py-3">{gift.description}</td>
-                    <td className="text-white px-5 py-3">{gift.price}</td>
-                    <td className="text-white px-5 py-3">{gift.amount}</td>
+                    <td className="text-black px-5 py-3">{gift.description}</td>
+                    <td className="text-black px-5 py-3">{gift.price}</td>
+                    <td className="text-black px-5 py-3">{gift.amount}</td>
                   </tr>
                 ))
               )}
@@ -459,6 +459,6 @@ export default function GifticonPage({ params }: { params: PageParams }) {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
