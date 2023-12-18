@@ -5,7 +5,8 @@ import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 
-type Newsfeed = {
+// 뉴스피드의 타입을 정
+type Newsfeed = { 
     feedId: number;
     userId: number;
     nickname: string;
@@ -19,7 +20,8 @@ type Newsfeed = {
     createdDate: string;
 };
 
-type NewsfeedComponentProps = {
+// NewsfeedComponent의 props의 타입 정의
+type NewsfeedComponentProps = { 
     loadData: boolean;
     fetchNewsfeeds: (context: QueryFunctionContext) => Promise<{ newsfeeds: Newsfeed[]; nextCursor: number }>;
     token: string | null;
@@ -27,13 +29,14 @@ type NewsfeedComponentProps = {
 
 export default function NewsfeedPage(){
     const [token, setToken] = useState<string | null>(null);
-    const [loadData, setLoadData] = useState(false);
+    const [loadData, setLoadData] = useState(false); // 데이터 로드 상태
 
     useEffect(() => {
-        setToken(localStorage.getItem("accessToken"));
-        setLoadData(true); 
+        setToken(localStorage.getItem("accessToken")); 
+        setLoadData(true); // 데이터 로드 상태 true로 설정
     }, []);
 
+    // fetch 뉴스피
     const fetchNewsfeeds = async ({ pageParam = 0 }: QueryFunctionContext) => {
         const response = await fetch(`https://funsns.shop:8000/feed-service/feed/newsfeed?cursor=${pageParam}&size=5`, {
         headers: {
@@ -43,12 +46,14 @@ export default function NewsfeedPage(){
     });
     const data = await response.json();
     
+     // 가져온 뉴스피드와 다음 페이지 커서 반환
     return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
     };
 
+    // QueryClient를 생성 ... NewsfeedComponent 렌더
     const queryClient = new QueryClient();
     return (
-        <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}> 
             <NewsfeedComponent loadData={loadData} fetchNewsfeeds={fetchNewsfeeds} token={token}/>
         </QueryClientProvider>
     );
@@ -61,16 +66,16 @@ function NewsfeedComponent({loadData, fetchNewsfeeds, token} : NewsfeedComponent
         fetchNextPage,
         hasNextPage,
         isFetching,
-    } = useInfiniteQuery('newsfeeds', fetchNewsfeeds, {
-        getNextPageParam: (lastPage) => lastPage.nextCursor,
+    } = useInfiniteQuery('newsfeeds', fetchNewsfeeds, { // 무한 스크롤을 위해 useInfiniteQuery를 사용.. 뉴스피드를 가져오는 함수와 토큰이 유효하고 데이터를 로드해야 할 때만 쿼리를 활성화
+        getNextPageParam: (lastPage) => lastPage.nextCursor, // 다음 페이지의 커서를 반환하는 함수를 정의합니다.
         enabled: !!token && loadData, 
     });
 
-    const { ref, inView } = useInView({
-        threshold: 1,
+    const { ref, inView } = useInView({ // useInView를 사용하여 ref와 inView를 가져옴
+        threshold: 1, // threshold가 1이므로, 대상 요소가 화면에 완전히 나타났을 때 inView가 true
     });
 
-    useEffect(() => {
+    useEffect(() => { // 대상 요소가 화면에 나타나고, 다음 페이지가 있고, 현재 뉴스피드를 가져오고 있지 않을 때 다음 페이지를 가져옴
         if (inView && hasNextPage && !isFetching) {
             fetchNextPage();
         }
