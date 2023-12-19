@@ -489,7 +489,7 @@ export default function FeedDetailPage(props: ReadProps) {
                             댓글 {feedData.commentCount} 개
                         </button>
                         <Link href={`http://3.37.181.58:3000/projects/funded`}>
-                            <a className="px-4 py-2 bg-green-500 text-white rounded mr-2">후원하기</a>
+                            <a className="px-4 py-2 bg-green-500 text-white border-2 border-green-500 rounded mr-2">상세보기</a>
                         </Link>
                     </div>
                 </div>
