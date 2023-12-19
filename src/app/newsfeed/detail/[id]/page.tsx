@@ -466,7 +466,7 @@ export default function FeedDetailPage(props: ReadProps) {
                     <Link href={`/newsfeed/detail/${feedData.feedId}/likefeed`}>
                         <a className="text-black-500">{feedData.likeCount}명이 좋아합니다</a>
                     </Link>
-                    <div className="flex space-x-2">
+                    <div className="flex space-x-2 items-center">
                         {feedData.isLiked ? (
                             <button onClick={handleUnlike} className="px-4 py-2 bg-white text-blue-500 border-2 border-blue-500 rounded flex items-center space-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor" className="h-5 w-5">
