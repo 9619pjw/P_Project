@@ -62,6 +62,20 @@ npm run dev
         사용자에게 발생한 알림을 확인할 수 있습니다.
         <br/>
     </li>
+    <li>기프티콘 주문화면
+        <br/>
+        <img src="https://github.com/9619pjw/P_Project/assets/97871451/8ea3d120-e41b-4add-98a2-3ecc8cabe078">
+        <br/>
+        사용자는 기프티콘을 선물할 수 있습니다.
+        <br/>
+    </li>
+    <li>포인트 내역
+        <br/>
+        <img src="https://github.com/9619pjw/P_Project/assets/97871451/e5df6506-094c-4935-ae55-1cacbfe7d2be">
+        <br/>
+        사용자의 포인트 내역을 확인할 수 있습니다.
+        <br/>
+    </li>
 </ol>
 
 
@@ -71,6 +85,7 @@ npm run dev
 <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">&nbsp;
 <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white">&nbsp;
 </p>
+
 ------------
 
 ### Back-End Link
