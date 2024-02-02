@@ -2,7 +2,7 @@
 <img width="258" alt="Logo1" src="https://github.com/9619pjw/P_Project/assets/97871451/a80eab13-3ca1-4010-9f6f-3570a96be69b">
 <br/>
 SNS형 크라우드 펀딩 서비스입니다.
-
+시연영상 : https://www.youtube.com/watch?v=8ch0Dgjntrs&list=LL&index=2
 
 ### Back-End Link
 https://github.com/dodozee/FunSNS
