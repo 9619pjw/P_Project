@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 
-// 뉴스피드의 타입을 정
+// 뉴스피드의 타입을 정의
 type Newsfeed = { 
     feedId: number;
     userId: number;
@@ -50,7 +50,7 @@ export default function NewsfeedPage(){
     return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
     };
 
-    // QueryClient를 생성 ... NewsfeedComponent 렌더
+    // QueryClient를 생성 ... NewsfeedComponent 렌더링
     const queryClient = new QueryClient();
     return (
         <QueryClientProvider client={queryClient}> 
