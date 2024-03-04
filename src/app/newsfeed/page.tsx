@@ -36,42 +36,19 @@ export default function NewsfeedPage(){
         setLoadData(true); // 데이터 로드 상태 true로 설정
     }, []);
 
-    // 더미 데이터 추가
-    const dummyData = {
-        data: [
-        {
-            feedId: 1,
-            userId: 1,
-            nickname: "농담곰",
-            title: "첫 번째 뉴스피드",
-            content: "안녕하세요. 첫 번째 뉴스피드입니다.",
-            profileImgURL: "https://dummyimage.com/100x100",
-            feedImgURL: "https://dummyimage.com/200x200",
-            likeCount: 10,
-            commentCount: 2,
-            isLiked: false,
-            createdDate: "2024-03-04T00:00:00Z",
-        },
-        
-        ],
-        // 다음 페이지의 커서. 실제로는 마지막 뉴스피드의 ID를 사용하겠지만, 더미 데이터에서는 임의로 설정합니다.
-        nextCursor: 2,
-    };
+
     // fetch 뉴스피드
     const fetchNewsfeeds = async ({ pageParam = 0 }: QueryFunctionContext) => {
-    //     const response = await fetch(`https://funsns.shop:8000/feed-service/feed/newsfeed?cursor=${pageParam}&size=5`, {
-    //     headers: {
-    //         "Credentials": "include",
-    //         "Authorization": `Bearer ${token}`,
-    //     },
-    // });
-    // const data = await response.json();
+        const response = await fetch(`https://funsns.shop:8000/feed-service/feed/newsfeed?cursor=${pageParam}&size=5`, {
+        headers: {
+            "Credentials": "include",
+            "Authorization": `Bearer ${token}`,
+        },
+    });
+    const data = await response.json();
     
-    //  // 가져온 뉴스피드와 다음 페이지 커서 반환
-    // return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
-    
-    // 실제 네트워크 요청 대신 더미 데이터를 반환
-    return dummyData;
+     // 가져온 뉴스피드와 다음 페이지 커서 반환
+    return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
 
     };
 
