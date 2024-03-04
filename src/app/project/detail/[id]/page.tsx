@@ -23,8 +23,8 @@ export default function ProjectDetailPage() {
                             <img src="https://unsplash.it/600/300" alt="Project Image" className="w-full h-auto rounded-lg" />
                         </div>
                         <div className="mb-4">
-                            <p className="text-gray-700">My portfolio is dying...</p>
-                            <p className="text-sm text-gray-500">Period: 2023/12/01 ~ 2023/12/23</p>
+                            <p className="text-gray-700">Sample Data</p>
+                            <p className="text-sm text-gray-500">Period: 2023/11 ~ 2023/12 </p>
                         </div>
                         <div className="mb-4">
                             <div className="flex justify-between items-center">
