@@ -1,19 +1,17 @@
 # P-실무 프로젝트
-크라우드 펀딩 SNS 서비스입니다.
-Creating applications using Next.js 13 (app directory) and NextUI (v2).
+<img width="258" alt="Logo1" src="https://github.com/9619pjw/P_Project/assets/97871451/a80eab13-3ca1-4010-9f6f-3570a96be69b">
+<br/>
+SNS형 크라우드 펀딩 서비스입니다.
+<br/>
+시연영상 : https://www.youtube.com/watch?v=8ch0Dgjntrs&list=LL&index=2
 
-## Technologies Used
+### Back-End Link
+https://github.com/dodozee/FunSNS
 
-- [Next.js 13](https://nextjs.org/docs/getting-started)
-- [NextUI v2](https://nextui.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+### BlockChain Link
+https://github.com/Lseungjin/CrowdFunding
 
 ## How to Use
-
 
 ### Use the template with create-next-app
 
@@ -35,216 +33,69 @@ npm install
 npm run dev
 ```
 
-## License
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
 
-```
-P_Project
-├─ .eslintrc.json
-├─ .git
-│  ├─ COMMIT_EDITMSG
-│  ├─ config
-│  ├─ description
-│  ├─ FETCH_HEAD
-│  ├─ HEAD
-│  ├─ hooks
-│  │  ├─ applypatch-msg.sample
-│  │  ├─ commit-msg.sample
-│  │  ├─ fsmonitor-watchman.sample
-│  │  ├─ post-update.sample
-│  │  ├─ pre-applypatch.sample
-│  │  ├─ pre-commit.sample
-│  │  ├─ pre-merge-commit.sample
-│  │  ├─ pre-push.sample
-│  │  ├─ pre-rebase.sample
-│  │  ├─ pre-receive.sample
-│  │  ├─ prepare-commit-msg.sample
-│  │  ├─ push-to-checkout.sample
-│  │  └─ update.sample
-│  ├─ index
-│  ├─ info
-│  │  └─ exclude
-│  ├─ logs
-│  │  ├─ HEAD
-│  │  └─ refs
-│  │     ├─ heads
-│  │     │  └─ main
-│  │     └─ remotes
-│  │        └─ origin
-│  │           ├─ HEAD
-│  │           └─ main
-├─ .gitignore
-├─ .vscode
-│  └─ settings.json
-├─ LICENSE
-├─ next.config.js
-├─ package-lock.json
-├─ package.json
-├─ postcss.config.js
-├─ public
-│  ├─ barcode.png
-│  ├─ bell.png
-│  ├─ crowd.png
-│  ├─ default-profile.png
-│  ├─ dev.png
-│  ├─ docker.jpg
-│  ├─ favicon.ico
-│  ├─ funding.png
-│  ├─ funs.png
-│  ├─ gifticon.png
-│  ├─ login.png
-│  ├─ Logo.png
-│  ├─ logout.png
-│  ├─ match.png
-│  ├─ newsfeed.png
-│  ├─ next.svg
-│  ├─ post.png
-│  ├─ search.png
-│  ├─ user.png
-│  └─ vercel.svg
-├─ README.md
-├─ src
-│  ├─ app
-│  │  ├─ admin
-│  │  │  ├─ newsfeed
-│  │  │  │  ├─ detail
-│  │  │  │  │  └─ [id]
-│  │  │  │  │     ├─ likefeed
-│  │  │  │  │     │  └─ page.tsx
-│  │  │  │  │     └─ page.tsx
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ page.tsx
-│  │  │  ├─ post
-│  │  │  │  ├─ create
-│  │  │  │  │  └─ page.tsx
-│  │  │  │  ├─ detail
-│  │  │  │  │  └─ [id]
-│  │  │  │  │     └─ page.tsx
-│  │  │  │  ├─ list
-│  │  │  │  │  └─ page.tsx
-│  │  │  │  ├─ login
-│  │  │  │  │  └─ page.tsx
-│  │  │  │  ├─ modify
-│  │  │  │  │  └─ [id]
-│  │  │  │  │     └─ page.tsx
-│  │  │  │  ├─ notices
-│  │  │  │  │  └─ page.tsx
-│  │  │  │  ├─ page.tsx
-│  │  │  │  └─ signup
-│  │  │  │     └─ page.tsx
-│  │  │  └─ store
-│  │  │     └─ page.tsx
-│  │  ├─ auth
-│  │  │  ├─ AuthComponent
-│  │  │  │  ├─ CheckNickButton.tsx
-│  │  │  │  ├─ ExportUserInfoButton.tsx
-│  │  │  │  └─ ParsingQuery.tsx
-│  │  │  ├─ page.tsx
-│  │  │  └─ signup
-│  │  │     └─ page.tsx
-│  │  ├─ error.tsx
-│  │  ├─ Home.module.css
-│  │  ├─ layout.tsx
-│  │  ├─ loading.tsx
-│  │  ├─ newsfeed
-│  │  │  ├─ create
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ detail
-│  │  │  │  └─ [id]
-│  │  │  │     ├─ likefeed
-│  │  │  │     │  └─ page.tsx
-│  │  │  │     ├─ modify
-│  │  │  │     │  └─ page.tsx
-│  │  │  │     └─ page.tsx
-│  │  │  └─ page.tsx
-│  │  ├─ page.tsx
-│  │  ├─ point
-│  │  │  └─ page.tsx
-│  │  ├─ post
-│  │  │  ├─ create
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ detail
-│  │  │  │  └─ [id]
-│  │  │  │     └─ page.tsx
-│  │  │  ├─ list
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ login
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ modify
-│  │  │  │  └─ [id]
-│  │  │  │     └─ page.tsx
-│  │  │  ├─ notices
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ page.tsx
-│  │  │  └─ signup
-│  │  │     └─ page.tsx
-│  │  ├─ profile
-│  │  │  ├─ page.tsx
-│  │  │  └─ [id]
-│  │  │     ├─ follower
-│  │  │     │  └─ page.tsx
-│  │  │     ├─ following
-│  │  │     │  └─ page.tsx
-│  │  │     ├─ page.tsx
-│  │  │     └─ profileComponent
-│  │  │        ├─ InsertProfileImage.tsx
-│  │  │        ├─ IsYours.tsx
-│  │  │        ├─ ProfileInfo.tsx
-│  │  │        ├─ ProfileMenu.tsx
-│  │  │        └─ ShowSearchList.tsx
-│  │  ├─ project
-│  │  │  ├─ create
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ detail
-│  │  │  │  └─ [id]
-│  │  │  │     └─ page.tsx
-│  │  │  ├─ funded
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ list
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ myproject
-│  │  │  │  └─ page.tsx
-│  │  │  └─ page.tsx
-│  │  ├─ providers.tsx
-│  │  ├─ store
-│  │  │  ├─ order
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ page.tsx
-│  │  │  ├─ received
-│  │  │  │  └─ page.tsx
-│  │  │  └─ sent
-│  │  │     └─ page.tsx
-│  │  └─ timeline
-│  │     ├─ create
-│  │     │  └─ page.tsx
-│  │     ├─ detail
-│  │     │  └─ [id]
-│  │     │     ├─ likefeed
-│  │     │     │  └─ page.tsx
-│  │     │     ├─ modify
-│  │     │     │  └─ page.tsx
-│  │     │     └─ page.tsx
-│  │     └─ page.tsx
-│  ├─ components
-│  │  ├─ counter.tsx
-│  │  ├─ icons.tsx
-│  │  ├─ LoginButton.tsx
-│  │  ├─ LogoutButton.tsx
-│  │  ├─ ModalCustom.tsx
-│  │  ├─ navbar.tsx
-│  │  ├─ Notification.tsx
-│  │  ├─ primitives.ts
-│  │  ├─ ReadNotification.tsx
-│  │  ├─ skeleton.tsx
-│  │  ├─ theme-switch.tsx
-│  │  └─ utils.tsx
-│  ├─ config
-│  │  ├─ fonts.ts
-│  │  └─ site.ts
-│  ├─ styles
-│  │  └─ globals.css
-│  └─ types
-│     └─ index.ts
-├─ tailwind.config.js
-└─ tsconfig.json
-```
+
+### Function
+<ol>
+    <li>메인 화면
+        <br/>
+        <img src="https://github.com/9619pjw/P_Project/assets/97871451/3aeb57a7-3326-44e9-82fd-22fdfccd7381">
+        <br/>
+        로그인 시 상단의 네비게이션 바가 활성화됩니다.
+        <br/>
+    </li>
+    <li>회원가입 화면
+        <br/>
+        <img src="https://github.com/9619pjw/P_Project/assets/97871451/5fe6a190-52d2-4e56-b4d6-da1724a83d6d">
+        <br/>
+        사용자는 회원가입 시 사용자의 정보를 입력할 수 있습니다.
+        <br/>
+    </li>
+    <li>뉴스피드
+        <br/>
+        <img src ="https://github.com/9619pjw/P_Project/assets/97871451/c14ebf8e-0034-4c6d-b96d-c70cb4f1fbb3">
+        <br/>
+        사용자는 자신이 팔로우한 사용자의 피드글을 볼 수 있습니다.
+        <br/>
+    </li>
+    <li>뉴스피드 상세
+        <br/>
+        <img src="https://github.com/9619pjw/P_Project/assets/97871451/400409da-9290-4af6-8891-6deba9f4edef">
+        <br/>
+        사용자가 클릭한 피드글의 좋아요 수, 댓글을 확인할 수 있습니다. 
+        <br/>
+    </li>
+    <li>알림창
+        <br/>
+        <img src="https://github.com/9619pjw/P_Project/assets/97871451/7805a006-4ac2-465d-9363-7c69b876818b">
+        <br/>
+        사용자에게 발생한 알림을 확인할 수 있습니다.
+        <br/>
+    </li>
+    <li>기프티콘 주문화면
+        <br/>
+        <img src="https://github.com/9619pjw/P_Project/assets/97871451/8ea3d120-e41b-4add-98a2-3ecc8cabe078">
+        <br/>
+        사용자는 기프티콘을 선물할 수 있습니다.
+        <br/>
+    </li>
+    <li>포인트 내역
+        <br/>
+        <img src="https://github.com/9619pjw/P_Project/assets/97871451/e5df6506-094c-4935-ae55-1cacbfe7d2be">
+        <br/>
+        사용자의 포인트 내역을 확인할 수 있습니다.
+        <br/>
+    </li>
+</ol>
+
+
+------------
+###### Used Skill
+<p>
+<img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=Next.js&logoColor=white">&nbsp;
+<img src="https://img.shields.io/badge/Typescript-3178C6?style=for-the-badge&logo=Typescript&logoColor=white"/>&nbsp;
+<img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=for-the-badge&logo=Tailwind CSS&logoColor=white">&nbsp;
+</p>
+
+------------
+
