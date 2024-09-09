@@ -37,6 +37,88 @@ export default function NewsfeedPage(){
     }, []);
 
 
+    //*** add dummy data ***//
+    const fetchNewsfeeds = async ({ pageParam = 0 }: QueryFunctionContext) => {
+        const dummyData: Newsfeed[] = [
+            {
+                feedId: 1,
+                userId: 101,
+                nickname: "홍길동",
+                title: "첫 번째 피드",
+                content: "안녕하세요! 첫 번째 피드를 작성합니다.",
+                profileImgURL: "https://example.com/profile/101.jpg",
+                feedImgURL: "https://example.com/feed/1.jpg",
+                likeCount: 15,
+                commentCount: 3,
+                isLiked: true,
+                createdDate: "2024-09-09T10:15:30"
+            },
+            {
+                feedId: 2,
+                userId: 102,
+                nickname: "김철수",
+                title: "여행 사진",
+                content: "이번 여름에 다녀온 여행 사진입니다!",
+                profileImgURL: "https://example.com/profile/102.jpg",
+                feedImgURL: "https://example.com/feed/2.jpg",
+                likeCount: 25,
+                commentCount: 5,
+                isLiked: false,
+                createdDate: "2024-09-08T14:20:45"
+            },
+            {
+                feedId: 3,
+                userId: 103,
+                nickname: "이영희",
+                title: "맛있는 저녁",
+                content: "오늘 저녁은 정말 맛있었어요!",
+                profileImgURL: "https://example.com/profile/103.jpg",
+                feedImgURL: "https://example.com/feed/3.jpg",
+                likeCount: 10,
+                commentCount: 1,
+                isLiked: true,
+                createdDate: "2024-09-07T18:05:10"
+            },
+            {
+                feedId: 4,
+                userId: 104,
+                nickname: "박민수",
+                title: "운동 일지",
+                content: "오늘은 5km 달렸습니다!",
+                profileImgURL: "https://example.com/profile/104.jpg",
+                feedImgURL: "https://example.com/feed/4.jpg",
+                likeCount: 8,
+                commentCount: 2,
+                isLiked: false,
+                createdDate: "2024-09-06T12:30:00"
+            },
+            {
+                feedId: 5,
+                userId: 105,
+                nickname: "최지우",
+                title: "주말 계획",
+                content: "이번 주말에는 친구들과 나들이 계획이에요!",
+                profileImgURL: "https://example.com/profile/105.jpg",
+                feedImgURL: "https://example.com/feed/5.jpg",
+                likeCount: 30,
+                commentCount: 8,
+                isLiked: true,
+                createdDate: "2024-09-05T09:00:00"
+            }
+        ];
+    // 페이지 매개변수에 따라 더미 데이터를 리턴
+    const pageSize = 5; // 페이지당 데이터 수
+    const startIndex = pageParam * pageSize;
+    const newsfeeds = dummyData.slice(startIndex, startIndex + pageSize);
+
+    // 가져온 뉴스피드와 다음 페이지 커서 반환
+    return { newsfeeds, nextCursor: newsfeeds.length > 0 ? pageParam + 1 : undefined };
+
+
+    };
+
+    //**********************//
+/*
     // fetch 뉴스피드
     const fetchNewsfeeds = async ({ pageParam = 0 }: QueryFunctionContext) => {
         const response = await fetch(`https://funsns.shop:8000/feed-service/feed/newsfeed?cursor=${pageParam}&size=5`, {
@@ -49,8 +131,8 @@ export default function NewsfeedPage(){
     
      // 가져온 뉴스피드와 다음 페이지 커서 반환
     return { newsfeeds: data.data, nextCursor: data.data[data.data.length - 1].feedId };
-
-    };
+*/
+    
 
     // QueryClient를 생성 ... NewsfeedComponent 렌더링
     const queryClient = new QueryClient();
