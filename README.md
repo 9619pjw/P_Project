@@ -38,7 +38,7 @@ npm run dev
 
 
 
-### Function
+## Function
 <ol>
     <li>메인 화면
         <br/>
