@@ -8,6 +8,9 @@ SNS형 크라우드 펀딩 서비스입니다.
 ### Back-End Link
 https://github.com/dodozee/FunSNS
 
+### Back-End Link (Q&A board)
+https://github.com/9619pjw/springbootboard
+
 ### BlockChain Link
 https://github.com/Lseungjin/CrowdFunding
 
