@@ -5,10 +5,10 @@ SNS형 크라우드 펀딩 서비스입니다.
 <br/>
 시연영상 : https://www.youtube.com/watch?v=8ch0Dgjntrs&list=LL&index=2
 
-### Back-End Link
+### Back-End Link (SNS Newsfeed)
 https://github.com/dodozee/FunSNS
 
-### Back-End Link (Q&A board)
+### Back-End Link (Q&A Board)
 https://github.com/9619pjw/springbootboard
 
 ### BlockChain Link
